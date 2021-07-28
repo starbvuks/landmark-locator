@@ -1,0 +1,17 @@
+[
+  {
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "capital": "Amaravati",
+    "language": "Telugu",
+    "landmarks": [
+      {
+        "Sri Venkateswara Temple": {
+          "city": "Tirupati",
+          "visitAt": "September - October",
+          "builtIn": "12th Century"
+        }
+      }
+    ]
+  }
+]
