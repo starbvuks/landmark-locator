@@ -1,22 +1,27 @@
 import React from "react";
-import {AppBar, Toolbar, IconButton} from "@material-ui/core";
 
 import MapIcon from "@material-ui/icons/Map";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-import {StyledAppBar, StyledToolbar} from "./styled.Navbar";
+import {
+  Icon,
+  StyledAppBar,
+  StyledToolbar,
+  StyledIconButton,
+  StyledIconButtonLogo,
+} from "./styled.Navbar";
 
 const Navbar = () => {
   return (
     <div>
+      <StyledIconButtonLogo>
+        <Icon src="./img/ll-icon.png" alt="logo" />
+      </StyledIconButtonLogo>
       <StyledAppBar>
         <StyledToolbar>
-          <IconButton color="inherit">
-            <MapIcon style={{fill: "#F2F2F2"}} />
-          </IconButton>
-          <IconButton color="inherit">
+          <StyledIconButton color="inherit">
             <AccountCircleIcon style={{fill: "#F2F2F2"}} />
-          </IconButton>
+          </StyledIconButton>
         </StyledToolbar>
       </StyledAppBar>
     </div>
