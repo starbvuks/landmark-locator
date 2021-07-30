@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+import {Button} from "@material-ui/core";
+import MapTwoToneIcon from "@material-ui/icons/MapTwoTone";
+
 const Home = () => {
   return (
     <Main>
@@ -16,9 +19,15 @@ const Home = () => {
           <MapIcon src="./img/main-map.png" alt="icon" />
         </CenterIcon>
       </Center>
-      <ArrowIconDiv>
+      {/* <ArrowIconDiv>
         <ArrowIcon src="./img/drop-arrow.png" alt="icon" />
-      </ArrowIconDiv>
+      </ArrowIconDiv> */}
+      <GoToMap>
+        <GoToText>Go To The Map</GoToText>
+        <GoToMapBtn>
+          {<MapTwoToneIcon style={{fill: "var(--main-red)"}} />}
+        </GoToMapBtn>
+      </GoToMap>
     </Main>
   );
 };
@@ -41,30 +50,6 @@ const TextBox = styled.div``;
 const Shell = styled.img`
   width: 50vw;
 `;
-
-// const Text = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   margin: -210px 0 0 2vw;
-// line-height: 0;
-// font-size: 3.5vw;
-// text-align: left;
-// `;
-
-// const TextTop = styled.h1`
-//   padding: 0;
-//   font-family: Poppins;
-//   font-weight: 800;
-//   color: var(--main-red);
-// `;
-
-// const TextBot = styled.h1`
-//   padding: 0;
-//   font-family: Poppins;
-//   font-weight: 800;
-//   color: var(--main-orange);
-// `;
-
 const CenterIcon = styled.div`
   display: flex;
   align-items: center;
@@ -83,4 +68,28 @@ const ArrowIconDiv = styled.div`
 
 const ArrowIcon = styled.img`
   width: 5vw;
+`;
+
+const GoToMap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10vh 0 0 00; // *with arrow* 10px 0 0 0;
+`;
+
+const GoToText = styled.h2`
+  font-size: 32px;
+  padding-right: 10px;
+  font-family: Poppins;
+  font-weight: 700;
+  color: var(--main-red);
+`;
+
+const GoToMapBtn = styled(Button)`
+  background-color: var(--main-pink) !important;
+  width: 10vw;
+  height: 5vh;
+  border: 3px solid !important;
+  border-radius: 9px !important;
+  border-color: var(--main-red) !important;
 `;
