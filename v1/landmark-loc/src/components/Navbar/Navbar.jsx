@@ -1,6 +1,5 @@
 import React from "react";
 
-import MapIcon from "@material-ui/icons/Map";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import {
