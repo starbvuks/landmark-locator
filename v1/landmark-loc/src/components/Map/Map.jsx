@@ -10,26 +10,35 @@ const Map = () => {
   const [viewport, setViewport] = useState({
     width: 400,
     height: 400,
-    latitude: 17.385,
-    longitude: 78.4867,
+    latitude: 13.684487872955962,
+    longitude: 79.3473141412759,
     zoom: 8,
   });
 
   return (
-    <MapDiv>
-      <ReactMapGL
-        {...viewport}
-        mapboxApiAccessToken={MAPBOX_TOKEN}
-        onViewportChange={(nextViewport) => setViewport(nextViewport)}
-      />
-    </MapDiv>
+    <MainDiv>
+      <MapDiv>
+        <ReactMapGL
+          {...viewport}
+          mapStyle="mapbox://styles/mapbox/streets-v11"
+          mapboxApiAccessToken={MAPBOX_TOKEN}
+          onViewportChange={(nextViewport) => setViewport(nextViewport)}
+        />
+      </MapDiv>
+    </MainDiv>
   );
 };
 
 export default Map;
 
+const MainDiv = styled.div`
+  height: 100vh;
+  background-color: var(--main-dark);
+`;
+
 const MapDiv = styled.div`
   display: flex;
+  height: 100%;
   align-items: center;
   justify-content: center;
 `;
