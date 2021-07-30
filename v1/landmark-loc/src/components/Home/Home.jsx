@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 import {Button} from "@material-ui/core";
 import MapTwoToneIcon from "@material-ui/icons/MapTwoTone";
@@ -24,9 +25,11 @@ const Home = () => {
       </ArrowIconDiv> */}
       <GoToMap>
         <GoToText>Go To The Map</GoToText>
-        <GoToMapBtn>
-          {<MapTwoToneIcon style={{fill: "var(--main-red)"}} />}
-        </GoToMapBtn>
+        <Link to="/map">
+          <GoToMapBtn>
+            {<MapTwoToneIcon style={{fill: "var(--main-red)"}} />}
+          </GoToMapBtn>
+        </Link>
       </GoToMap>
     </Main>
   );
