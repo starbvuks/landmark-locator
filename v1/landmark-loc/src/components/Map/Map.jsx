@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
 import styled from "styled-components";
 import RoomIcon from "@material-ui/icons/Room";
+
 const MAPBOX_TOKEN =
   "pk.eyJ1Ijoic3RhcmJ2dWtzIiwiYSI6ImNrbTR2NHphaDA4ZmUzMHBtMTRobjN6MHMifQ.tmPNZOallU2bty-vG7qIdw";
 
