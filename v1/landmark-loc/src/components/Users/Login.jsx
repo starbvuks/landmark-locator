@@ -5,7 +5,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -13,11 +12,16 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 
+import {Link} from "react-router-dom";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link
+        color="inherit"
+        href="https://github.com/starbvuks/landmark-locator"
+      >
         Your Website
       </Link>{" "}
       {new Date().getFullYear()}
@@ -29,6 +33,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
+    fontFamily: "Poppins",
   },
   main: {
     backgroundColor: "var(--main-light)",
@@ -78,10 +83,38 @@ export default function SignInSide() {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography className={classes.light} component="h1" variant="h5">
-            Sign in
+          <Typography
+            style={{
+              color: "var(--main-dark)",
+              fontFamily: "Poppins",
+              fontWeight: 600,
+            }}
+            className={classes.light}
+            component="h1"
+            variant="h5"
+          >
+            Login To{" "}
+            <span
+              style={{
+                color: "var(--main-purple)",
+                fontWeight: 800,
+              }}
+            >
+              Landmark Locator
+            </span>
           </Typography>
           <form className={classes.form} noValidate>
+            <TextField
+              color="primary"
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              autoFocus
+            />
             <TextField
               color="primary"
               variant="outlined"
@@ -125,7 +158,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
