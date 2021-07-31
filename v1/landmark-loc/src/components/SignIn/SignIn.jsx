@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {Link } from 'react-router-dom'
+import Navbar from '../Navbar/Navbar';
 
 
 
@@ -41,6 +42,7 @@ export default function SignIn() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <Navbar />
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
