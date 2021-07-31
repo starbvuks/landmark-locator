@@ -30,13 +30,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
   },
+  main: {
+    backgroundColor: "var(--main-light)",
+  },
   image: {
-    backgroundImage: "url(https://source.unsplash.com/random)",
-    backgroundRepeat: "no-repeat",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
+    backgroundColor: "var(--main-purple)",
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
@@ -66,16 +64,26 @@ export default function SignInSide() {
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        className={classes.main}
+        component={Paper}
+        elevation={6}
+        square
+      >
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography className={classes.light} component="h1" variant="h5">
             Sign in
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
+              color="primary"
               variant="outlined"
               margin="normal"
               required
