@@ -1,6 +1,6 @@
 import React from "react";
-import {useState} from "react";
-import ReactMapGL, {Marker} from "react-map-gl";
+import {useState, useEffect} from "react";
+import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
 import styled from "styled-components";
 import RoomIcon from "@material-ui/icons/Room";
 const MAPBOX_TOKEN =
@@ -18,22 +18,35 @@ const Map = () => {
   console.log(viewport.latitude);
 
   const markers = (
-    <Marker longitude={79.3473141412759} latitude={13.684487872955962}>
+    <Marker longitude={viewport.longitude} latitude={viewport.latitude}>
       <RoomIcon fontSize="medium" />
     </Marker>
   );
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      setViewport({
+        ...viewport,
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude,
+      });
+    });
+  }, []);
+
+  console.log(viewport);
+
   return (
     <MainDiv>
       <MapDiv>
-        <ReactMapGL
+        <MapHeader>Map</MapHeader>
+        <StaticMap
           {...viewport}
           mapStyle="mapbox://styles/mapbox/streets-v11"
           mapboxApiAccessToken={MAPBOX_TOKEN}
           onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
           {markers}
-        </ReactMapGL>
+        </StaticMap>
       </MapDiv>
     </MainDiv>
   );
@@ -46,8 +59,17 @@ const MainDiv = styled.div`
   background-color: var(--main-dark);
 `;
 
+const MapHeader = styled.span`
+  margin: 0 0 20px 0;
+  font-family: "Red Hat Display";
+  font-size: 42pt;
+  font-weight: bold;
+  color: var(--main-light);
+`;
+
 const MapDiv = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100%;
   align-items: center;
   justify-content: center;
