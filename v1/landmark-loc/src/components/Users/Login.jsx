@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,6 +13,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 function Copyright() {
@@ -28,6 +30,16 @@ function Copyright() {
       {"."}
     </Typography>
   );
+}
+
+async function loginUser(credentials) {
+  return fetch("http://localhost:3001/user", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -62,9 +74,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide() {
-  const classes = useStyles();
+export default function Login({setToken}) {
+  const [username, setUserName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await loginUser({
+      username,
+      email,
+      password,
+    });
+    setToken(token);
+  };
+
+  const classes = useStyles();
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -103,7 +128,7 @@ export default function SignInSide() {
               Landmark Locator
             </span>
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} onSubmit={handleSubmit} noValidate>
             <TextField
               color="primary"
               variant="outlined"
@@ -113,6 +138,7 @@ export default function SignInSide() {
               id="username"
               label="Username"
               name="username"
+              onChange={(e) => setUserName(e.target.value)}
               autoFocus
             />
             <TextField
@@ -123,8 +149,9 @@ export default function SignInSide() {
               fullWidth
               id="email"
               label="Email Address"
-              name="email"
               autoComplete="email"
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
               autoFocus
             />
             <TextField
@@ -136,6 +163,7 @@ export default function SignInSide() {
               label="Password"
               type="password"
               id="password"
+              onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
             />
             <FormControlLabel
@@ -172,3 +200,7 @@ export default function SignInSide() {
     </Grid>
   );
 }
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};

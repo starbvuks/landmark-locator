@@ -1,4 +1,5 @@
 import "./App.css";
+import {useState} from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 //import styled from "styled-components";
 
@@ -8,7 +9,27 @@ import Map from "./components/Map/Map";
 import Login from "./components/Users/Login";
 import SignUp from "./components/Users/SignUp";
 
+function setToken(userToken) {
+  sessionStorage.setItem("token", JSON.stringify(userToken));
+}
+
+function getToken() {
+  const tokenString = sessionStorage.getItem("token");
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token;
+}
+
 function App() {
+  // const [token, setToken] = useState();
+  const token = getToken();
+
+  // if (!token) {
+  //   return (
+  //     <Router>
+  //       <Login setToken={setToken} />;
+  //     </Router>
+  //   );
+  // }
   return (
     <div className="App">
       <Router>
@@ -20,7 +41,7 @@ function App() {
             <SignUp />
           </Route>
           <Route path="/login">
-            <Login />
+            {!token ? <Login setToken={setToken} /> : <Login />}
           </Route>
           <Route path="/">
             <Navbar />
