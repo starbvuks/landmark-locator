@@ -9,6 +9,7 @@ import {
   StyledIconButton,
   StyledIconButtonLogo,
 } from "./styled.Navbar";
+import {Link} from "react-router-dom"
 
 const Navbar = () => {
   return (
@@ -18,9 +19,11 @@ const Navbar = () => {
       </StyledIconButtonLogo>
       <StyledAppBar>
         <StyledToolbar>
+          <Link to="/signin">
           <StyledIconButton color="inherit">
             <AccountCircleIcon style={{fill: "#F2F2F2"}} />
           </StyledIconButton>
+          </Link>
         </StyledToolbar>
       </StyledAppBar>
     </div>
