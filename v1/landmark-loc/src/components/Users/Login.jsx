@@ -75,14 +75,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login({setToken}) {
-  const [username, setUserName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = await loginUser({
-      username,
       email,
       password,
     });
@@ -129,18 +127,6 @@ export default function Login({setToken}) {
             </span>
           </Typography>
           <form className={classes.form} onSubmit={handleSubmit} noValidate>
-            <TextField
-              color="primary"
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              onChange={(e) => setUserName(e.target.value)}
-              autoFocus
-            />
             <TextField
               color="primary"
               variant="outlined"

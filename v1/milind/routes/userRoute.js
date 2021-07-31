@@ -5,6 +5,7 @@ const checkauth = require("../middleware/checkAuth");
 const user = require("../controller/userAuth");
 
 router.post("/signup", user.signup);
+router.get("/signup", user.signup);
 
 router.post("/login", user.login);
 router.get("/login", user.login);

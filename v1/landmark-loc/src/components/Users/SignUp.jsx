@@ -1,4 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -25,6 +27,16 @@ function Copyright() {
   );
 }
 
+async function signUpUser(credentials) {
+  return fetch("http://localhost:3001/user/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -46,6 +58,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const [name, setUserName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newUser = {
+      name,
+      email,
+      password,
+    };
+
+    axios.post("http://localhost:3001/user/signup", newUser);
+  };
+
   const classes = useStyles();
   return (
     <Container className={classes.main} component="main" maxWidth="xs">
@@ -57,7 +84,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -68,6 +95,7 @@ export default function SignUp() {
                 fullWidth
                 id="username"
                 label="Username"
+                onChange={(e) => setUserName(e.target.value)}
                 autoFocus
               />
             </Grid>
@@ -79,6 +107,7 @@ export default function SignUp() {
                 id="email"
                 label="Email Address"
                 name="email"
+                onChange={(e) => setEmail(e.target.value)}
                 autoComplete="email"
               />
             </Grid>
@@ -91,6 +120,7 @@ export default function SignUp() {
                 label="Password"
                 type="password"
                 id="password"
+                onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
               />
             </Grid>

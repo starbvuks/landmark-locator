@@ -39,7 +39,7 @@ module.exports.signup = (req, res) => {
         })
         .catch((err) => {
           res.status(401).json({
-            message: err.message || "something went wrong while creating admin",
+            message: err.message || "something went wrong while creating user",
           });
         });
     });
