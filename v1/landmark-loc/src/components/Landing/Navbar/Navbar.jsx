@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import {
@@ -24,9 +24,11 @@ const Navbar = () => {
       </LogoDiv>
       <StyledAppBar>
         <StyledToolbar>
-          <StyledIconButton color="inherit">
-            <AccountCircleIcon style={{fill: "#F2F2F2"}} />
-          </StyledIconButton>
+          <Link to="signup">
+            <StyledIconButton color="inherit">
+              <AccountCircleIcon style={{fill: "#F2F2F2"}} fontSize="large" />
+            </StyledIconButton>
+          </Link>
         </StyledToolbar>
       </StyledAppBar>
     </div>

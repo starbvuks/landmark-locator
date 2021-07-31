@@ -11,10 +11,6 @@ const Home = () => {
       <Center>
         <CenterText>
           <Shell src="./img/ii-iconfull.png" alt="icon" />
-          {/* <Text>
-          <TextTop>Landmark</TextTop>
-          <TextBot>Locator</TextBot>
-        </Text> */}
         </CenterText>
         <CenterIcon>
           <MapIcon src="./img/main-map.png" alt="icon" />
@@ -47,8 +43,6 @@ const Center = styled.div`
 `;
 
 const CenterText = styled.div``;
-
-const TextBox = styled.div``;
 
 const Shell = styled.img`
   width: 50vw;
