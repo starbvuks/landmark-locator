@@ -27,17 +27,6 @@ function Copyright() {
   );
 }
 
-async function signUpUser(credentials) {
-  return fetch("http://localhost:3001/user/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(credentials),
-  });
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -85,6 +74,7 @@ export default function SignUp({setToken}) {
         console.log(error);
       });
   };
+
   const classes = useStyles();
   return (
     <Container className={classes.main} component="main" maxWidth="xs">
