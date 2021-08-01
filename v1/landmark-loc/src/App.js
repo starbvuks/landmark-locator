@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Navbar from "./components/Landing/Navbar/Navbar";
 import Home from "./components/Landing/Home/Home";
+import Landing from "./components/Landing/Landing";
 import Map from "./components/Map/Map";
 import Login from "./components/Users/Login";
 import SignUp from "./components/Users/SignUp";
@@ -50,8 +51,7 @@ function App() {
             <Profile setToken={setToken} token={token} />
           </Route>
           <Route path="/">
-            <Navbar isAuth={isAuth} />
-            <Home />
+            <Landing isAuth={isAuth} />
           </Route>
         </Switch>
       </Router>

@@ -1,30 +1,21 @@
 import styled from "styled-components";
-import {AppBar, Toolbar, IconButton} from "@material-ui/core";
-
-export const LogoDiv = styled.div`
-  display: flex;
-  align-items: center;
-  margin: -5px 0 0 0;
-`;
-
-export const StyledIconButtonLogo = styled(IconButton)`
-  width: 10vw;
-  height: 64px;
-`;
-
-export const Icon = styled.img`
-  width: 60%;
-`;
+import {AppBar, Toolbar, IconButton, Avatar} from "@material-ui/core";
 
 export const StyledAppBar = styled(AppBar)`
   background-color: #a6566b !important;
-  width: 90vw !important;
+  height: 54px !important;
   box-shadow: none !important;
 `;
 
 export const StyledToolbar = styled(Toolbar)`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+`;
+
+export const StyledIconButtonLogo = styled(IconButton)``;
+
+export const Icon = styled(Avatar)`
+  padding: 0 0 15px 0;
 `;
 
 export const StyledIconButton = styled(IconButton)``;

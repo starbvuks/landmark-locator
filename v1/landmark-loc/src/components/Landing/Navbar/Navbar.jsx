@@ -24,16 +24,14 @@ const Navbar = ({isAuth}) => {
 
   return (
     <div>
-      <LogoDiv>
-        <StyledIconButtonLogo
-          disableRipple={true}
-          style={{backgroundColor: "transparent"}}
-        >
-          <Icon src="./img/ll-icon.png" alt="logo" />
-        </StyledIconButtonLogo>
-      </LogoDiv>
       <StyledAppBar>
-        <StyledToolbar>
+        <StyledToolbar variant="dense">
+          <StyledIconButtonLogo
+            disableRipple={true}
+            style={{backgroundColor: "transparent"}}
+          >
+            <Icon src="./img/ll-icon-white.png" alt="logo" variant="square" />
+          </StyledIconButtonLogo>
           <StyledIconButton
             onClick={() => userIconClickHandler()}
             color="inherit"
