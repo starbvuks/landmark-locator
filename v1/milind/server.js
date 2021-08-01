@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const port = process.env.PORT || 3000;
 const adminRoute = require('./routes/adminroutes')
 const userRoute = require('./routes/userRoute')
+const landmarRoute = require('./routes/landmarkRouter')
 const app = express();
 
 //initializing of mongoDb
@@ -25,6 +26,7 @@ app.use(express.urlencoded({extended:false}));
 
 app.use('/admin', adminRoute);
 app.use('/user', userRoute)
+app.use('/landmark', landmarRoute)
 
 app.listen(port, () =>{
     console.log(`server is running on port ${port}`)
