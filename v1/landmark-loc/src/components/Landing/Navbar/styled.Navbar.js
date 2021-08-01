@@ -15,7 +15,7 @@ export const StyledToolbar = styled(Toolbar)`
 export const StyledIconButtonLogo = styled(IconButton)``;
 
 export const Icon = styled(Avatar)`
-  padding: 0 0 15px 0;
+  margin: 0 0 15px 0;
 `;
 
 export const StyledIconButton = styled(IconButton)``;
