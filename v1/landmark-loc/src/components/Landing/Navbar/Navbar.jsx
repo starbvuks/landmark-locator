@@ -1,5 +1,5 @@
 import React from "react";
-import {Redirect} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import {
@@ -11,15 +11,14 @@ import {
   StyledIconButtonLogo,
 } from "./styled.Navbar";
 
-const Navbar = ({token, setToken}) => {
+const Navbar = ({isAuth}) => {
+  const history = useHistory();
+
   const userIconClickHandler = () => {
-    console.log(token);
-    if (!token) {
-      console.log("login");
-      return <Redirect to="/login" />;
+    if (isAuth === true) {
+      history.push("/profile");
     } else {
-      console.log("profile");
-      return <Redirect to="/profile" />;
+      history.push("/login");
     }
   };
 

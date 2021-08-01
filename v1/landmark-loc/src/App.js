@@ -11,7 +11,7 @@ import SignUp from "./components/Users/SignUp";
 import Profile from "./components/Profile/Profile";
 
 function App() {
-  const [isAuth, setAuth] = useState(false);
+  const [isAuth, setAuth] = useState();
   const token = getToken();
 
   function setToken(userToken) {
@@ -50,7 +50,7 @@ function App() {
             <Profile setToken={setToken} token={token} />
           </Route>
           <Route path="/">
-            <Navbar />
+            <Navbar isAuth={isAuth} />
             <Home />
           </Route>
         </Switch>

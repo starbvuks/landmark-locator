@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 
 import PropTypes from "prop-types";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useHistory, Redirect} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,8 +48,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login({setToken, isAuth}) {
-  const history = useHistory();
-
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -70,110 +68,109 @@ export default function Login({setToken, isAuth}) {
       password,
     });
     setToken(token);
-
-    if (isAuth === true) {
-      history.push("/");
-    }
+    window.location.reload();
   };
 
   const classes = useStyles();
-  return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <button onClick={() => console.log(isAuth)}>check token</button>
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid
-        item
-        xs={12}
-        sm={8}
-        md={5}
-        className={classes.main}
-        component={Paper}
-        elevation={6}
-        square
-      >
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography
-            style={{
-              color: "var(--main-dark)",
-              fontFamily: "Poppins",
-              fontWeight: 600,
-            }}
-            className={classes.light}
-            component="h1"
-            variant="h5"
-          >
-            Login To{" "}
-            <span
+  if (isAuth === true) {
+    return <Redirect to="/" />;
+  } else {
+    return (
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          className={classes.main}
+          component={Paper}
+          elevation={6}
+          square
+        >
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography
               style={{
-                color: "var(--main-purple)",
-                fontWeight: 800,
+                color: "var(--main-dark)",
+                fontFamily: "Poppins",
+                fontWeight: 600,
               }}
+              className={classes.light}
+              component="h1"
+              variant="h5"
             >
-              Landmark Locator
-            </span>
-          </Typography>
-          <form className={classes.form} onSubmit={handleSubmit} noValidate>
-            <TextField
-              color="primary"
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              autoComplete="email"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link to="/" variant="body2">
-                  Forgot password?
-                </Link>
+              Login To{" "}
+              <span
+                style={{
+                  color: "var(--main-purple)",
+                  fontWeight: 800,
+                }}
+              >
+                Landmark Locator
+              </span>
+            </Typography>
+            <form className={classes.form} onSubmit={handleSubmit} noValidate>
+              <TextField
+                color="primary"
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                autoComplete="email"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                autoFocus
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link to="/" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link to="/signup" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Link to="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </form>
-        </div>
+            </form>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 }
-
 Login.propTypes = {
   setToken: PropTypes.func.isRequired,
 };
