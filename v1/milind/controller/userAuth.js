@@ -9,13 +9,15 @@ module.exports.signup = (req, res) => {
   // validating all field
   if (!name || !email || !password) {
     return res.status(400).json({
-      message: "all fields are requires",
+      message: "All fields are required",
     });
   }
 
   User.findOne({email: email}).then((user) => {
     if (user) {
-      return res.status(400).send("User already exist. try with other emailId");
+      return res
+        .status(400)
+        .json({message: "User already exists with this email"});
     }
   });
 
@@ -31,13 +33,13 @@ module.exports.signup = (req, res) => {
         .save()
         .then((user) => {
           res.status(200).json({
-            message: "user saved successfully",
+            message: "User created successfully",
           });
           console.log(user);
         })
         .catch((err) => {
           res.status(401).json({
-            message: err.message || "something went wrong while creating user",
+            message: err.message || "Something went wrong while creating user",
           });
         });
     });

@@ -32,6 +32,7 @@ async function signUpUser(credentials) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify(credentials),
   });
@@ -61,6 +62,8 @@ export default function SignUp({setToken}) {
   const [name, setUserName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [error, setError] = useState();
+  const [success, setSuccess] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,12 +75,16 @@ export default function SignUp({setToken}) {
 
     axios
       .post("http://localhost:3001/user/signup", newUser)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err.response));
-
-    // setToken(token)
+      .then((data) => {
+        console.log(data);
+        setSuccess("Success!");
+      })
+      .catch((err) => {
+        console.log(err.response);
+        setError(err.response.data.message);
+        console.log(error);
+      });
   };
-
   const classes = useStyles();
   return (
     <Container className={classes.main} component="main" maxWidth="xs">
@@ -130,6 +137,7 @@ export default function SignUp({setToken}) {
               />
             </Grid>
           </Grid>
+
           <Button
             type="submit"
             fullWidth
