@@ -1,5 +1,5 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import {
@@ -26,12 +26,14 @@ const Navbar = ({isAuth}) => {
     <div>
       <StyledAppBar>
         <StyledToolbar variant="dense">
-          <StyledIconButtonLogo
-            disableRipple={true}
-            style={{backgroundColor: "transparent"}}
-          >
-            <Icon src="./img/ll-icon-white.png" alt="logo" variant="square" />
-          </StyledIconButtonLogo>
+          <Link to="/">
+            <StyledIconButtonLogo
+              disableRipple={true}
+              style={{backgroundColor: "transparent"}}
+            >
+              <Icon src="./img/ll-icon-white.png" alt="logo" variant="square" />
+            </StyledIconButtonLogo>
+          </Link>
           <StyledIconButton
             onClick={() => userIconClickHandler()}
             color="inherit"

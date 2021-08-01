@@ -18,7 +18,7 @@ const Profile = () => {
         />
         <UserData>
           <Username variant="h1">{userToken.user.name}</Username>
-          <Typography>{userToken.user.email}</Typography>
+          <Email variant="h6">{userToken.user.email}</Email>
         </UserData>
       </UserDetails>
     </Main>
@@ -28,8 +28,7 @@ const Profile = () => {
 export default Profile;
 
 const Main = styled.div`
-  margin: 0 0 0 0;
-  background-color: var(--main-pink);
+  background-color: var(--main-light1);
   height: 100vh;
 `;
 
@@ -37,7 +36,14 @@ const UserDetails = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 5rem;
+  padding: 7rem 0;
+  //   background-color: var(--main-lav1);
+  background: rgb(215, 189, 216);
+  background: linear-gradient(
+    180deg,
+    var(--main-tone) 0%,
+    rgba(240, 240, 240, 1) 100%
+  );
 `;
 
 const UserAvatar = styled(Avatar)`
@@ -51,6 +57,15 @@ const UserData = styled.div`
   margin: 0 0 0 50px;
 `;
 
-const Username = styled(Typography)``;
+const Username = styled(Typography)`
+  font-family: Poppins !important;
+  color: var(--main-orange);
+  font-weight: 600 !important;
+`;
 
-const Email = styled.span``;
+const Email = styled(Typography)`
+  padding: 0 0 0 7px;
+  font-family: Poppins !important;
+  color: var(--main-dark);
+  font-weight: 500 !important;
+`;
