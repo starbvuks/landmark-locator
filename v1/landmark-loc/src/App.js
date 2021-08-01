@@ -1,11 +1,6 @@
 import "./App.css";
-import {useState} from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import {useState, useEffect} from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 //import styled from "styled-components";
 
 import Navbar from "./components/Landing/Navbar/Navbar";
@@ -13,29 +8,31 @@ import Home from "./components/Landing/Home/Home";
 import Map from "./components/Map/Map";
 import Login from "./components/Users/Login";
 import SignUp from "./components/Users/SignUp";
-
-function setToken(userToken) {
-  sessionStorage.setItem("token", JSON.stringify(userToken));
-}
-
-function getToken() {
-  const tokenString = sessionStorage.getItem("token");
-  const userToken = JSON.parse(tokenString);
-  return userToken?.token;
-}
-
-const loginRedirect = () => {
-  if (!getToken()) {
-    return <Login setToken={setToken} />;
-  } else {
-    return <Redirect to="/" />;
-  }
-};
+import Profile from "./components/Profile/Profile";
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isAuth, setAuth] = useState(false);
+  const token = getToken();
 
-  // const token = getToken();
+  function setToken(userToken) {
+    sessionStorage.setItem("token", JSON.stringify(userToken));
+  }
+
+  function getToken() {
+    const tokenString = sessionStorage.getItem("token");
+    const userToken = JSON.parse(tokenString);
+    return userToken?.token;
+  }
+
+  useEffect(() => {
+    getToken();
+    if (token) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+  }, []);
+
   return (
     <div className="App">
       <Router>
@@ -44,10 +41,13 @@ function App() {
             <Map />
           </Route>
           <Route path="/signup">
-            <SignUp setToken={setToken} setLoggedIn={setLoggedIn} />
+            <SignUp setToken={setToken} />
           </Route>
           <Route path="/login">
-            <Login setToken={setToken} setLoggedIn={setLoggedIn} />
+            <Login setToken={setToken} isAuth={isAuth} />
+          </Route>
+          <Route path="/profile">
+            <Profile setToken={setToken} token={token} />
           </Route>
           <Route path="/">
             <Navbar />

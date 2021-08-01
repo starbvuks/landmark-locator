@@ -7,7 +7,6 @@ import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -48,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login({setToken, setLoggedIn}) {
+export default function Login({setToken, isAuth}) {
   const history = useHistory();
 
   const [email, setEmail] = useState();
@@ -61,18 +60,7 @@ export default function Login({setToken, setLoggedIn}) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(credentials),
-    })
-      .then((data) => {
-        data.json();
-        console.log(data);
-        if (data.status === 200) {
-          setLoggedIn(true);
-          history.push("/");
-        } else {
-          setLoggedIn(false);
-        }
-      })
-      .catch((err) => console.log(err.response));
+    }).then((data) => data.json());
   }
 
   const handleSubmit = async (e) => {
@@ -82,12 +70,17 @@ export default function Login({setToken, setLoggedIn}) {
       password,
     });
     setToken(token);
+
+    if (isAuth === true) {
+      history.push("/");
+    }
   };
 
   const classes = useStyles();
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
+      <button onClick={() => console.log(isAuth)}>check token</button>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid
         item

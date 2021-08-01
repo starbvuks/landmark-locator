@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import {
@@ -11,7 +11,18 @@ import {
   StyledIconButtonLogo,
 } from "./styled.Navbar";
 
-const Navbar = () => {
+const Navbar = ({token, setToken}) => {
+  const userIconClickHandler = () => {
+    console.log(token);
+    if (!token) {
+      console.log("login");
+      return <Redirect to="/login" />;
+    } else {
+      console.log("profile");
+      return <Redirect to="/profile" />;
+    }
+  };
+
   return (
     <div>
       <LogoDiv>
@@ -24,11 +35,12 @@ const Navbar = () => {
       </LogoDiv>
       <StyledAppBar>
         <StyledToolbar>
-          <Link to="signup">
-            <StyledIconButton color="inherit">
-              <AccountCircleIcon style={{fill: "#F2F2F2"}} fontSize="large" />
-            </StyledIconButton>
-          </Link>
+          <StyledIconButton
+            onClick={() => userIconClickHandler()}
+            color="inherit"
+          >
+            <AccountCircleIcon style={{fill: "#F2F2F2"}} fontSize="large" />
+          </StyledIconButton>
         </StyledToolbar>
       </StyledAppBar>
     </div>
