@@ -34,7 +34,7 @@ async function signUpUser(credentials) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
-  }).then((data) => data.json());
+  });
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp({setToken}) {
   const [name, setUserName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -70,7 +70,12 @@ export default function SignUp() {
       password,
     };
 
-    axios.post("http://localhost:3001/user/signup", newUser);
+    axios
+      .post("http://localhost:3001/user/signup", newUser)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err.response));
+
+    // setToken(token)
   };
 
   const classes = useStyles();

@@ -15,9 +15,7 @@ module.exports.signup = (req, res) => {
 
   User.findOne({email: email}).then((user) => {
     if (user) {
-      return res
-        .status(400)
-        .json({message: "User already exist. try with other emailId"});
+      return res.status(400).send("User already exist. try with other emailId");
     }
   });
 

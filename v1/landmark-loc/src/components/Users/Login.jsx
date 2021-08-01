@@ -16,22 +16,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link
-        color="inherit"
-        href="https://github.com/starbvuks/landmark-locator"
-      >
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 async function loginUser(credentials) {
   return fetch("http://localhost:3001/user/login", {
     method: "POST",
@@ -177,9 +161,6 @@ export default function Login({setToken}) {
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
           </form>
         </div>
       </Grid>

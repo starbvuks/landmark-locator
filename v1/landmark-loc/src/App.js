@@ -39,7 +39,7 @@ function App() {
             <Map />
           </Route>
           <Route path="/signup">
-            <SignUp />
+            <SignUp setToken={setToken} />
           </Route>
           <Route path="/login">
             {!token ? <Login setToken={setToken} /> : <Login />}
