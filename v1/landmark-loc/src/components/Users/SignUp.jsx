@@ -14,19 +14,6 @@ import Container from "@material-ui/core/Container";
 
 import {Link} from "react-router-dom";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -52,7 +39,6 @@ export default function SignUp({setToken}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  const [success, setSuccess] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,12 +51,15 @@ export default function SignUp({setToken}) {
     axios
       .post("http://localhost:3001/user/signup", newUser)
       .then((data) => {
-        console.log(data);
-        setSuccess("Success!");
+        try {
+          console.log(data);
+        } catch (err) {
+          console.log(err.response);
+          setError(err.response.data.message);
+          console.log(error);
+        }
       })
       .catch((err) => {
-        console.log(err.response);
-        setError(err.response.data.message);
         console.log(error);
       });
   };
@@ -146,9 +135,6 @@ export default function SignUp({setToken}) {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }

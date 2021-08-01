@@ -1,6 +1,11 @@
 import "./App.css";
 import {useState} from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 //import styled from "styled-components";
 
 import Navbar from "./components/Landing/Navbar/Navbar";
@@ -19,18 +24,18 @@ function getToken() {
   return userToken?.token;
 }
 
+const loginRedirect = () => {
+  if (!getToken()) {
+    return <Login setToken={setToken} />;
+  } else {
+    return <Redirect to="/" />;
+  }
+};
+
 function App() {
-  // const [token, setToken] = useState();
-  const token = getToken();
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
-  // if (!token) {
-  //   return (
-  //     <Router>
-  //       <Login setToken={setToken} />;
-  //     </Router>
-  //   );
-  // }
-
+  // const token = getToken();
   return (
     <div className="App">
       <Router>
@@ -39,10 +44,10 @@ function App() {
             <Map />
           </Route>
           <Route path="/signup">
-            <SignUp setToken={setToken} />
+            <SignUp setToken={setToken} setLoggedIn={setLoggedIn} />
           </Route>
           <Route path="/login">
-            {!token ? <Login setToken={setToken} /> : <Login />}
+            <Login setToken={setToken} setLoggedIn={setLoggedIn} />
           </Route>
           <Route path="/">
             <Navbar />

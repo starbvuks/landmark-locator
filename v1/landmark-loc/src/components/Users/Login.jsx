@@ -14,17 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
-
-async function loginUser(credentials) {
-  return fetch("http://localhost:3001/user/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
+import {Link, useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,9 +48,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login({setToken}) {
+export default function Login({setToken, setLoggedIn}) {
+  const history = useHistory();
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  async function loginUser(credentials) {
+    return fetch("http://localhost:3001/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+    })
+      .then((data) => {
+        data.json();
+        console.log(data);
+        if (data.status === 200) {
+          setLoggedIn(true);
+          history.push("/");
+        } else {
+          setLoggedIn(false);
+        }
+      })
+      .catch((err) => console.log(err.response));
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -151,7 +164,7 @@ export default function Login({setToken}) {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link to="/" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>

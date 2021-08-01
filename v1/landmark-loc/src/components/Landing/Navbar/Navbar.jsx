@@ -16,7 +16,7 @@ const Navbar = () => {
     <div>
       <LogoDiv>
         <StyledIconButtonLogo
-          disableRipple="true"
+          disableRipple={true}
           style={{backgroundColor: "transparent"}}
         >
           <Icon src="./img/ll-icon.png" alt="logo" />
