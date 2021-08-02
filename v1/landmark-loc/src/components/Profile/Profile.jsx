@@ -39,7 +39,6 @@ const UserDetails = styled.div`
   align-items: center;
   justify-content: center;
   padding: 7rem 0;
-  //   background-color: var(--main-lav1);
   background: main(--main-lav1);
   background: linear-gradient(
     180deg,

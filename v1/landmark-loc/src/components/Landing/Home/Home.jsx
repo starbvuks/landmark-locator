@@ -5,6 +5,8 @@ import {Link} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import MapTwoToneIcon from "@material-ui/icons/MapTwoTone";
 
+import HomeSecond from "./HomeSecond";
+
 const Home = () => {
   return (
     <Main>
@@ -16,9 +18,10 @@ const Home = () => {
           <MapIcon src="./img/main-map.png" alt="icon" />
         </CenterIcon>
       </Center>
-      {/* <ArrowIconDiv>
+      <ArrowIconDiv>
         <ArrowIcon src="./img/drop-arrow.png" alt="icon" />
-      </ArrowIconDiv> */}
+      </ArrowIconDiv>
+      <HomeSecond />
       <GoToMap>
         <GoToText>Go To The Map</GoToText>
         <Link to="/map">
@@ -60,7 +63,7 @@ const MapIcon = styled.img`
 const ArrowIconDiv = styled.div`
   display: flex;
   justify-content: center;
-  margin: 8vh 0 0 0;
+  margin: 15vh 0 0 0;
 `;
 
 const ArrowIcon = styled.img`
@@ -71,7 +74,7 @@ const GoToMap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10vh 0 0 00; // *with arrow* 10px 0 0 0;
+  margin: 50vh 0 0 00; // *with arrow* 10px 0 0 0;
 `;
 
 const GoToText = styled.h2`
