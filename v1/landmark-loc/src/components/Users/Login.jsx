@@ -51,6 +51,9 @@ export default function Login({setToken, isAuth}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  const tokenString = sessionStorage.getItem("token");
+  const userToken = JSON.parse(tokenString);
+
   async function loginUser(credentials) {
     return fetch("http://localhost:3001/user/login", {
       method: "POST",
@@ -58,7 +61,11 @@ export default function Login({setToken, isAuth}) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(credentials),
-    }).then((data) => data.json());
+    })
+      .then((data) => data.json())
+      .catch((err) => {
+        console.log(err.response);
+      });
   }
 
   const handleSubmit = async (e) => {
@@ -69,6 +76,14 @@ export default function Login({setToken, isAuth}) {
     });
     setToken(token);
     window.location.reload();
+  };
+
+  const loginError = () => {
+    if (userToken) {
+      return userToken.message;
+    } else {
+      return "";
+    }
   };
 
   const classes = useStyles();
@@ -139,10 +154,17 @@ export default function Login({setToken, isAuth}) {
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+              <Typography
+                variant="h6"
+                color="error"
+                style={{
+                  textAlign: "center",
+                  fontFamily: "Red Hat Display",
+                  fontWeight: "600",
+                }}
+              >
+                {loginError()}
+              </Typography>
               <Button
                 type="submit"
                 fullWidth
