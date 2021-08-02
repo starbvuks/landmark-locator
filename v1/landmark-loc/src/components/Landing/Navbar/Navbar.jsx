@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 import {useHistory, Link, Redirect} from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import {Menu, MenuItem} from "@material-ui/core";
+import {Menu, MenuItem, Drawer} from "@material-ui/core";
 
 import {
   Icon,
-  LogoDiv,
   StyledAppBar,
   StyledToolbar,
   StyledIconButton,
@@ -57,19 +56,25 @@ const Navbar = ({isAuth}) => {
           <StyledIconButton onClick={() => handleClick()} color="inherit">
             <AccountCircleIcon style={{fill: "#F2F2F2"}} fontSize="large" />
           </StyledIconButton>
-          <Menu
+          <Drawer anchor="right" open={anchorEl} onClose={handleClose}>
+            <h1>Test</h1>
+            <h1>Test</h1>
+            <h1>Test</h1>
+            <h1>Test</h1>
+          </Drawer>
+          {/* <Menu
             getContentAnchorEl={null}
             anchorEl={anchorEl}
             anchorOrigin={{vertical: "top", horizontal: "right"}}
             transformOrigin={{vertical: "top", horizontal: "right"}}
-            style={{marginTop: ""}}
+            style={{}}
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
             <MenuItem onClick={userIconClickHandler}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>Settings</MenuItem>
             <MenuItem onClick={logoutHandler}>Logout</MenuItem>
-          </Menu>
+          </Menu> */}
         </StyledToolbar>
       </StyledAppBar>
     </div>
