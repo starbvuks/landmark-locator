@@ -1,19 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import {Avatar, Typography} from "@material-ui/core";
-
+import {Redirect} from "react-router-dom";
 import Navbar from "../Landing/Navbar/Navbar";
 
-const Profile = () => {
+const Profile = ({isAuth}) => {
   const tokenString = sessionStorage.getItem("token");
   const userToken = JSON.parse(tokenString);
 
+  if (isAuth === false) {
+    return <Redirect to="/login" />;
+  }
   return (
     <Main>
-      <Navbar />
       <UserDetails>
         <UserAvatar
-          src="/img/default-user.png"
+          src="/img/avatar_03.png"
           style={{height: "10rem", width: "10rem"}}
         />
         <UserData>
@@ -38,16 +40,16 @@ const UserDetails = styled.div`
   justify-content: center;
   padding: 7rem 0;
   //   background-color: var(--main-lav1);
-  background: rgb(215, 189, 216);
+  background: main(--main-lav1);
   background: linear-gradient(
     180deg,
-    var(--main-tone) 0%,
+    var(--main-lav1) 0%,
     rgba(240, 240, 240, 1) 100%
   );
 `;
 
 const UserAvatar = styled(Avatar)`
-  border: 10px solid black;
+  border: 10px solid var(--main-dark);
 `;
 
 const UserData = styled.div`

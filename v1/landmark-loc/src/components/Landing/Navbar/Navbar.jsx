@@ -1,7 +1,21 @@
 import React, {useState} from "react";
 import {useHistory, Link, Redirect} from "react-router-dom";
+
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import {Menu, MenuItem, Drawer} from "@material-ui/core";
+import FaceIcon from "@material-ui/icons/Face";
+import SettingsIcon from "@material-ui/icons/Settings";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
+import {
+  Menu,
+  MenuItem,
+  Avatar,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+} from "@material-ui/core";
 
 import {
   Icon,
@@ -54,27 +68,46 @@ const Navbar = ({isAuth}) => {
             </StyledIconButtonLogo>
           </Link>
           <StyledIconButton onClick={() => handleClick()} color="inherit">
-            <AccountCircleIcon style={{fill: "#F2F2F2"}} fontSize="large" />
+            {isAuth === true ? (
+              <Avatar
+                style={{
+                  border: "3px solid",
+                  borderColor: "var(--main-light)",
+                  width: "32px",
+                  height: "32px",
+                }}
+                src="/img/avatar_03.png"
+              />
+            ) : (
+              <AccountCircleIcon style={{fill: "#F2F2F2"}} fontSize="large" />
+            )}
           </StyledIconButton>
           <Drawer anchor="right" open={anchorEl} onClose={handleClose}>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
-            <h1>Test</h1>
+            <List style={{width: 200}}>
+              {[
+                {
+                  text: "Profile",
+                  icon: <FaceIcon />,
+                  action: userIconClickHandler,
+                },
+                {
+                  text: "Settings",
+                  icon: <SettingsIcon />,
+                  action: userIconClickHandler,
+                },
+                {
+                  text: "Logout",
+                  icon: <ExitToAppIcon />,
+                  action: logoutHandler,
+                },
+              ].map((array, index) => (
+                <ListItem button key={index} onClick={() => array.action()}>
+                  <ListItemIcon>{array.icon}</ListItemIcon>
+                  <ListItemText primary={array.text} />
+                </ListItem>
+              ))}
+            </List>
           </Drawer>
-          {/* <Menu
-            getContentAnchorEl={null}
-            anchorEl={anchorEl}
-            anchorOrigin={{vertical: "top", horizontal: "right"}}
-            transformOrigin={{vertical: "top", horizontal: "right"}}
-            style={{}}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={userIconClickHandler}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>Settings</MenuItem>
-            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
-          </Menu> */}
         </StyledToolbar>
       </StyledAppBar>
     </div>
