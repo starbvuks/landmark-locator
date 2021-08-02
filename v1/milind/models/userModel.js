@@ -16,7 +16,9 @@ const userSchema =new mongoose.Schema({
         required: true,
 
     },
-    intrest: [String]
+   profilePicture:{
+       type:String
+   } 
 });
 
 module.exports = mongoose.model('User', userSchema)
