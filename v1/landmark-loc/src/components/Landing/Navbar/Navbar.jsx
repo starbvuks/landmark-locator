@@ -1,6 +1,7 @@
-import React from "react";
-import {useHistory, Link} from "react-router-dom";
+import React, {useState} from "react";
+import {useHistory, Link, Redirect} from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import {Menu, MenuItem} from "@material-ui/core";
 
 import {
   Icon,
@@ -22,6 +23,25 @@ const Navbar = ({isAuth}) => {
     }
   };
 
+  const logoutHandler = () => {
+    if (isAuth === true) {
+      sessionStorage.removeItem("token");
+      window.location.reload();
+    } else {
+      history.push("/login");
+    }
+  };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(true);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div>
       <StyledAppBar>
@@ -34,12 +54,22 @@ const Navbar = ({isAuth}) => {
               <Icon src="./img/ll-icon-white.png" alt="logo" variant="square" />
             </StyledIconButtonLogo>
           </Link>
-          <StyledIconButton
-            onClick={() => userIconClickHandler()}
-            color="inherit"
-          >
+          <StyledIconButton onClick={() => handleClick()} color="inherit">
             <AccountCircleIcon style={{fill: "#F2F2F2"}} fontSize="large" />
           </StyledIconButton>
+          <Menu
+            getContentAnchorEl={null}
+            anchorEl={anchorEl}
+            anchorOrigin={{vertical: "top", horizontal: "right"}}
+            transformOrigin={{vertical: "top", horizontal: "right"}}
+            style={{marginTop: ""}}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={userIconClickHandler}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>Settings</MenuItem>
+            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+          </Menu>
         </StyledToolbar>
       </StyledAppBar>
     </div>
