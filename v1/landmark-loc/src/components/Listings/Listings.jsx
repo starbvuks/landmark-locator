@@ -13,59 +13,14 @@ import {
 const Listings = () => {
   return (
     <Main>
-      {/* <ListHeader>our favourite spots in India</ListHeader> */}
+      <ListHeader variant="h2">
+        our favourite spots in{" "}
+        <span style={{fontWeight: 900, color: "var(--main-red)"}}>India</span>
+      </ListHeader>
+      <ListFooter variant="h5">
+        pick a state and find them for yourself
+      </ListFooter>
       <CardDiv>
-        <StateCard>
-          <StateCardContent>
-            <StateName>Andhra Pradesh</StateName>
-          </StateCardContent>
-          <StateImage
-            image="/img/ap.jpg"
-            title="state"
-            style={{
-              width: "25vh",
-              height: "25vh",
-              padding: "0 0 0 7vw",
-              margin: "0",
-              maskImage:
-                "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-            }}
-          />
-        </StateCard>
-        <StateCard>
-          <StateCardContent>
-            <StateName>Andhra Pradesh</StateName>
-          </StateCardContent>
-          <StateImage
-            image="/img/ap.jpg"
-            title="state"
-            style={{
-              width: "25vh",
-              height: "25vh",
-              padding: "0 0 0 7vw",
-              margin: "0",
-              maskImage:
-                "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-            }}
-          />
-        </StateCard>
-        <StateCard>
-          <StateCardContent>
-            <StateName>Andhra Pradesh</StateName>
-          </StateCardContent>
-          <StateImage
-            image="/img/ap.jpg"
-            title="state"
-            style={{
-              width: "25vh",
-              height: "25vh",
-              padding: "0 0 0 7vw",
-              margin: "0",
-              maskImage:
-                "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-            }}
-          />
-        </StateCard>
         <StateCard>
           <StateCardContent>
             <StateName>Andhra Pradesh</StateName>
@@ -93,6 +48,23 @@ export default Listings;
 const Main = styled.div`
   margin: 54px 5vw 0 5vw;
   display: flex;
+  flex-direction: column;
+`;
+
+const ListHeader = styled(Typography)`
+  margin: 10vh 0 0 0 !important;
+  text-align: center !important;
+  font-family: Red Hat Display !important;
+  font-weight: 700 !important;
+  color: var(--main-orange);
+`;
+
+const ListFooter = styled(Typography)`
+  margin: 3vh 0 10vh 0 !important;
+  text-align: center !important;
+  font-family: Poppins !important;
+  font-weight: 400 !important;
+  color: var(--main-red);
 `;
 
 const CardDiv = styled.div`
@@ -102,12 +74,10 @@ const CardDiv = styled.div`
   flex: 1;
 `;
 
-const ListHeader = styled(Typography)``;
-
 const StateCard = styled(Card)`
   margin: 5vh 2vw 0 2vw;
   display: flex;
-  flex: 2 1 33%;
+  flex: 2 1 25%;
   border-radius: 10px !important;
   align-items: center;
   justify-content: space-between;
