@@ -74,7 +74,7 @@ const GoToMap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50vh 0 0 00; // *with arrow* 10px 0 0 0;
+  margin: 10vh 0 0 00; // *with arrow* 10px 0 0 0;
 `;
 
 const GoToText = styled.h2`

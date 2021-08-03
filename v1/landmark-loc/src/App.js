@@ -52,6 +52,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/map">
+            <Navbar isAuth={isAuth} />
             <Map />
           </Route>
           <Route path="/signup">

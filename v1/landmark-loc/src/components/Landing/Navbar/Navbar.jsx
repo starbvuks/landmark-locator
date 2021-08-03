@@ -5,12 +5,16 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FaceIcon from "@material-ui/icons/Face";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import HomeIcon from "@material-ui/icons/Home";
+import MapTwoToneIcon from "@material-ui/icons/MapTwoTone";
+import ExploreIcon from "@material-ui/icons/Explore";
 
 import {
   Menu,
   MenuItem,
   Avatar,
   Drawer,
+  Divider,
   List,
   ListItem,
   ListItemText,
@@ -43,6 +47,14 @@ const Navbar = ({isAuth}) => {
     } else {
       history.push("/login");
     }
+  };
+
+  const goBackHome = () => {
+    history.push("/");
+  };
+
+  const goToMap = () => {
+    history.push("/map");
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -99,6 +111,31 @@ const Navbar = ({isAuth}) => {
                   text: "Logout",
                   icon: <ExitToAppIcon />,
                   action: logoutHandler,
+                },
+              ].map((array, index) => (
+                <ListItem button key={index} onClick={() => array.action()}>
+                  <ListItemIcon>{array.icon}</ListItemIcon>
+                  <ListItemText primary={array.text} />
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
+            <List style={{width: 200}}>
+              {[
+                {
+                  text: "Home",
+                  icon: <HomeIcon />,
+                  action: goBackHome,
+                },
+                {
+                  text: "Locations",
+                  icon: <MapTwoToneIcon />,
+                  action: goToMap,
+                },
+                {
+                  text: "Near Me",
+                  icon: <ExploreIcon />,
+                  action: goBackHome,
                 },
               ].map((array, index) => (
                 <ListItem button key={index} onClick={() => array.action()}>
