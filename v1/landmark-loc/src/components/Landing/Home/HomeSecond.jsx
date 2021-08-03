@@ -23,9 +23,7 @@ const HomeSecond = () => {
             <WorldIcon src="/img/world-solid.png" alt="world-icon" />
           </WorldIconDiv>
           <WorldTextDiv>
-            <WorldText variant="h1">
-              Keep track of the places you've been
-            </WorldText>
+            <WorldText variant="h1">Track the places you've been</WorldText>
             <WorldTextBottom variant="h1">
               And the the places you want to go
             </WorldTextBottom>
@@ -57,6 +55,14 @@ const TravelDiv = styled.div`
   justify-content: center;
   margin: 0 10vw 0 10vw;
   height: 35vh;
+
+  @media all and (max-width: 730px) {
+    height: 18vh;
+  }
+
+  @media all and (min-width: 730px) and (max-width: 1064px) {
+    height: 25vh;
+  }
 `;
 
 const TravelIconDiv = styled.div`
@@ -66,6 +72,10 @@ const TravelIconDiv = styled.div`
   align-items: center;
   justify-content: center;
   width: 25vw;
+
+  @media all and (max-width: 730px) {
+    padding: 0 5vw;
+  }
 `;
 
 const TravelIcon = styled.img`
@@ -109,6 +119,14 @@ const WorldDiv = styled.div`
   margin: 0 10vw 0 10vw;
   margin-top: 10vh;
   height: 35vh;
+
+  @media all and (max-width: 730px) {
+    height: 18vh;
+  }
+
+  @media all and (min-width: 730px) and (max-width: 1064px) {
+    height: 25vh;
+  }
 `;
 
 const WorldIconDiv = styled.div`
@@ -118,6 +136,10 @@ const WorldIconDiv = styled.div`
   align-items: center;
   justify-content: center;
   width: 25vw;
+
+  @media all and (max-width: 730px) {
+    padding: 0 5vw;
+  }
 `;
 
 const WorldIcon = styled.img`
