@@ -38,7 +38,7 @@ const Center = styled.div`
 const CenterText = styled.div``;
 
 const Shell = styled.img`
-  width: 50vw;
+  max-width: 50vw;
 `;
 const CenterIcon = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ const CenterIcon = styled.div`
 `;
 
 const MapIcon = styled.img`
-  width: 25vw;
+  max-width: 25vw;
 `;
 
 const ArrowIconDiv = styled.div`

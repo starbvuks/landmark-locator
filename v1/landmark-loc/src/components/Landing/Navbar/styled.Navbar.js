@@ -14,8 +14,15 @@ export const StyledToolbar = styled(Toolbar)`
 
 export const StyledIconButtonLogo = styled(IconButton)``;
 
-export const Icon = styled(Avatar)`
-  margin: 0 0 15px 0;
+export const NavLogo = styled.div`
+  height: 54px;
+  width: 8vw;
+  display: flex;
+  margin-left: -35px;
+  justify-content: center;
+  background-color: var(--main-orange);
 `;
+
+export const Icon = styled(Avatar)``;
 
 export const StyledIconButton = styled(IconButton)``;

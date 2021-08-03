@@ -47,6 +47,8 @@ const CenterCard = styled.div`
   flex-direction: column;
 `;
 
+// travel
+
 const TravelDiv = styled.div`
   background-color: var(--main-tone);
   border-radius: 25px;
@@ -54,7 +56,7 @@ const TravelDiv = styled.div`
   flex-direction: row;
   justify-content: center;
   margin: 0 10vw 0 10vw;
-  height: 40vh;
+  height: 35vh;
 `;
 
 const TravelIconDiv = styled.div`
@@ -106,7 +108,7 @@ const WorldDiv = styled.div`
   justify-content: center;
   margin: 0 10vw 0 10vw;
   margin-top: 10vh;
-  height: 40vh;
+  height: 35vh;
 `;
 
 const WorldIconDiv = styled.div`

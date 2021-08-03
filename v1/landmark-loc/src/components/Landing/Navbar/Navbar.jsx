@@ -23,6 +23,7 @@ import {
 
 import {
   Icon,
+  NavLogo,
   StyledAppBar,
   StyledToolbar,
   StyledIconButton,
@@ -76,7 +77,13 @@ const Navbar = ({isAuth}) => {
               disableRipple={true}
               style={{backgroundColor: "transparent"}}
             >
-              <Icon src="./img/ll-icon-white.png" alt="logo" variant="square" />
+              <NavLogo>
+                <Icon
+                  src="./img/ll-icon-white.png"
+                  alt="logo"
+                  variant="square"
+                />
+              </NavLogo>
             </StyledIconButtonLogo>
           </Link>
           <StyledIconButton onClick={() => handleClick()} color="inherit">

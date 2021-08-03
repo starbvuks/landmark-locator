@@ -48,7 +48,7 @@ export default function SignUp({setToken}) {
     };
 
     axios
-      .post("http://localhost:3001/user/signup", newUser)
+      .post("https://landmarklactor.herokuapp.com/user/signup", newUser)
       .then((data) => {
         try {
           console.log(data);
