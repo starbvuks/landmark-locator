@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 import HomeSecond from "./HomeSecond";
 import HomeThird from "./HomeThird";
@@ -16,7 +16,7 @@ const Home = () => {
         </CenterIcon>
       </Center>
       <ArrowIconDiv>
-        <ArrowIcon src="./img/drop-arrow.png" alt="icon" />
+        <ArrowIcon className="bounce" src="./img/drop-arrow.png" alt="icon" />
       </ArrowIconDiv>
       <HomeSecond />
       <HomeThird />
@@ -44,6 +44,11 @@ const CenterIcon = styled.div`
   display: flex;
   align-items: center;
   margin: -10vh 8vw 0 0;
+
+  transition-property: width;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+  transition-delay: 1s;
 `;
 
 const MapIcon = styled.img`

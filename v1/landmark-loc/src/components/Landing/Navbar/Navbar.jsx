@@ -32,6 +32,7 @@ import {
 
 const Navbar = ({isAuth}) => {
   const history = useHistory();
+  const [anchorEl, setAnchorEl] = useState();
 
   const userIconClickHandler = () => {
     if (isAuth === true) {
@@ -45,6 +46,7 @@ const Navbar = ({isAuth}) => {
     if (isAuth === true) {
       sessionStorage.removeItem("token");
       window.location.reload();
+      history.push("/login");
     } else {
       history.push("/login");
     }
@@ -57,8 +59,6 @@ const Navbar = ({isAuth}) => {
   const goToMap = () => {
     history.push("/india-list");
   };
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(true);
