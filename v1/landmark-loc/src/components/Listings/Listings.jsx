@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 import {
   Card,
@@ -20,25 +21,27 @@ const Listings = () => {
       <ListFooter variant="h5">
         pick a state and find them for yourself
       </ListFooter>
-      <CardDiv>
-        <StateCard>
-          <StateCardContent>
-            <StateName>Andhra Pradesh</StateName>
-          </StateCardContent>
-          <StateImage
-            image="/img/ap.jpg"
-            title="state"
-            style={{
-              width: "25vh",
-              height: "25vh",
-              padding: "0 0 0 7vw",
-              margin: "0",
-              maskImage:
-                "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-            }}
-          />
-        </StateCard>
-      </CardDiv>
+      <Link to="/map" style={{textDecoration: "none"}}>
+        <CardDiv>
+          <StateCard>
+            <StateCardContent>
+              <StateName>Andhra Pradesh</StateName>
+            </StateCardContent>
+            <StateImage
+              image="/img/ap.jpg"
+              title="state"
+              style={{
+                width: "25vh",
+                height: "25vh",
+                padding: "0 0 0 7vw",
+                margin: "0",
+                maskImage:
+                  "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
+              }}
+            />
+          </StateCard>
+        </CardDiv>
+      </Link>
     </Main>
   );
 };
