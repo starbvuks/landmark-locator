@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import {Link, useHistory, Redirect} from "react-router-dom";
+import {Alert} from "@material-ui/lab";
 import axios from "axios";
 
 import Avatar from "@material-ui/core/Avatar";
@@ -10,8 +12,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
-import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,7 +37,11 @@ export default function SignUp({setToken}) {
   const [name, setUserName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  const history = useHistory();
+
   const [error, setError] = useState();
+  const [errorMessage, setErrorMessage] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,18 +52,18 @@ export default function SignUp({setToken}) {
     };
 
     axios
-      .post("https://landmarklactor.herokuapp.com/user/signup", newUser)
+      .post(`${process.env.REACT_APP_LL_API}/user/signup`, newUser)
       .then((data) => {
-        try {
-          console.log(data);
-        } catch (err) {
-          console.log(err.response);
-          setError(err.response.data.message);
-          console.log(error);
-        }
+        data.json();
       })
       .catch((err) => {
-        console.log(error);
+        try {
+          console.log(err.response.data.message);
+          setError(true);
+          setErrorMessage(err.response.data.message);
+        } catch {
+          history.push("/login");
+        }
       });
   };
 
@@ -67,6 +71,7 @@ export default function SignUp({setToken}) {
   return (
     <Container className={classes.main} component="main" maxWidth="xs">
       <CssBaseline />
+      <button onClick={() => console.log(process.env)}>env test</button>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -74,6 +79,7 @@ export default function SignUp({setToken}) {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
+        {error ? <Alert severity="error">{errorMessage}</Alert> : ""}
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>

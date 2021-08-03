@@ -4,9 +4,6 @@ import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
 import styled from "styled-components";
 import RoomIcon from "@material-ui/icons/Room";
 
-const MAPBOX_TOKEN =
-  "pk.eyJ1Ijoic3RhcmJ2dWtzIiwiYSI6ImNrbTR2NHphaDA4ZmUzMHBtMTRobjN6MHMifQ.tmPNZOallU2bty-vG7qIdw";
-
 const Map = () => {
   const [viewport, setViewport] = useState({
     width: 500,
@@ -43,7 +40,7 @@ const Map = () => {
         <StaticMap
           {...viewport}
           mapStyle="mapbox://styles/mapbox/streets-v11"
-          mapboxApiAccessToken={MAPBOX_TOKEN}
+          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
           onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
           {markers}
@@ -56,6 +53,7 @@ const Map = () => {
 export default Map;
 
 const MainDiv = styled.div`
+  margin: 54px 0 0 0;
   height: 100vh;
   background-color: var(--main-dark);
 `;

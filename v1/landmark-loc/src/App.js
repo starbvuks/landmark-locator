@@ -51,6 +51,10 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+          <Route path="/map">
+            <Navbar isAuth={isAuth} />
+            <Map />
+          </Route>
           <Route path="/india-list">
             <Navbar isAuth={isAuth} />
             <Listings />
