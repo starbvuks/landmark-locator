@@ -1,20 +1,5 @@
 const mongoose = require("mongoose");
 
-const reviewSchema = new mongoose.Schema({
-    name:{ type:String,
-    required: true
-    },
-    rating:{ type:Number,
-        requored: true
-        },
-       review :{ type:String},
-       user: {
-           type: mongoose.Schema.Types.ObjectId,
-           require: true,
-           ref: "User"
-       }
-})
-
 const landmarkSchema =new mongoose.Schema({
     name: {
         type: String,
@@ -51,6 +36,10 @@ const landmarkSchema =new mongoose.Schema({
     //     required: true,
 
     // },
+    category:{
+        type:String,
+        required:true
+    },
     discription: {
         type: String,
         required: true,
@@ -65,22 +54,26 @@ const landmarkSchema =new mongoose.Schema({
         type:String
     },
     placeForAccomodation: {
-        type:String
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Accomodation"
     },
     goodTimeToVisit:{
         type:String
     },
-    reviews: [reviewSchema],
-    rating:{
-        type: Number,
-        required:true,
-        default:0
+    reviews: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Rating"
     },
-    numReviews: {
-        type: Number,
-        reuiered: true,
-        default:0
-    }
+    // rating:{
+    //     type: Number,
+    //     required:true,
+    //     default:0
+    // },
+    // numReviews: {
+    //     type: Number,
+    //     reuiered: true,
+    //     default:0
+    // }
 
 
 

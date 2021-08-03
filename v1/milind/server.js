@@ -28,7 +28,10 @@ app.use(cors());
 
 app.use('/admin', adminRoute);
 app.use('/user', userRoute)
-app.use('/landmark', landmarRoute)
+app.use('/landmark', landmarRoute);
+app.get('/', (req,res) => {
+    res.send('welcome to landmark locator')
+})
 
 app.listen(port, () =>{
     console.log(`server is running on port ${port}`)

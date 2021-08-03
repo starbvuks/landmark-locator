@@ -86,13 +86,14 @@ module.exports.delete = (req, res) => {
             })
 }
 
+//code for rating and review the landmark
+
 module.exports.createProductReview =  (req, res) => {
     const {rating, comment} =req.body;
 
     const landmark = Landmark.findById(req.params.id);
 
     const review = {
-        name: req.user.name,
         rating: Number(rating), comment,
         user: req.user._id
     }
