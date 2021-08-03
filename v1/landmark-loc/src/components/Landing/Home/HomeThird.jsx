@@ -10,7 +10,7 @@ const HomeThird = () => {
     <Main>
       <GoToMap>
         <GoToText>Go To The Map</GoToText>
-        <Link to="/map">
+        <Link to="/india-list">
           <GoToMapBtn>
             {<MapTwoToneIcon style={{fill: "var(--main-red)"}} />}
           </GoToMapBtn>

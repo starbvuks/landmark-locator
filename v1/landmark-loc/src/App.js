@@ -4,9 +4,9 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 //import styled from "styled-components";
 
 import Navbar from "./components/Landing/Navbar/Navbar";
-import Home from "./components/Landing/Home/Home";
 import Landing from "./components/Landing/Landing";
 import Map from "./components/Map/Map";
+import Listings from "./components/Listings/Listings";
 import Login from "./components/Users/Login";
 import SignUp from "./components/Users/SignUp";
 import Profile from "./components/Profile/Profile";
@@ -51,9 +51,9 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/map">
+          <Route path="/india-list">
             <Navbar isAuth={isAuth} />
-            <Map />
+            <Listings />
           </Route>
           <Route path="/signup">
             <SignUp setToken={setToken} />

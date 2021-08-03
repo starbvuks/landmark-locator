@@ -55,7 +55,7 @@ const Navbar = ({isAuth}) => {
   };
 
   const goToMap = () => {
-    history.push("/map");
+    history.push("/india-list");
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
