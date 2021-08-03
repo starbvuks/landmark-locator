@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
-
-import {Button} from "@material-ui/core";
-import MapTwoToneIcon from "@material-ui/icons/MapTwoTone";
 
 import HomeSecond from "./HomeSecond";
+import HomeThird from "./HomeThird";
 
 const Home = () => {
   return (
@@ -22,14 +19,7 @@ const Home = () => {
         <ArrowIcon src="./img/drop-arrow.png" alt="icon" />
       </ArrowIconDiv>
       <HomeSecond />
-      <GoToMap>
-        <GoToText>Go To The Map</GoToText>
-        <Link to="/map">
-          <GoToMapBtn>
-            {<MapTwoToneIcon style={{fill: "var(--main-red)"}} />}
-          </GoToMapBtn>
-        </Link>
-      </GoToMap>
+      <HomeThird />
     </Main>
   );
 };
@@ -63,33 +53,9 @@ const MapIcon = styled.img`
 const ArrowIconDiv = styled.div`
   display: flex;
   justify-content: center;
-  margin: 15vh 0 0 0;
+  margin: 20vh 0 0 0;
 `;
 
 const ArrowIcon = styled.img`
   width: 5vw;
-`;
-
-const GoToMap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10vh 0 0 00; // *with arrow* 10px 0 0 0;
-`;
-
-const GoToText = styled.h2`
-  font-size: 32px;
-  padding-right: 10px;
-  font-family: Poppins;
-  font-weight: 700;
-  color: var(--main-red);
-`;
-
-const GoToMapBtn = styled(Button)`
-  background-color: var(--main-pink) !important;
-  width: 10vw;
-  height: 5vh;
-  border: 3px solid !important;
-  border-radius: 9px !important;
-  border-color: var(--main-red) !important;
 `;
