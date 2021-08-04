@@ -11,16 +11,6 @@ import Login from "./components/Users/Login";
 import SignUp from "./components/Users/SignUp";
 import Profile from "./components/Profile/Profile";
 
-// admin
-import {Admin, Resource} from "react-admin";
-import restProvider from "ra-data-simple-rest";
-import PostList from "./components/Admin/PostList";
-import PostCreate from "./components/Admin/PostCreate";
-import PostEdit from "./components/Admin/PostEdit";
-import UserList from "./components/Admin/UserList";
-import UserCreate from "./components/Admin/UserCreate";
-import UserEdit from "./components/Admin/UserEdit";
-
 function App() {
   const [isAuth, setAuth] = useState();
   const token = getToken();
@@ -68,22 +58,6 @@ function App() {
           <Route exact path="/profile">
             <Navbar isAuth={isAuth} />
             <Profile setToken={setToken} token={token} isAuth={isAuth} />
-          </Route>
-          <Route path="/admin">
-            <Admin dataProvider={restProvider("http://localhost:3001")}>
-              <Resource
-                name="posts"
-                list={PostList}
-                create={PostCreate}
-                edit={PostEdit}
-              />
-              <Resource
-                name="users"
-                list={UserList}
-                create={UserCreate}
-                edit={UserEdit}
-              />
-            </Admin>
           </Route>
           <Route exact path="/">
             <Landing isAuth={isAuth} />
