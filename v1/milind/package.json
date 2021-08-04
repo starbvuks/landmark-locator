@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "server": "json-server --watch db.json --port 3000 --middlewares ./range.js",
+    "start": "node server.js"
   
   },
   "keywords": [],
