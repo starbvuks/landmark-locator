@@ -37,7 +37,7 @@ const HomeSecond = () => {
 export default HomeSecond;
 
 const Main = styled.div`
-  margin-top: 15vh;
+  margin-top: 25vh;
 `;
 
 const CenterCard = styled.div`

@@ -33,22 +33,31 @@ const Center = styled.div`
   align-content: center;
   justify-content: space-between;
   margin: 25vh 0 0 10vw;
+
+  @media all and (max-width: 730px) {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
 `;
 
 const CenterText = styled.div``;
 
 const Shell = styled.img`
   max-width: 50vw;
+
+  @media all and (max-width: 730px) {
+    max-width: 75vw;
+  }
 `;
 const CenterIcon = styled.div`
   display: flex;
   align-items: center;
   margin: -10vh 8vw 0 0;
 
-  transition-property: width;
-  transition-duration: 2s;
-  transition-timing-function: linear;
-  transition-delay: 1s;
+  @media all and (max-width: 730px) {
+    display: none;
+  }
 `;
 
 const MapIcon = styled.img`
@@ -59,8 +68,16 @@ const ArrowIconDiv = styled.div`
   display: flex;
   justify-content: center;
   margin: 20vh 0 0 0;
+
+  @media all and (max-width: 730px) {
+    margin: 15vh 0 0 0;
+  }
 `;
 
 const ArrowIcon = styled.img`
   width: 5vw;
+
+  @media all and (max-width: 730px) {
+    width: 10vw;
+  }
 `;

@@ -29,7 +29,7 @@ const Main = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
-  margin: 20vh 0 0 0;
+  margin: 40vh 0 0 0;
   overflow: hidden;
 `;
 

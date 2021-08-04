@@ -21,6 +21,12 @@ export const NavLogo = styled.div`
   margin-left: -35px;
   justify-content: center;
   background-color: var(--main-orange);
+
+  @media all and (max-width: 730px) {
+    max-width: 15vw;
+    padding: 0 15px 0 15px;
+    margin-left: -35px;
+  }
 `;
 
 export const Icon = styled(Avatar)``;
