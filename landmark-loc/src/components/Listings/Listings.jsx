@@ -14,13 +14,78 @@ import {
 const Listings = () => {
   return (
     <Main>
-      <ListHeader variant="h2">
-        our favourite spots in{" "}
-        <span style={{fontWeight: 900, color: "var(--main-red)"}}>India</span>
-      </ListHeader>
-      <ListFooter variant="h5">
-        pick a state and find them for yourself
-      </ListFooter>
+      <HeaderText>
+        <ListHeader variant="h2">
+          our favourite spots in{" "}
+          <span style={{fontWeight: 900, color: "var(--main-red)"}}>India</span>
+        </ListHeader>
+        <ListFooter variant="h5">
+          pick a state and find them for yourself
+        </ListFooter>
+      </HeaderText>
+      <Link to="/map" style={{textDecoration: "none"}}>
+        <CardDiv>
+          <StateCard>
+            <StateCardContent>
+              <StateName>Andhra Pradesh</StateName>
+            </StateCardContent>
+            <StateImage
+              image="/img/ap.jpg"
+              title="state"
+              style={{
+                width: "25vh",
+                height: "25vh",
+                padding: "0 0 0 7vw",
+                margin: "0",
+                maskImage:
+                  "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
+              }}
+            />
+          </StateCard>
+        </CardDiv>
+      </Link>
+      <Link to="/map" style={{textDecoration: "none"}}>
+        <CardDiv>
+          <StateCard>
+            <StateCardContent>
+              <StateName>Andhra Pradesh</StateName>
+            </StateCardContent>
+            <StateImage
+              image="/img/ap.jpg"
+              title="state"
+              style={{
+                width: "25vh",
+                height: "25vh",
+                padding: "0 0 0 7vw",
+                margin: "0",
+                maskImage:
+                  "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
+              }}
+            />
+          </StateCard>
+        </CardDiv>
+      </Link>
+      <Link to="/map" style={{textDecoration: "none"}}>
+        <CardDiv>
+          <StateCard>
+            <StateCardContent>
+              <StateName>Andhra Pradesh</StateName>
+            </StateCardContent>
+            <StateImage
+              image="/img/ap.jpg"
+              title="state"
+              style={{
+                width: "25vh",
+                height: "25vh",
+                padding: "0 0 0 7vw",
+                margin: "0",
+                maskImage:
+                  "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
+              }}
+            />
+          </StateCard>
+        </CardDiv>
+      </Link>
       <Link to="/map" style={{textDecoration: "none"}}>
         <CardDiv>
           <StateCard>
@@ -50,8 +115,15 @@ export default Listings;
 
 const Main = styled.div`
   margin: 54px 5vw 0 5vw;
+  flex-flow: row wrap;
+  display: flex;
+  justify-content: center;
+`;
+
+const HeaderText = styled(Typography)`
   display: flex;
   flex-direction: column;
+  margin: 0 10vw;
 `;
 
 const ListHeader = styled(Typography)`
@@ -80,7 +152,7 @@ const CardDiv = styled.div`
 const StateCard = styled(Card)`
   margin: 5vh 2vw 0 2vw;
   display: flex;
-  flex: 2 1 25%;
+  flex: 1 0 25%;
   border-radius: 10px !important;
   align-items: center;
   justify-content: space-between;
