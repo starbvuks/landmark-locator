@@ -26,16 +26,16 @@ const landmarkSchema =new mongoose.Schema({
         required: true,
 
     },
-    Coordinates: {
+    longitude: {
         type: String,
         required: true,
 
     },
-    // latitude: {
-    //     type: Number,
-    //     required: true,
+    latitude: {
+        type: Number,
+        required: true,
 
-    // },
+    },
     category:{
         type:String,
         required:true
@@ -45,11 +45,11 @@ const landmarkSchema =new mongoose.Schema({
         required: true,
     },
 
-    pictures: [],
+    pictures: [{ type: String}],
 
-    highlights: {
+    highlights: [{
         type:String
-    },
+    }],
     howToReach: {
         type:String
     },

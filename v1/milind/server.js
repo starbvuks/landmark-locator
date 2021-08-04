@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const adminRoute = require('./routes/adminroutes')
 const userRoute = require('./routes/userRoute')
 const landmarRoute = require('./routes/landmarkRouter')
+const ratingRoute = require('./routes/ratingRoutes');
 const app = express();
 
 //initializing of mongoDb
@@ -29,6 +30,7 @@ app.use(cors());
 app.use('/admin', adminRoute);
 app.use('/user', userRoute)
 app.use('/landmark', landmarRoute);
+app.use('/rating', ratingRoute);
 app.get('/', (req,res) => {
     res.send('welcome to landmark locator')
 })

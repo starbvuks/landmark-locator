@@ -6,8 +6,6 @@ const admin = require('../controller/adminController');
 
 router.post('/signup', admin.signup);
 router.post('/login', admin.login)
-router.get('/', checkauth, (req, res) => {
-    res.send("you are on admin page")
-})
+router.get('/', admin.get_user)
 
 module.exports = router;

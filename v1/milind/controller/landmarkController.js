@@ -86,27 +86,4 @@ module.exports.delete = (req, res) => {
             })
 }
 
-//code for rating and review the landmark
-
-module.exports.createProductReview =  (req, res) => {
-    const {rating, comment} =req.body;
-
-    const landmark = Landmark.findById(req.params.id);
-
-    const review = {
-        rating: Number(rating), comment,
-        user: req.user._id
-    }
-    landmark.reviews.push(review)
-
-    landmark.numReviews = landmark.review.length
-
-    landmark.rating = 
-        landmark.reviews.reduce((acc, item) => item.rating +acc, 0) / 
-            landmark.reviews.length
-
-            landmark.save()
-            res.status(201).json({message: "review added"})
-    
-}
 

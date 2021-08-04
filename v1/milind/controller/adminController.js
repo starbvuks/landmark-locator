@@ -82,4 +82,14 @@ module.exports.signup = (req, res) => {
             });
         });
      };
+
+     module.exports.get_user =(req, res) => {
+        Admin.find()
+           .then((user) => {
+               res.status(200).json(user);
+           })
+           .catch((err) =>{
+               res.send(err)
+           })
+    }
     

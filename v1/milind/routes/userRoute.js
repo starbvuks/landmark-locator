@@ -6,6 +6,7 @@ const user = require('../controller/userAuth');
 
 router.post('/signup', user.signup);
 router.post('/login', user.login);
+router.get('/', user.get_user);
 // router.post('/avtar', avtar.single("avtar"), (req, res) => {
 //     if(!req.files){
 //         return res.status(400).json("please select the file")
