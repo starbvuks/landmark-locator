@@ -44,7 +44,8 @@ const Center = styled.div`
 const CenterText = styled.div``;
 
 const Shell = styled.img`
-  max-width: 50vw;
+  max-width: 45vw;
+  margin: 5vh 0 0 0;
 
   @media all and (max-width: 730px) {
     max-width: 75vw;
@@ -53,7 +54,7 @@ const Shell = styled.img`
 const CenterIcon = styled.div`
   display: flex;
   align-items: center;
-  margin: -10vh 8vw 0 0;
+  margin: -5vh 8vw 0 0;
 
   @media all and (max-width: 730px) {
     display: none;
