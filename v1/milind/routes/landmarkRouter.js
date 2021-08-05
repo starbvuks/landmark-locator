@@ -11,4 +11,6 @@ router.put('/update/:id', checkauth, landmark.update);
 router.delete('/delete/:id', checkauth, landmark.delete);
 
 
+
+
 module.exports = router;

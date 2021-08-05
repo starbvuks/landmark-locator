@@ -12,13 +12,27 @@ module.exports.add_rating = (req, res) =>{
         })
 }
 
-module.exports.get_rating = (req, res) => [
+module.exports.get_rating = (req, res) => {
     Rating.find()
     .populate("Landmark")
     .exec((err, rating) => {
         res.status(200).json({
-            message: "rating saved successfully"
+            rating
         })
         console.log(err || rating)
     })
-]
+}
+
+module.exports.delete_rating = (req, res) => {
+    Rating.findByIdAndDelete({
+        _id: req.params.id
+    })
+        .then(() => {
+            res.status(200).json({message:"rating and comment successfuly deleted"})
+        })
+        .catch((err)=> {
+            return res.status(400).json(err|| "something went wrong")
+        })
+}
+   
+
