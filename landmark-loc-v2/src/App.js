@@ -1,6 +1,8 @@
 import "./App.css";
 import {useState, useEffect} from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {authTrue, authFalse} from "./features/auth/authSlice.js";
+import {useDispatch} from "react-redux";
 //import styled from "styled-components";
 
 import Navbar from "./components/Landing/Navbar/Navbar";
@@ -14,6 +16,8 @@ import Profile from "./components/Profile/Profile";
 function App() {
   const [isAuth, setAuth] = useState();
   const token = getToken();
+
+  const dispatch = useDispatch();
 
   function setToken(userToken) {
     sessionStorage.setItem("token", JSON.stringify(userToken));
@@ -31,9 +35,9 @@ function App() {
   useEffect(() => {
     getToken();
     if (token) {
-      setAuth(true);
+      dispatch(authTrue());
     } else {
-      setAuth(false);
+      dispatch(authFalse());
     }
   }, []);
 
