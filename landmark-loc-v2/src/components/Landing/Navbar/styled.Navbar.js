@@ -23,9 +23,9 @@ export const NavLogo = styled.div`
   background-color: var(--main-orange);
 
   @media all and (max-width: 730px) {
-    max-width: 15vw;
-    padding: 0 15px 0 15px;
-    margin-left: -35px;
+    width: 15vw;
+    padding: 0 25px 0 25px;
+    margin-left: -36px;
   }
 `;
 
