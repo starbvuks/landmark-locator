@@ -30,9 +30,13 @@ const Main = styled.div``;
 
 const Center = styled.div`
   display: flex;
-  align-content: center;
-  justify-content: space-between;
-  margin: 25vh 0 0 10vw;
+  background-color: var(--main-light);
+  align-items: center;
+  justify-content: center;
+  padding: 5rem;
+  width: 90vw;
+  border-radius: 25px;
+  margin: 15vh auto;
 
   @media all and (max-width: 730px) {
     display: flex;
@@ -53,8 +57,6 @@ const Shell = styled.img`
 `;
 const CenterIcon = styled.div`
   display: flex;
-  align-items: center;
-  margin: -5vh 8vw 0 0;
 
   @media all and (max-width: 730px) {
     display: none;
@@ -68,7 +70,7 @@ const MapIcon = styled.img`
 const ArrowIconDiv = styled.div`
   display: flex;
   justify-content: center;
-  margin: 20vh 0 0 0;
+  margin: 10vh 0 0 0;
 
   @media all and (max-width: 730px) {
     margin: 15vh 0 0 0;
