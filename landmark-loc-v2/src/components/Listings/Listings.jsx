@@ -2,14 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
-import {
-  Card,
-  CardHeader,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Typography,
-} from "@material-ui/core";
+import {Card, CardMedia, CardContent, Typography} from "@material-ui/core";
 
 const Listings = () => {
   return (
@@ -23,90 +16,92 @@ const Listings = () => {
           pick a state and find them for yourself
         </ListFooter>
       </HeaderText>
-      <Link to="/map" style={{textDecoration: "none"}}>
-        <CardDiv>
-          <StateCard>
-            <StateCardContent>
-              <StateName>Andhra Pradesh</StateName>
-            </StateCardContent>
-            <StateImage
-              image="/img/ap.jpg"
-              title="state"
-              style={{
-                width: "25vh",
-                height: "25vh",
-                padding: "0 0 0 7vw",
-                margin: "0",
-                maskImage:
-                  "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-              }}
-            />
-          </StateCard>
-        </CardDiv>
-      </Link>
-      <Link to="/map" style={{textDecoration: "none"}}>
-        <CardDiv>
-          <StateCard>
-            <StateCardContent>
-              <StateName>Andhra Pradesh</StateName>
-            </StateCardContent>
-            <StateImage
-              image="/img/ap.jpg"
-              title="state"
-              style={{
-                width: "25vh",
-                height: "25vh",
-                padding: "0 0 0 7vw",
-                margin: "0",
-                maskImage:
-                  "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-              }}
-            />
-          </StateCard>
-        </CardDiv>
-      </Link>
-      <Link to="/map" style={{textDecoration: "none"}}>
-        <CardDiv>
-          <StateCard>
-            <StateCardContent>
-              <StateName>Andhra Pradesh</StateName>
-            </StateCardContent>
-            <StateImage
-              image="/img/ap.jpg"
-              title="state"
-              style={{
-                width: "25vh",
-                height: "25vh",
-                padding: "0 0 0 7vw",
-                margin: "0",
-                maskImage:
-                  "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-              }}
-            />
-          </StateCard>
-        </CardDiv>
-      </Link>
-      <Link to="/map" style={{textDecoration: "none"}}>
-        <CardDiv>
-          <StateCard>
-            <StateCardContent>
-              <StateName>Andhra Pradesh</StateName>
-            </StateCardContent>
-            <StateImage
-              image="/img/ap.jpg"
-              title="state"
-              style={{
-                width: "25vh",
-                height: "25vh",
-                padding: "0 0 0 7vw",
-                margin: "0",
-                maskImage:
-                  "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-              }}
-            />
-          </StateCard>
-        </CardDiv>
-      </Link>
+      <Cards>
+        <Link to="/map" style={{textDecoration: "none"}}>
+          <CardDiv>
+            <StateCard>
+              <StateCardContent>
+                <StateName>Andhra Pradesh</StateName>
+              </StateCardContent>
+              <StateImage
+                image="/img/ap.jpg"
+                title="state"
+                style={{
+                  width: "25vh",
+                  height: "25vh",
+                  padding: "0 0 0 7vw",
+                  margin: "0",
+                  maskImage:
+                    "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
+                }}
+              />
+            </StateCard>
+          </CardDiv>
+        </Link>
+        <Link to="/map" style={{textDecoration: "none"}}>
+          <CardDiv>
+            <StateCard>
+              <StateCardContent>
+                <StateName>Andhra Pradesh</StateName>
+              </StateCardContent>
+              <StateImage
+                image="/img/ap.jpg"
+                title="state"
+                style={{
+                  width: "25vh",
+                  height: "25vh",
+                  padding: "0 0 0 7vw",
+                  margin: "0",
+                  maskImage:
+                    "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
+                }}
+              />
+            </StateCard>
+          </CardDiv>
+        </Link>
+        <Link to="/map" style={{textDecoration: "none"}}>
+          <CardDiv>
+            <StateCard>
+              <StateCardContent>
+                <StateName>Andhra Pradesh</StateName>
+              </StateCardContent>
+              <StateImage
+                image="/img/ap.jpg"
+                title="state"
+                style={{
+                  width: "25vh",
+                  height: "25vh",
+                  padding: "0 0 0 7vw",
+                  margin: "0",
+                  maskImage:
+                    "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
+                }}
+              />
+            </StateCard>
+          </CardDiv>
+        </Link>
+        <Link to="/map" style={{textDecoration: "none"}}>
+          <CardDiv>
+            <StateCard>
+              <StateCardContent>
+                <StateName>Andhra Pradesh</StateName>
+              </StateCardContent>
+              <StateImage
+                image="/img/ap.jpg"
+                title="state"
+                style={{
+                  width: "25vh",
+                  height: "25vh",
+                  padding: "0 0 0 7vw",
+                  margin: "0",
+                  maskImage:
+                    "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
+                }}
+              />
+            </StateCard>
+          </CardDiv>
+        </Link>
+      </Cards>
     </Main>
   );
 };
@@ -114,7 +109,7 @@ const Listings = () => {
 export default Listings;
 
 const Main = styled.div`
-  margin: 54px 5vw 0 5vw;
+  margin: 54px 5vw 10vh 5vw;
   flex-flow: row wrap;
   display: flex;
   justify-content: center;
@@ -135,18 +130,21 @@ const ListHeader = styled(Typography)`
 `;
 
 const ListFooter = styled(Typography)`
-  margin: 3vh 0 10vh 0 !important;
+  margin: 3vh 0 5vh 0 !important;
   text-align: center !important;
   font-family: Poppins !important;
   font-weight: 400 !important;
   color: var(--main-red);
 `;
 
-const CardDiv = styled.div`
+const Cards = styled.div`
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
-  flex: 1;
+`;
+
+const CardDiv = styled.div`
+  display: flex;
 `;
 
 const StateCard = styled(Card)`
