@@ -14,9 +14,7 @@ import SignUp from "./components/Users/SignUp";
 import Profile from "./components/Profile/Profile";
 
 function App() {
-  const [isAuth, setAuth] = useState();
   const token = getToken();
-
   const dispatch = useDispatch();
 
   function setToken(userToken) {
@@ -46,25 +44,25 @@ function App() {
       <Router>
         <Switch>
           <Route path="/map">
-            <Navbar isAuth={isAuth} />
+            <Navbar />
             <Map />
           </Route>
           <Route path="/india-list">
-            <Navbar isAuth={isAuth} />
+            <Navbar />
             <Listings />
           </Route>
           <Route path="/signup">
             <SignUp setToken={setToken} />
           </Route>
           <Route path="/login">
-            <Login setToken={setToken} isAuth={isAuth} />
+            <Login setToken={setToken} />
           </Route>
           <Route exact path="/profile">
-            <Navbar isAuth={isAuth} />
-            <Profile setToken={setToken} token={token} isAuth={isAuth} />
+            <Navbar />
+            <Profile setToken={setToken} token={token} />
           </Route>
           <Route exact path="/">
-            <Landing isAuth={isAuth} />
+            <Landing />
           </Route>
         </Switch>
       </Router>

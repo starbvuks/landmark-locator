@@ -32,9 +32,9 @@ import {
 
 const Navbar = () => {
   const history = useHistory();
-  const [anchorEl, setAnchorEl] = useState();
-
   const dispatch = useDispatch();
+
+  const [anchorEl, setAnchorEl] = useState();
   const auth = useSelector((state) => state.auth.value);
 
   const userIconClickHandler = () => {

@@ -5,7 +5,7 @@ import Navbar from "./Navbar/Navbar";
 import {Redirect} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-const Landing = ({isAuth}) => {
+const Landing = () => {
   const auth = useSelector((state) => state.auth.value);
 
   if (auth === false) {
@@ -13,7 +13,7 @@ const Landing = ({isAuth}) => {
   }
   return (
     <div>
-      <Navbar isAuth={isAuth} />
+      <Navbar />
       <Home />
     </div>
   );
