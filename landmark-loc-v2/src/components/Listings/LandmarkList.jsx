@@ -49,20 +49,22 @@ const LandmarkList = () => {
       </MapDiv>
       <CardDiv>
         {landmarkData.map((data, index) => (
-          <Link to="/map" style={{textDecoration: "none"}}>
-            <LandmarkCard key={index}>
-              <LandmarkImage src={data.highlights} />
-              <LandmarkContent>
-                <Details>
-                  <LandmarkName>{data.name}</LandmarkName>
-                  <City>{data.city}</City>
-                </Details>
-                <Rating>3.4</Rating>
-              </LandmarkContent>
-            </LandmarkCard>
-          </Link>
+          <>
+            <Link to="/map" style={{textDecoration: "none"}}>
+              <LandmarkCard key={index}>
+                <LandmarkImage src={data.highlights} />
+                <LandmarkContent>
+                  <Details>
+                    <LandmarkName>{data.name}</LandmarkName>
+                    <City>{data.city}</City>
+                  </Details>
+                  <Rating>3.4</Rating>
+                </LandmarkContent>
+              </LandmarkCard>
+            </Link>
+            <DividerStyled />
+          </>
         ))}
-        <DividerStyled />
       </CardDiv>
     </Main>
   );
@@ -96,9 +98,9 @@ const LandmarkCard = styled(Card)`
 `;
 
 const LandmarkImage = styled.img`
-  height: 85%;
+  width: 20vw;
+  object-fit: cover;
   border-radius: 20px;
-  padding: 0 0 0 15px;
 `;
 
 const LandmarkContent = styled(CardContent)`
