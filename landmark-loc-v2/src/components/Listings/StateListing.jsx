@@ -1,10 +1,29 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
 import {Card, CardMedia, CardContent, Typography} from "@material-ui/core";
 
 const Listings = () => {
+  const [landmarkData, setLandmarkData] = useState([]);
+
+  const getData = () => {
+    axios
+      .get("https://landmarklactor.herokuapp.com/landmark")
+      .then((res) => {
+        setLandmarkData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {});
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <Main>
       <HeaderText>
@@ -17,27 +36,29 @@ const Listings = () => {
         </ListFooter>
       </HeaderText>
       <Cards>
-        <Link to="/locat-list" style={{textDecoration: "none"}}>
-          <CardDiv>
-            <StateCard>
-              <StateCardContent>
-                <StateName>Andhra Pradesh</StateName>
-              </StateCardContent>
-              <StateImage
-                image="/img/ap.jpg"
-                title="state"
-                style={{
-                  width: "25vh",
-                  height: "25vh",
-                  padding: "0 0 0 7vw",
-                  margin: "0",
-                  maskImage:
-                    "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-                }}
-              />
-            </StateCard>
-          </CardDiv>
-        </Link>
+        {landmarkData.map((data, index) => (
+          <Link to="/locat-list" style={{textDecoration: "none"}}>
+            <CardDiv>
+              <StateCard>
+                <StateCardContent>
+                  <StateName>{data.state}</StateName>
+                </StateCardContent>
+                <StateImage
+                  image={data.highlights}
+                  title="state"
+                  style={{
+                    width: "25vh",
+                    height: "25vh",
+                    padding: "0 0 0 7vw",
+                    margin: "0",
+                    maskImage:
+                      "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
+                  }}
+                />
+              </StateCard>
+            </CardDiv>
+          </Link>
+        ))}
       </Cards>
     </Main>
   );

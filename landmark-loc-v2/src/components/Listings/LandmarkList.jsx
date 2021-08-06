@@ -4,11 +4,7 @@ import {Link} from "react-router-dom";
 import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
 import axios from "axios";
 
-import {Card, CardContent, Divider} from "@material-ui/core";
-
-const api = axios.create({
-  baseUrl: `https://landmarklactor.herokuapp.com`,
-});
+import {Card, CardContent} from "@material-ui/core";
 
 const LandmarkList = () => {
   const [landmarkData, setLandmarkData] = useState([]);
@@ -120,14 +116,17 @@ const Details = styled.span`
 
 const LandmarkName = styled.span`
   font-size: 2.5rem;
+  padding-right: 2vw;
   font-weight: 500;
   color: var(--main-red);
+  line-height: 45px;
   font-family: Poppins !important;
 `;
 
 const City = styled.span`
   font-size: 1.2rem;
   font-weight: 400;
+  padding: 0 0 0 5px;
   color: var(--main-red);
   font-family: Poppins !important;
 `;
