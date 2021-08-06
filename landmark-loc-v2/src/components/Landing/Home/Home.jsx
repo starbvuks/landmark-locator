@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 
 import HomeSecond from "./HomeSecond";
 import HomeThird from "./HomeThird";
@@ -26,15 +26,17 @@ const Home = () => {
 
 export default Home;
 
-const Main = styled.div``;
+const Main = styled.div`
+  overflow: hidden;
+`;
 
 const Center = styled.div`
   display: flex;
-  background-color: var(--main-light);
+  background-color: var(--main-light1);
   align-items: center;
   justify-content: center;
   padding: 5rem;
-  width: 90vw;
+  width: 75vw;
   border-radius: 25px;
   margin: 15vh auto;
 

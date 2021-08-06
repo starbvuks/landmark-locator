@@ -1,5 +1,5 @@
 import "./App.css";
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {authTrue, authFalse} from "./features/auth/authSlice.js";
 import {useDispatch} from "react-redux";
@@ -8,7 +8,8 @@ import {useDispatch} from "react-redux";
 import Navbar from "./components/Landing/Navbar/Navbar";
 import Landing from "./components/Landing/Landing";
 import Map from "./components/Map/Map";
-import Listings from "./components/Listings/Listings";
+import Listings from "./components/Listings/StateListing";
+import LandmarkList from "./components/Listings/LandmarkList";
 import Login from "./components/Users/Login";
 import SignUp from "./components/Users/SignUp";
 import Profile from "./components/Profile/Profile";
@@ -50,6 +51,10 @@ function App() {
           <Route path="/india-list">
             <Navbar />
             <Listings />
+          </Route>
+          <Route path="/locat-list">
+            <Navbar />
+            <LandmarkList />
           </Route>
           <Route path="/signup">
             <SignUp setToken={setToken} />
