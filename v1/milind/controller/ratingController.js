@@ -1,26 +1,34 @@
 const Rating = require('../models/rateingAndReview');
-module.exports.add_rating = (req, res) =>{
+const Landmark = require('../models/landmarkModel');
+module.exports.add_rating = async (req, res) =>{
+    //find the landmark
+    const landmark = await Landmark.findOne({_id: req.params.landmarkId});
+    //create a comment
     const newRating = new Rating(req.body);
 
-    newRating
+     await newRating
         .save()
         .then((rating) => {
-            res.status(200).json("Rating saved successfully" + rating)
+            res.status(200).json(rating)
         })
         .catch((error) => {
-            return res.send('something went wrong')
+            return res.json({
+                message: error || 'something went wrong'
+            })
         })
+    //associate the rating with landmark
+    landmark.reviews.push(newRating._id);
+    await landmark.save();
 }
 
-module.exports.get_rating = (req, res) => {
-    Rating.find()
-    .populate("Landmark")
-    .exec((err, rating) => {
-        res.status(200).json({
-            rating
-        })
-        console.log(err || rating)
-    })
+module.exports.get_rating =async (req, res) => {
+    const landmark = await Landmark.findOne({_id: req.params.landmarkId}).populate("reviews");
+    
+        res.status(200).json({ landmark
+           
+    }).catch((err) => {
+        res.status(400).json(err)
+    });
 }
 
 module.exports.delete_rating = (req, res) => {

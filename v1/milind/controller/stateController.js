@@ -1,24 +1,22 @@
-const Landmark = require("../models/landmarkModel");
+const State = require("../models/state");
 
-module.exports.create = (req, res) => {
-  const newLandmark = new Landmark(req.body);
+module.exports.create_state = (req, res) => {
+  const newState = new State(req.body);
 
-  newLandmark
+  // create state
+  newState
     .save()
     .then((data) => {
-      res.status(200).json({
-        data,
-      });
+      res.status(200).json({ data });
     })
     .catch((err) => {
-      return res.status(400).json({
-        message: err.message || "something went wrong while addning landmark",
-      });
+      return res.status(400).json(err);
     });
 };
 
+// get all the state
 module.exports.getAll = (req, res) => {
-  Landmark.find()
+  State.find()
     .then((data) => {
       res.status(200).json({ data });
     })
@@ -29,8 +27,9 @@ module.exports.getAll = (req, res) => {
     });
 };
 
+//get the state by id
 module.exports.getOne = (req, res) => {
-  Landmark.findById({
+  State.findById({
     _id: req.params.id,
   })
     .then((data) => {
@@ -44,19 +43,19 @@ module.exports.getOne = (req, res) => {
       });
     });
 };
-
+//update the info of state
 module.exports.update = (req, res) => {
-  Landmark.findByIdAndUpdate(
+  State.findByIdAndUpdate(
     {
       _id: req.params.id,
     },
     req.body
   )
-    .then((landmark) => {
-      Landmark.findOne({
+    .then(() => {
+      State.findOne({
         _id: req.params.id,
-      }).then((landmark) => {
-        res.status(200).json(landmark);
+      }).then((state) => {
+        res.status(200).json(state);
       });
     })
     .catch((err) => {
@@ -66,18 +65,15 @@ module.exports.update = (req, res) => {
     });
 };
 
-module.exports.delete = (req, res) => {
-  Landmark.findByIdAndDelete({
+//delete state from database
+module.exports.delete_state = (req, res) => {
+  State.findByIdAndDelete({
     _id: req.params.id,
   })
     .then(() => {
-      res.status(200).json({
-        success: true,
-      });
+      res.status(200).json({ message: "state successfuly deleted" });
     })
     .catch((err) => {
-      res.status(400).json({
-        message: err.message || "something went wrong",
-      });
+      return res.status(400).json(err || "something went wrong");
     });
 };

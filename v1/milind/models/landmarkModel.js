@@ -11,7 +11,8 @@ const landmarkSchema = new mongoose.Schema(
       required: true,
     },
     state: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref:"State",
       required: true,
     },
     district: {
@@ -23,7 +24,7 @@ const landmarkSchema = new mongoose.Schema(
       required: true,
     },
     longitude: {
-      type: String,
+      type: Number,
       required: true,
     },
     latitude: {
@@ -61,10 +62,10 @@ const landmarkSchema = new mongoose.Schema(
     goodTimeToVisit: {
       type: String,
     },
-    reviews: {
+    reviews:[ {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Rating",
-    },
+    }],
     // rating:{
     //     type: Number,
     //     required:true,
