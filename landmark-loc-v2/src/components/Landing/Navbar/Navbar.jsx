@@ -138,7 +138,7 @@ const Navbar = () => {
                   action: goBackHome,
                 },
                 {
-                  text: "Locations",
+                  text: "States",
                   icon: <MapTwoToneIcon />,
                   action: goToMap,
                 },
