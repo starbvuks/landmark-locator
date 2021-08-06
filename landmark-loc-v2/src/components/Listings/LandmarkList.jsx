@@ -11,7 +11,7 @@ const api = axios.create({
 });
 
 const LandmarkList = () => {
-  const [landmarkData, setLandmarkData] = useState();
+  const [landmarkData, setLandmarkData] = useState([]);
 
   const [viewport, setViewport] = useState({
     width: "35vw",
@@ -21,16 +21,20 @@ const LandmarkList = () => {
     zoom: 8,
   });
 
-  useEffect(() => {
+  const getData = () => {
     axios
       .get("https://landmarklactor.herokuapp.com/landmark")
       .then((res) => {
-        console.log(res.data.data[0]);
-        setLandmarkData(res.data.data[0]);
+        setLandmarkData(res.data.data);
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => {});
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
   return (
@@ -44,18 +48,20 @@ const LandmarkList = () => {
         ></StaticMap>
       </MapDiv>
       <CardDiv>
-        <Link to="/map" style={{textDecoration: "none"}}>
-          <LandmarkCard>
-            <LandmarkImage src="https://www.trawell.in/admin/images/upload/336491791Pune_Sinhagad_Fort_Main.jpg" />
-            <LandmarkContent>
-              <Details>
-                <LandmarkName>{landmarkData.name}</LandmarkName>
-                <City>{landmarkData.city}</City>
-              </Details>
-              <Rating>3.4</Rating>
-            </LandmarkContent>
-          </LandmarkCard>
-        </Link>
+        {landmarkData.map((data, index) => (
+          <Link to="/map" style={{textDecoration: "none"}}>
+            <LandmarkCard key={index}>
+              <LandmarkImage src={data.highlights} />
+              <LandmarkContent>
+                <Details>
+                  <LandmarkName>{data.name}</LandmarkName>
+                  <City>{data.city}</City>
+                </Details>
+                <Rating>3.4</Rating>
+              </LandmarkContent>
+            </LandmarkCard>
+          </Link>
+        ))}
         <DividerStyled />
       </CardDiv>
     </Main>
@@ -81,7 +87,7 @@ const CardDiv = styled.div`
 `;
 
 const LandmarkCard = styled(Card)`
-  width: 50vw;
+  width: 55vw;
   height: 20vh;
   display: flex;
   border-radius: 10px !important;
