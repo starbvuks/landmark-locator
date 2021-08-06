@@ -1,11 +1,18 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
+import axios from "axios";
 
 import {Card, CardContent, Divider} from "@material-ui/core";
 
+const api = axios.create({
+  baseUrl: `https://landmarklactor.herokuapp.com`,
+});
+
 const LandmarkList = () => {
+  const [landmarkData, setLandmarkData] = useState();
+
   const [viewport, setViewport] = useState({
     width: "35vw",
     height: "80vh",
@@ -13,6 +20,18 @@ const LandmarkList = () => {
     latitude: 18.3663,
     zoom: 8,
   });
+
+  useEffect(() => {
+    axios
+      .get("https://landmarklactor.herokuapp.com/landmark")
+      .then((res) => {
+        console.log(res.data.data[0]);
+        setLandmarkData(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <Main>
@@ -30,26 +49,14 @@ const LandmarkList = () => {
             <LandmarkImage src="https://www.trawell.in/admin/images/upload/336491791Pune_Sinhagad_Fort_Main.jpg" />
             <LandmarkContent>
               <Details>
-                <LandmarkName>Signhad Fort</LandmarkName>
-                <City>Pune</City>
+                <LandmarkName>{landmarkData.name}</LandmarkName>
+                <City>{landmarkData.city}</City>
               </Details>
               <Rating>3.4</Rating>
             </LandmarkContent>
           </LandmarkCard>
         </Link>
         <DividerStyled />
-        <Link to="/" style={{textDecoration: "none"}}>
-          <LandmarkCard>
-            <LandmarkImage src="https://www.trawell.in/admin/images/upload/336491791Pune_Sinhagad_Fort_Main.jpg" />
-            <LandmarkContent>
-              <Details>
-                <LandmarkName>Signhad Fort</LandmarkName>
-                <City>Pune</City>
-              </Details>
-              <Rating>3.4</Rating>
-            </LandmarkContent>
-          </LandmarkCard>
-        </Link>
       </CardDiv>
     </Main>
   );
@@ -113,7 +120,6 @@ const LandmarkName = styled.span`
 const City = styled.span`
   font-size: 1.2rem;
   font-weight: 400;
-  padding: 5px 0 0 0;
   color: var(--main-red);
   font-family: Poppins !important;
 `;
@@ -129,6 +135,6 @@ const Rating = styled.span`
   font-family: Poppins !important;
 `;
 
-const DividerStyled = styled.span`
+const DividerStyled = styled.div`
   margin: 15px 0;
 `;

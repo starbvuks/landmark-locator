@@ -17,70 +17,7 @@ const Listings = () => {
         </ListFooter>
       </HeaderText>
       <Cards>
-        <Link to="/map" style={{textDecoration: "none"}}>
-          <CardDiv>
-            <StateCard>
-              <StateCardContent>
-                <StateName>Andhra Pradesh</StateName>
-              </StateCardContent>
-              <StateImage
-                image="/img/ap.jpg"
-                title="state"
-                style={{
-                  width: "25vh",
-                  height: "25vh",
-                  padding: "0 0 0 7vw",
-                  margin: "0",
-                  maskImage:
-                    "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-                }}
-              />
-            </StateCard>
-          </CardDiv>
-        </Link>
-        <Link to="/map" style={{textDecoration: "none"}}>
-          <CardDiv>
-            <StateCard>
-              <StateCardContent>
-                <StateName>Andhra Pradesh</StateName>
-              </StateCardContent>
-              <StateImage
-                image="/img/ap.jpg"
-                title="state"
-                style={{
-                  width: "25vh",
-                  height: "25vh",
-                  padding: "0 0 0 7vw",
-                  margin: "0",
-                  maskImage:
-                    "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-                }}
-              />
-            </StateCard>
-          </CardDiv>
-        </Link>
-        <Link to="/map" style={{textDecoration: "none"}}>
-          <CardDiv>
-            <StateCard>
-              <StateCardContent>
-                <StateName>Andhra Pradesh</StateName>
-              </StateCardContent>
-              <StateImage
-                image="/img/ap.jpg"
-                title="state"
-                style={{
-                  width: "25vh",
-                  height: "25vh",
-                  padding: "0 0 0 7vw",
-                  margin: "0",
-                  maskImage:
-                    "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
-                }}
-              />
-            </StateCard>
-          </CardDiv>
-        </Link>
-        <Link to="/map" style={{textDecoration: "none"}}>
+        <Link to="/locat-list" style={{textDecoration: "none"}}>
           <CardDiv>
             <StateCard>
               <StateCardContent>
