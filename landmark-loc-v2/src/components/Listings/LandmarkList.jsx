@@ -9,7 +9,7 @@ const LandmarkList = (props) => {
   const [landmarkData, setLandmarkData] = useState([]);
   const [currentState, setCurrentState] = useState();
 
-  console.log(props);
+  console.log(props.match.params.state);
 
   const [viewport, setViewport] = useState({
     width: "40vw",
@@ -21,9 +21,13 @@ const LandmarkList = (props) => {
 
   const getData = () => {
     axios
-      .get("https://landmarklactor.herokuapp.com/landmark/" + props.state)
+      .get(
+        `https://landmarklactor.herokuapp.com/landmark?state=${props.match.params.state}`
+      )
       .then((res) => {
         setLandmarkData(res.data.data);
+        // console.log(landmarkData);
+        console.log(res.data.data.state);
       })
       .catch((err) => {
         console.log(err);

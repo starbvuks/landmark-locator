@@ -52,10 +52,10 @@ function App() {
             <Navbar />
             <Listings />
           </Route>
-          <Route path="/locat-list">
-            <Navbar />
-            <LandmarkList />
-          </Route>
+          <Route
+            path="/locat-list/:state"
+            render={(matchProps) => <LandmarkList {...matchProps} />}
+          ></Route>
           <Route path="/signup">
             <SignUp setToken={setToken} />
           </Route>
