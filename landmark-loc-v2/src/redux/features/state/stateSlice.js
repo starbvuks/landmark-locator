@@ -1,16 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-export const authSlice = createSlice({
-  name: "landmark",
+export const stateSlice = createSlice({
+  name: "state",
   initialState: {
     value: "",
   },
   reducers: {
-    authTrue: (state) => {
-      state.value = true;
-    },
-    authFalse: (state) => {
-      state.value = false;
+    curState: (state, action) => {
+      state.value = action.payload;
     },
   },
 });
