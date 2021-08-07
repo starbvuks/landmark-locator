@@ -13,6 +13,7 @@ import LandmarkList from "./components/Listings/LandmarkList";
 import Login from "./components/Users/Login";
 import SignUp from "./components/Users/SignUp";
 import Profile from "./components/Profile/Profile";
+import LandmarkPage from "./components/Landmark/LandmarkPage";
 
 function App() {
   const token = getToken();
@@ -56,6 +57,9 @@ function App() {
             path="/locat-list/:state"
             render={(matchProps) => <LandmarkList {...matchProps} />}
           ></Route>
+          <Route path="/landmark">
+            <LandmarkPage />
+          </Route>
           <Route path="/signup">
             <SignUp setToken={setToken} />
           </Route>

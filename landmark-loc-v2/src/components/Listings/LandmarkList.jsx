@@ -4,12 +4,13 @@ import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
 import axios from "axios";
 
 import LandmarkCards from "./LandmarkCards.jsx";
+import Navbar from "../Landing/Navbar/Navbar.jsx";
 
 const LandmarkList = (props) => {
   const [landmarkData, setLandmarkData] = useState([]);
-  const [currentState, setCurrentState] = useState();
 
-  console.log(props.match.params.state);
+  const state = props.match.params.state;
+  // console.log(state);
 
   const [viewport, setViewport] = useState({
     width: "40vw",
@@ -21,13 +22,10 @@ const LandmarkList = (props) => {
 
   const getData = () => {
     axios
-      .get(
-        `https://landmarklactor.herokuapp.com/landmark?state=${props.match.params.state}`
-      )
+      .get(`https://landmarklactor.herokuapp.com/landmark?state=${state}`)
       .then((res) => {
         setLandmarkData(res.data.data);
-        // console.log(landmarkData);
-        console.log(res.data.data.state);
+        // console.log(landmarkData[1]);
       })
       .catch((err) => {
         console.log(err);
@@ -41,22 +39,24 @@ const LandmarkList = (props) => {
 
   return (
     <Main>
+      <Navbar />
       <MapDiv>
         <StaticMap
           {...viewport}
           mapStyle="mapbox://styles/mapbox/streets-v11"
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
           onViewportChange={(nextViewport) => setViewport(nextViewport)}
-          style={{position: "fixed"}}
+          style={{
+            position: "fixed",
+            left: 0,
+            margin: "0 0 0 1vw",
+          }}
         ></StaticMap>
       </MapDiv>
+
       <CardDiv>
         {landmarkData.map((data, index) => (
-          <LandmarkCards
-            setCurrentState={setCurrentState}
-            {...data}
-            key={data.id}
-          />
+          <LandmarkCards {...data} key={index} />
         ))}
       </CardDiv>
     </Main>
@@ -72,7 +72,7 @@ const Main = styled.div`
 `;
 
 const MapDiv = styled.div`
-  margin: 5vh 0 0 0;
+  margin: 5vh 0 0 2vw;
 `;
 
 const CardDiv = styled.div`

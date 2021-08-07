@@ -18,9 +18,7 @@ const LandmarkCards = (props) => {
           <Details>
             <HeaderDiv>
               <LandmarkName>{props.name}</LandmarkName>
-              <City>
-                {props.state}, {props.city}
-              </City>
+              <City>{props.city}</City>
             </HeaderDiv>
           </Details>
           <Right>
@@ -80,18 +78,19 @@ const HeaderDiv = styled.div`
 `;
 
 const LandmarkName = styled.span`
-  font-size: 2.3rem;
+  font-size: 2.5vw;
   font-weight: 600;
   line-height: 45px;
-  padding: 0 5vw 0 0;
+  padding: 0 4vw 0 0;
   font-family: Poppins !important;
   color: var(--main-black);
+  hyphens: auto;
 `;
 
 const City = styled.span`
   font-size: 1.2rem;
   font-weight: 400;
-  padding: 0 0 0 0.5vw;
+  padding: 0 0 0 0.3vw;
   color: var(--main-red);
   font-family: Poppins !important;
 `;
