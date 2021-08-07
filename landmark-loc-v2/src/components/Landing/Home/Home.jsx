@@ -36,7 +36,7 @@ const Center = styled.div`
   align-items: center;
   justify-content: center;
   padding: 5rem;
-  width: 75vw;
+  width: 80vw;
   border-radius: 25px;
   margin: 15vh auto;
 

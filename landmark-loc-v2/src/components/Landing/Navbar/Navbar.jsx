@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import {useHistory, Link, Redirect} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
-import {authTrue, authFalse} from "../../../features/auth/authSlice.js";
+import {authFalse} from "../../../redux/features/auth/authSlice.js";
 
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FaceIcon from "@material-ui/icons/Face";

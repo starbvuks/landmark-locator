@@ -33,21 +33,26 @@ const Profile = () => {
 export default Profile;
 
 const Main = styled.div`
+  height: 90vh;
   background-color: var(--main-light1);
-  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    var(--main-lav1) 0%,
+    var(--main-light1) 100%
+  );
+  display: flex;
+  justify-content: center;
 `;
 
 const UserDetails = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 7rem 0;
-  background: main(--main-lav1);
-  background: linear-gradient(
-    180deg,
-    var(--main-lav1) 0%,
-    rgba(240, 240, 240, 1) 100%
-  );
+  width: 60vw;
+  height: 40vh;
+  margin: 7rem 0;
+  background: var(--main-light);
+  border-radius: 25px;
 `;
 
 const UserAvatar = styled(Avatar)`

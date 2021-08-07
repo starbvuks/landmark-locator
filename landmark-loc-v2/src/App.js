@@ -1,7 +1,7 @@
 import "./App.css";
 import {useEffect} from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import {authTrue, authFalse} from "./features/auth/authSlice.js";
+import {authTrue, authFalse} from "./redux/features/auth/authSlice.js";
 import {useDispatch} from "react-redux";
 //import styled from "styled-components";
 

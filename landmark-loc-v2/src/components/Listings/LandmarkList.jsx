@@ -10,6 +10,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const LandmarkList = () => {
   const [landmarkData, setLandmarkData] = useState([]);
+  const [currentState, setCurrentState] = useState();
 
   const [viewport, setViewport] = useState({
     width: "40vw",
@@ -35,6 +36,12 @@ const LandmarkList = () => {
     getData();
   }, []);
 
+  const goToState = (e) => {
+    const currentData = e.target.innerText;
+    setCurrentState(currentData);
+    console.log(currentState);
+  };
+
   return (
     <Main>
       <MapDiv>
@@ -49,27 +56,27 @@ const LandmarkList = () => {
       <CardDiv>
         {landmarkData.map((data, index) => (
           <>
-            <Link to="/map" style={{textDecoration: "none"}}>
-              <LandmarkCard key={index}>
-                <ImageDiv>
-                  <LandmarkImage src={data.highlights} />
-                </ImageDiv>
-                <LandmarkContent>
-                  <Details>
-                    <HeaderDiv>
-                      <LandmarkName>{data.name}</LandmarkName>
-                      <City>{data.city}</City>
-                    </HeaderDiv>
-                  </Details>
-                  <Right>
-                    <Rating>3.4</Rating>
-                    <Link to="/" style={{textDecoration: "none"}}>
-                      <FavoriteBorderIcon style={{fill: "var(--main-red)"}} />
-                    </Link>
-                  </Right>
-                </LandmarkContent>
-              </LandmarkCard>
-            </Link>
+            {/* <Link to="/map" style={{textDecoration: "none"}}> */}
+            <LandmarkCard key={index} onClick={goToState}>
+              <ImageDiv>
+                <LandmarkImage src={data.highlights} />
+              </ImageDiv>
+              <LandmarkContent>
+                <Details>
+                  <HeaderDiv>
+                    <LandmarkName>{data.name}</LandmarkName>
+                    <City>{data.city}</City>
+                  </HeaderDiv>
+                </Details>
+                <Right>
+                  <Rating>3.4</Rating>
+                  <Link to="/" style={{textDecoration: "none"}}>
+                    <FavoriteBorderIcon style={{fill: "var(--main-red)"}} />
+                  </Link>
+                </Right>
+              </LandmarkContent>
+            </LandmarkCard>
+            {/* </Link> */}
             <DividerStyled />
           </>
         ))}

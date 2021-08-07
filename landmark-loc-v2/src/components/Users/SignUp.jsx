@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Link, useHistory, Redirect} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {Alert} from "@material-ui/lab";
 import axios from "axios";
 
