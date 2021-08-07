@@ -9,12 +9,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
 
-    marginTop: 100,
-    marginLeft: 100,
-    marginRight: 100,
+    marginTop: "15vh",
+    marginLeft: "10vw",
+    marginRight: "10vw",
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
+    margin: "0 0 0 0",
     textAlign: "center",
     fontSize: 24,
     color: "#ba000d",
@@ -29,21 +30,21 @@ const useStyles = makeStyles((theme) => ({
   },
 
   box1: {
-    height: 400,
-    width: 800,
+    height: "55vh",
+    width: "45vw",
     border: 2,
   },
 
   box2: {
-    height: 400,
-    width: 400,
+    height: "55vh",
+    width: "23vw",
   },
   box4: {
-    height: 400,
+    height: "50vh",
   },
 }));
 
-const DiscriptionPage = () => {
+const LandmarkPage = () => {
   const classes = useStyles();
   return (
     <>
@@ -81,4 +82,4 @@ const DiscriptionPage = () => {
   );
 };
 
-export default DiscriptionPage;
+export default LandmarkPage;
