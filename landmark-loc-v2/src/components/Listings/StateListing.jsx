@@ -47,12 +47,9 @@ const Listings = () => {
                   image={data.highlights}
                   title="state"
                   style={{
-                    width: "25vh",
+                    width: "100%",
                     height: "25vh",
                     padding: "0 0 0 7vw",
-                    margin: "0",
-                    maskImage:
-                      "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)",
                   }}
                 />
               </StateCard>
@@ -68,6 +65,7 @@ export default Listings;
 
 const Main = styled.div`
   margin: 54px 5vw 10vh 5vw;
+  max-width: 90%;
   flex-flow: row wrap;
   display: flex;
   justify-content: center;
@@ -108,17 +106,20 @@ const CardDiv = styled.div`
 const StateCard = styled(Card)`
   margin: 5vh 2vw 0 2vw;
   display: flex;
-  flex: 1 0 25%;
+  width: 20vw;
+  height: 20vh;
   border-radius: 10px !important;
   align-items: center;
   justify-content: space-between;
   background-color: var(--main-light) !important;
 `;
 
-const StateCardContent = styled(CardContent)``;
+const StateCardContent = styled(CardContent)`
+  width: 8vw;
+`;
 
 const StateName = styled.span`
-  font-size: 32px;
+  font-size: 1.5vw;
   font-weight: 700;
   color: var(--main-red);
   font-family: Poppins !important;

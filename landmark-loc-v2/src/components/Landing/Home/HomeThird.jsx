@@ -29,16 +29,16 @@ const Main = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
-  margin: 40vh 0 0 0;
+  margin: 30vh 0 0 0;
   overflow: hidden;
 `;
 
 const IndiaMapDiv = styled.div`
-  margin: 0 -5vw 0 0;
+  margin: 0 4vw 10vh 0;
 `;
 
 const IndiaMap = styled.img`
-  width: 60vw;
+  width: 48vw;
 `;
 
 const GoToMap = styled.div`
@@ -46,11 +46,11 @@ const GoToMap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  margin: 10vh 0 0 5vw;
+  margin: 10vh 0 0 8vw;
 `;
 
 const GoToText = styled.h2`
-  font-size: 5vw;
+  font-size: 4.2vw;
   font-family: Poppins;
   font-weight: 700;
   color: var(--main-red);

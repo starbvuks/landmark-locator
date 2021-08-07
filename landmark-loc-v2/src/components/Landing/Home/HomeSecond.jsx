@@ -37,7 +37,10 @@ const HomeSecond = () => {
 export default HomeSecond;
 
 const Main = styled.div`
-  margin-top: 25vh;
+  margin-top: 10vh;
+  padding: 10vh 0;
+  margin: 10vh 3vw;
+  border-radius: 25px;
 `;
 
 const CenterCard = styled.div`
@@ -53,8 +56,8 @@ const TravelDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0 10vw 0 10vw;
-  height: 35vh;
+  margin: 0 15vw 0 15vw;
+  height: 28vh;
 
   @media all and (max-width: 730px) {
     height: 18vh;
@@ -82,8 +85,8 @@ const TravelIcon = styled.img`
   border-radius: 50%;
   background-color: var(--main-tone);
   padding: 10px;
-  width: 10vw;
-  height: 10vw;
+  width: 7vw;
+  height: 7vw;
 `;
 
 const TravelTextDiv = styled.div`
@@ -92,19 +95,19 @@ const TravelTextDiv = styled.div`
   flex-direction: column;
   align-items: left;
   justify-content: center;
-  padding: 0 0 0 5vw;
+  padding: 0 0 0 4vw;
   color: var(--main-red);
 `;
 
 const TravelText = styled(Typography)`
   font-family: "Red Hat Display" !important;
-  font-size: 3vw !important;
+  font-size: 2.5vw !important;
   font-weight: 700 !important;
 `;
 
 const TravelTextBottom = styled(Typography)`
   font-family: "Red Hat Display" !important;
-  font-size: 3vw !important;
+  font-size: 2.5vw !important;
   font-weight: 700 !important;
 `;
 
@@ -116,9 +119,9 @@ const WorldDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0 10vw 0 10vw;
-  margin-top: 10vh;
-  height: 35vh;
+  margin: 0 15vw 0 15vw;
+  margin-top: 8vh;
+  height: 28vh;
 
   @media all and (max-width: 730px) {
     height: 18vh;
@@ -146,8 +149,8 @@ const WorldIcon = styled.img`
   border-radius: 50%;
   background-color: var(--main-tone);
   padding: 10px;
-  width: 10vw;
-  height: 10vw;
+  width: 7vw;
+  height: 7vw;
 `;
 
 const WorldTextDiv = styled.div`
@@ -156,18 +159,18 @@ const WorldTextDiv = styled.div`
   flex-direction: column;
   align-items: left;
   justify-content: center;
-  padding: 0 0 0 5vw;
+  padding: 0 0 0 4vw;
   color: var(--main-red);
 `;
 
 const WorldText = styled(Typography)`
   font-family: "Red Hat Display" !important;
-  font-size: 3vw !important;
+  font-size: 2.5vw !important;
   font-weight: 700 !important;
 `;
 
 const WorldTextBottom = styled(Typography)`
   font-family: "Red Hat Display" !important;
-  font-size: 3vw !important;
+  font-size: 2.5vw !important;
   font-weight: 700 !important;
 `;
