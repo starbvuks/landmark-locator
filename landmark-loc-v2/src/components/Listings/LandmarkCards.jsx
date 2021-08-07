@@ -18,7 +18,9 @@ const LandmarkCards = (props) => {
           <Details>
             <HeaderDiv>
               <LandmarkName>{props.name}</LandmarkName>
-              <City>{props.city}</City>
+              <City>
+                {props.state}, {props.city}
+              </City>
             </HeaderDiv>
           </Details>
           <Right>

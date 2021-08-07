@@ -13,6 +13,6 @@ export const stateSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {authTrue, authFalse} = authSlice.actions;
+export const {curState} = stateSlice.actions;
 
-export default authSlice.reducer;
+export default stateSlice.reducer;

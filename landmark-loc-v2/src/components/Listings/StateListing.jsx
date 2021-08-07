@@ -37,7 +37,10 @@ const Listings = () => {
       </HeaderText>
       <Cards>
         {landmarkData.map((data, index) => (
-          <Link to="/locat-list" style={{textDecoration: "none"}}>
+          <Link
+            to={"/locat-list/" + data.state}
+            style={{textDecoration: "none"}}
+          >
             <CardDiv>
               <StateCard>
                 <StateCardContent>

@@ -1,18 +1,15 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
 import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
 import axios from "axios";
 
-import {Card, CardContent} from "@material-ui/core";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-
 import LandmarkCards from "./LandmarkCards.jsx";
 
-const LandmarkList = () => {
+const LandmarkList = (props) => {
   const [landmarkData, setLandmarkData] = useState([]);
   const [currentState, setCurrentState] = useState();
+
+  console.log(props);
 
   const [viewport, setViewport] = useState({
     width: "40vw",
@@ -24,7 +21,7 @@ const LandmarkList = () => {
 
   const getData = () => {
     axios
-      .get("https://landmarklactor.herokuapp.com/landmark")
+      .get("https://landmarklactor.herokuapp.com/landmark/" + props.state)
       .then((res) => {
         setLandmarkData(res.data.data);
       })
