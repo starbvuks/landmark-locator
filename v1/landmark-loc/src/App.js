@@ -1,30 +1,44 @@
-import React from 'react'
-import { Admin, Resource } from 'react-admin'
-import restProvider from 'ra-data-simple-rest'
-import PostList from './components/PostList'
-import PostCreate from './components/PostCreate'
-import PostEdit from './components/PostEdit'
-import UserList from './components/UserList'
-import UserCreate from './components/UserCreate'
-import UserEdit from './components/UserEdit'
+import React from "react";
+//import "./styles.css";
+import { Tabs, Tab, AppBar } from "@material-ui/core";
+import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
+//import Books from "./Books";
+import Favorites from "./Favorites";
 
-function App() {
+export default function App() {
+  const routes = ["/favorites"];
   return (
-    <Admin dataProvider={restProvider('http://localhost:3000')}>
-      <Resource
-        name='posts'
-        list={PostList}
-        create={PostCreate}
-        edit={PostEdit}
-      />
-      <Resource
-        name='users'
-        list={UserList}
-        create={UserCreate}
-        edit={UserEdit}
-      />
-    </Admin>
-  )
-}
+    <div className="App">
+      <BrowserRouter>
+        <Route
+          path="/"
+          render={(history) => (
+            <AppBar>
+              <Tabs
+                value={
+                  history.location.pathname !== "/"
+                    ? history.location.pathname
+                    : false
+                }
+              >
+                {console.log(history.location.pathname)}
 
-export default App
+                <Tab
+                  value={routes[0]}
+                  label="Favorites"
+                  component={Link}
+                  to={routes[0]}
+                />
+              </Tabs>
+            </AppBar>
+          )}
+        />
+
+        <Switch>
+
+          <Route path="/favorites" component={Favorites} />
+        </Switch>
+      </BrowserRouter>
+    </div>
+  );
+}
