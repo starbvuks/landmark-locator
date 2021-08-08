@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+
 import Navbar from "../Landing/Navbar/Navbar";
 import Paper from "@material-ui/core/Paper";
 
@@ -11,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
     marginTop: "15vh",
     marginLeft: "10vw",
-    marginRight: "10vw",
+    marginRight: "5vw",
   },
   paper: {
     padding: theme.spacing(1),
@@ -23,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper1: {
     padding: theme.spacing(4),
+    margin: "2vh 0 0 0",
     textAlign: "center",
     color: "#ba000d",
     fontSize: 24,
@@ -37,14 +40,29 @@ const useStyles = makeStyles((theme) => ({
 
   box2: {
     height: "55vh",
-    width: "23vw",
   },
   box4: {
     height: "50vh",
   },
 }));
 
-const LandmarkPage = () => {
+const LandmarkPage = (props) => {
+  const [landmarkDetails, setLandmarkDetails] = useState([]);
+
+  const id = props.match.params.id;
+
+  useEffect(() => {
+    axios
+      .get(`https://landmarklactor.herokuapp.com/landmark/${id}`)
+      .then((res) => {
+        setLandmarkDetails(res.data);
+        console.log(landmarkDetails);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const classes = useStyles();
   return (
     <>
@@ -53,27 +71,38 @@ const LandmarkPage = () => {
       <div className={classes.root}>
         <Grid container spacing={7}>
           <Grid item xs={7}>
-            <Paper className={[classes.paper, classes.box1]}>images</Paper>
+            <img
+              className={[classes.box1]}
+              src={landmarkDetails.highlights}
+              alt={landmarkDetails.name}
+            />
+            <Grid container spacing={3}>
+              <Grid item xs={7}>
+                <Paper className={[classes.paper1, classes.box3]}>
+                  {landmarkDetails.name}
+                </Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={[classes.paper1, classes.box3]}>
+                  Ratings
+                </Paper>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={4}>
             <Paper className={[classes.paper, classes.box2]}>Map</Paper>
-          </Grid>
 
-          <Grid item xs={4}>
-            <Paper className={[classes.paper1, classes.box3]}>
-              Loacation Name
-            </Paper>
-          </Grid>
-          <Grid item xs={3}>
-            <Paper className={[classes.paper1, classes.box3]}>Ratings</Paper>
-          </Grid>
-          <Grid item xs={4}>
-            <Paper className={classes.paper1}>Address</Paper>
+            <Grid item xs={12}>
+              <Paper className={classes.paper1}>
+                {landmarkDetails.state}, {landmarkDetails.city},{" "}
+                {landmarkDetails.district}{" "}
+              </Paper>
+            </Grid>
           </Grid>
 
           <Grid item xs={11}>
             <Paper className={[classes.paper1, classes.box4]}>
-              Description
+              {landmarkDetails.discription}
             </Paper>
           </Grid>
         </Grid>

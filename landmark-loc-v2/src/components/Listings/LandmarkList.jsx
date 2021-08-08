@@ -20,7 +20,7 @@ const LandmarkList = (props) => {
     zoom: 8,
   });
 
-  const getData = () => {
+  useEffect(() => {
     axios
       .get(`https://landmarklactor.herokuapp.com/landmark?state=${state}`)
       .then((res) => {
@@ -29,12 +29,7 @@ const LandmarkList = (props) => {
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {});
-  };
-
-  useEffect(() => {
-    getData();
+      });
   }, []);
 
   return (

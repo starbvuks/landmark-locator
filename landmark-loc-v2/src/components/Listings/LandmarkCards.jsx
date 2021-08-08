@@ -9,27 +9,27 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 const LandmarkCards = (props) => {
   return (
     <div key={props.key}>
-      {/* <Link to="/map" style={{textDecoration: "none"}}> */}
-      <LandmarkCard>
-        <ImageDiv>
-          <LandmarkImage src={props.highlights} />
-        </ImageDiv>
-        <LandmarkContent>
-          <Details>
-            <HeaderDiv>
-              <LandmarkName>{props.name}</LandmarkName>
-              <City>{props.city}</City>
-            </HeaderDiv>
-          </Details>
-          <Right>
-            <Rating>3.4</Rating>
-            <Link to="/" style={{textDecoration: "none"}}>
-              <FavoriteBorderIcon style={{fill: "var(--main-red)"}} />
-            </Link>
-          </Right>
-        </LandmarkContent>
-      </LandmarkCard>
-      {/* </Link> */}
+      <Link to={`/landmark/${props._id}`} style={{textDecoration: "none"}}>
+        <LandmarkCard>
+          <ImageDiv>
+            <LandmarkImage src={props.highlights} />
+          </ImageDiv>
+          <LandmarkContent>
+            <Details>
+              <HeaderDiv>
+                <LandmarkName>{props.name}</LandmarkName>
+                <City>{props.city}</City>
+              </HeaderDiv>
+            </Details>
+            <Right>
+              <Rating>3.4</Rating>
+              <Link to="/" style={{textDecoration: "none"}}>
+                <FavoriteBorderIcon style={{fill: "var(--main-red)"}} />
+              </Link>
+            </Right>
+          </LandmarkContent>
+        </LandmarkCard>
+      </Link>
       <DividerStyled />
     </div>
   );

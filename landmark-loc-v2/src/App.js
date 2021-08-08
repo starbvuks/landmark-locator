@@ -57,9 +57,10 @@ function App() {
             path="/locat-list/:state"
             render={(matchProps) => <LandmarkList {...matchProps} />}
           ></Route>
-          <Route path="/landmark">
-            <LandmarkPage />
-          </Route>
+          <Route
+            path="/landmark/:id"
+            render={(matchProps) => <LandmarkPage {...matchProps} />}
+          ></Route>
           <Route path="/signup">
             <SignUp setToken={setToken} />
           </Route>
