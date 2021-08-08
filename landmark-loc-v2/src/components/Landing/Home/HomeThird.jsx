@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import {Button} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import MapTwoToneIcon from "@material-ui/icons/MapTwoTone";
 
 const HomeThird = () => {
   return (

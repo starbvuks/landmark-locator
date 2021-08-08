@@ -47,7 +47,7 @@ const Listings = () => {
                   <StateName>{data.state}</StateName>
                 </StateCardContent>
                 <StateImage
-                  image={data.highlights}
+                  image={data.pictures[0]}
                   title="state"
                   style={{
                     width: "100%",
@@ -115,6 +115,10 @@ const StateCard = styled(Card)`
   align-items: center;
   justify-content: space-between;
   background-color: var(--main-light) !important;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const StateCardContent = styled(CardContent)`

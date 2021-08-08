@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   box1: {
     height: "55vh",
     width: "45vw",
-    objectFit: "cover",
+    objectFit: "contain",
   },
 
   box2: {
@@ -94,7 +94,7 @@ const LandmarkPage = (props) => {
           <Grid item xs={7}>
             <img
               className={[classes.box1]}
-              src={landmarkDetails.highlights}
+              src={landmarkDetails.pictures}
               alt={landmarkDetails.name}
             />
             <Grid container spacing={3}>

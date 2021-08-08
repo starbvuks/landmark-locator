@@ -12,7 +12,7 @@ const LandmarkCards = (props) => {
       <Link to={`/landmark/${props._id}`} style={{textDecoration: "none"}}>
         <LandmarkCard>
           <ImageDiv>
-            <LandmarkImage src={props.highlights} />
+            <LandmarkImage src={props.pictures[0]} />
           </ImageDiv>
           <LandmarkContent>
             <Details>
