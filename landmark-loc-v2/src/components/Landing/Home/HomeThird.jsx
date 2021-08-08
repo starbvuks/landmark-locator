@@ -9,16 +9,20 @@ const HomeThird = () => {
   return (
     <Main>
       <GoToMap>
-        <GoToText>Go To The Map</GoToText>
-        <Link to="/india-list">
-          <GoToMapBtn>
-            {<MapTwoToneIcon style={{fill: "var(--main-red)"}} />}
-          </GoToMapBtn>
-        </Link>
+        <GoToText>Click On The Map!</GoToText>
+        <GitLink
+          onClick={() =>
+            window.open("https://github.com/starbvuks/landmark-locator")
+          }
+          src="/img/github-link.png"
+          alt="github"
+        />
       </GoToMap>
-      <IndiaMapDiv>
-        <IndiaMap src="/img/india-map.png" alt="map" />
-      </IndiaMapDiv>
+      <Link to="/india-list">
+        <IndiaMapDiv>
+          <IndiaMap src="/img/india-map.png" alt="map" />
+        </IndiaMapDiv>
+      </Link>
     </Main>
   );
 };
@@ -31,22 +35,28 @@ const Main = styled.div`
   align-items: start;
   margin: 30vh 0 0 0;
   overflow: hidden;
+  padding: 5vh 0;
 `;
 
 const IndiaMapDiv = styled.div`
-  margin: 0 4vw 10vh 0;
+  margin: 0 4vw 0 0;
 `;
 
 const IndiaMap = styled.img`
-  width: 48vw;
+  width: 50vw;
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(0.9);
+  }
 `;
 
 const GoToMap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
-  margin: 10vh 0 0 8vw;
+  align-items: center;
+  margin: 10vh 0 0 6vw;
 `;
 
 const GoToText = styled.h2`
@@ -55,6 +65,17 @@ const GoToText = styled.h2`
   font-weight: 700;
   color: var(--main-red);
   margin: 0;
+`;
+
+const GitLink = styled.img`
+  height: 38vh;
+  margin: 30vh 0 0 0;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(0.9);
+  }
 `;
 
 const GoToMapBtn = styled(Button)`

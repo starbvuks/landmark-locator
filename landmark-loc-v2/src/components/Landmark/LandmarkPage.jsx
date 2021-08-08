@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   box1: {
     height: "55vh",
     width: "45vw",
-    border: 2,
+    objectFit: "cover",
   },
 
   box2: {
@@ -54,13 +54,18 @@ const LandmarkPage = (props) => {
   const [viewport, setViewport] = React.useState({
     height: "55vh",
     width: "30vw",
-    // longitude: 1,
-    // latitude: 1,
-    zoom: 14,
+    longitude: 1,
+    latitude: 1,
   });
 
+  // longitude={landmarkDetails.longitude}
+  // latitude={landmarkDetails.latitude}
+
   const markers = (
-    <Marker longitude={viewport.longitude} latitude={viewport.latitude}>
+    <Marker
+      longitude={landmarkDetails.longitude}
+      latitude={landmarkDetails.latitude}
+    >
       <RoomIcon fontSize="medium" />
     </Marker>
   );
@@ -106,15 +111,12 @@ const LandmarkPage = (props) => {
             </Grid>
           </Grid>
           <Grid item xs={4}>
-            <StaticMap
-              height="55vh"
-              width="30vw"
-              longitude={landmarkDetails.longitude}
-              latitude={landmarkDetails.latitude}
-              zoom={8}
+            <ReactMapGL
+              {...viewport}
               mapStyle="mapbox://styles/mapbox/streets-v11"
               mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
-            />
+              onViewportChange={(nextViewport) => setViewport(nextViewport)}
+            ></ReactMapGL>
 
             <Grid item xs={12}>
               <Paper className={classes.paper1}>
