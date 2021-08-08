@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
+import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
 import axios from "axios";
 
 import Navbar from "../Landing/Navbar/Navbar";
 import Paper from "@material-ui/core/Paper";
+import RoomIcon from "@material-ui/icons/Room";
 
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -49,6 +51,20 @@ const useStyles = makeStyles((theme) => ({
 const LandmarkPage = (props) => {
   const [landmarkDetails, setLandmarkDetails] = useState([]);
 
+  const [viewport, setViewport] = React.useState({
+    height: "55vh",
+    width: "30vw",
+    // longitude: 1,
+    // latitude: 1,
+    zoom: 14,
+  });
+
+  const markers = (
+    <Marker longitude={viewport.longitude} latitude={viewport.latitude}>
+      <RoomIcon fontSize="medium" />
+    </Marker>
+  );
+
   const id = props.match.params.id;
 
   useEffect(() => {
@@ -56,7 +72,7 @@ const LandmarkPage = (props) => {
       .get(`https://landmarklactor.herokuapp.com/landmark/${id}`)
       .then((res) => {
         setLandmarkDetails(res.data);
-        console.log(landmarkDetails);
+        console.log(landmarkDetails.longitude);
       })
       .catch((err) => {
         console.log(err);
@@ -90,7 +106,15 @@ const LandmarkPage = (props) => {
             </Grid>
           </Grid>
           <Grid item xs={4}>
-            <Paper className={[classes.paper, classes.box2]}>Map</Paper>
+            <StaticMap
+              height="55vh"
+              width="30vw"
+              longitude={landmarkDetails.longitude}
+              latitude={landmarkDetails.latitude}
+              zoom={8}
+              mapStyle="mapbox://styles/mapbox/streets-v11"
+              mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
+            />
 
             <Grid item xs={12}>
               <Paper className={classes.paper1}>
