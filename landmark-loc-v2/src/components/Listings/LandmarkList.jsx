@@ -10,6 +10,7 @@ import RoomIcon from "@material-ui/icons/Room";
 const LandmarkList = (props) => {
   const [landmarkData, setLandmarkData] = useState([]);
   const [popupOpen, setPopupOpen] = useState(false);
+  const [selectedMarker, setSelectedMarker] = useState();
 
   const state = props.match.params.state;
   // console.log(state);
@@ -34,6 +35,18 @@ const LandmarkList = (props) => {
       });
   }, []);
 
+  const selectedIndex = (index) => {
+    setSelectedMarker(index);
+  };
+
+  const closePopup = () => {
+    setSelectedMarker(null);
+  };
+
+  const openPopup = (index) => {
+    setSelectedMarker(index);
+  };
+
   return (
     <Main>
       <Navbar />
@@ -54,17 +67,18 @@ const LandmarkList = (props) => {
               <Marker
                 longitude={data.longitude}
                 latitude={data.latitude}
+                key={index}
                 onClick={() => setPopupOpen(true)}
               >
                 <RoomIcon fontSize="small" style={{fill: "red"}} />
               </Marker>
               {popupOpen && (
                 <Popup
+                  key={index}
                   latitude={data.latitude}
                   longitude={data.longitude}
                   onClose={() => setPopupOpen(false)}
                   closeButton={true}
-                  closeOnClick={true}
                   offsetLeft={10}
                 >
                   <p>{data.name}</p>
