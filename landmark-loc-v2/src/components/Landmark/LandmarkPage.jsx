@@ -51,24 +51,8 @@ const useStyles = makeStyles((theme) => ({
 const LandmarkPage = (props) => {
   const [landmarkDetails, setLandmarkDetails] = useState([]);
 
-  const [viewport, setViewport] = React.useState({
-    height: "55vh",
-    width: "30vw",
-    longitude: 1,
-    latitude: 1,
-  });
-
   // longitude={landmarkDetails.longitude}
   // latitude={landmarkDetails.latitude}
-
-  const markers = (
-    <Marker
-      longitude={landmarkDetails.longitude}
-      latitude={landmarkDetails.latitude}
-    >
-      <RoomIcon fontSize="medium" />
-    </Marker>
-  );
 
   const id = props.match.params.id;
 
@@ -83,6 +67,12 @@ const LandmarkPage = (props) => {
         console.log(err);
       });
   }, []);
+
+  const [viewport, setViewport] = React.useState({
+    height: "55vh",
+    width: "30vw",
+    zoom: 14,
+  });
 
   const classes = useStyles();
   return (
@@ -113,9 +103,13 @@ const LandmarkPage = (props) => {
           <Grid item xs={4}>
             <ReactMapGL
               {...viewport}
+              longitude={landmarkDetails.longitude}
+              latitude={landmarkDetails.latitude}
               mapStyle="mapbox://styles/mapbox/streets-v11"
               mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
-              onViewportChange={(nextViewport) => setViewport(nextViewport)}
+              onViewportChange={(viewport) => {
+                setViewport(viewport);
+              }}
             ></ReactMapGL>
 
             <Grid item xs={12}>
