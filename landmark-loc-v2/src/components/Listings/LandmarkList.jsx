@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
+import ReactMapGL, {StaticMap, Marker, Popup} from "react-map-gl";
 import axios from "axios";
 
 import LandmarkCards from "./LandmarkCards.jsx";
@@ -9,6 +9,7 @@ import RoomIcon from "@material-ui/icons/Room";
 
 const LandmarkList = (props) => {
   const [landmarkData, setLandmarkData] = useState([]);
+  const [popupOpen, setPopupOpen] = useState(false);
 
   const state = props.match.params.state;
   // console.log(state);
@@ -49,9 +50,27 @@ const LandmarkList = (props) => {
           }}
         >
           {landmarkData.map((data, index) => (
-            <Marker longitude={data.longitude} latitude={data.latitude}>
-              <RoomIcon fontSize="small" style={{fill: "red"}} />
-            </Marker>
+            <>
+              <Marker
+                longitude={data.longitude}
+                latitude={data.latitude}
+                onClick={() => setPopupOpen(true)}
+              >
+                <RoomIcon fontSize="small" style={{fill: "red"}} />
+              </Marker>
+              {popupOpen && (
+                <Popup
+                  latitude={data.latitude}
+                  longitude={data.longitude}
+                  onClose={() => setPopupOpen(false)}
+                  closeButton={true}
+                  closeOnClick={true}
+                  offsetLeft={10}
+                >
+                  <p>{data.name}</p>
+                </Popup>
+              )}
+            </>
           ))}
         </ReactMapGL>
       </MapDiv>
