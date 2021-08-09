@@ -74,6 +74,13 @@ const LandmarkPage = (props) => {
     zoom: 14,
   });
 
+  <Marker
+    longitude={landmarkDetails.longitude}
+    latitude={landmarkDetails.latitude}
+  >
+    <RoomIcon fontSize="medium" />
+  </Marker>;
+
   const classes = useStyles();
   return (
     <>

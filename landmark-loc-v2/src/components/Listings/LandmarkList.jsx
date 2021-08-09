@@ -5,6 +5,7 @@ import axios from "axios";
 
 import LandmarkCards from "./LandmarkCards.jsx";
 import Navbar from "../Landing/Navbar/Navbar.jsx";
+import RoomIcon from "@material-ui/icons/Room";
 
 const LandmarkList = (props) => {
   const [landmarkData, setLandmarkData] = useState([]);
@@ -15,9 +16,9 @@ const LandmarkList = (props) => {
   const [viewport, setViewport] = useState({
     width: "40vw",
     height: "85vh",
-    longitude: 73.7559,
-    latitude: 18.3663,
-    zoom: 8,
+    longitude: 79.9199,
+    latitude: 24.8318,
+    zoom: 5,
   });
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const LandmarkList = (props) => {
     <Main>
       <Navbar />
       <MapDiv>
-        <StaticMap
+        <ReactMapGL
           {...viewport}
           mapStyle="mapbox://styles/mapbox/streets-v11"
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
@@ -46,7 +47,13 @@ const LandmarkList = (props) => {
             left: 0,
             margin: "0 0 0 1vw",
           }}
-        ></StaticMap>
+        >
+          {landmarkData.map((data, index) => (
+            <Marker longitude={data.longitude} latitude={data.latitude}>
+              <RoomIcon fontSize="small" style={{fill: "red"}} />
+            </Marker>
+          ))}
+        </ReactMapGL>
       </MapDiv>
 
       <CardDiv>
