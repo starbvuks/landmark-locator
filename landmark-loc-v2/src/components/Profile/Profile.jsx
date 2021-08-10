@@ -12,27 +12,23 @@ const Profile = () => {
   const tokenString = sessionStorage.getItem("token");
   const userToken = JSON.parse(tokenString);
 
-  if (auth === false) {
-    return <Redirect to="/login" />;
-  } else {
-    return (
-      <Main>
-        <User>
-          <UserDetails>
-            <UserAvatar
-              src="/img/avatar_03.png"
-              style={{height: "10rem", width: "10rem"}}
-            />
-            <UserData>
-              <Username variant="h1">{userToken.user.name}</Username>
-              <Email variant="h6">{userToken.user.email}</Email>
-            </UserData>
-          </UserDetails>
-        </User>
-        <Favourites />
-      </Main>
-    );
-  }
+  return (
+    <Main>
+      <User>
+        <UserDetails>
+          <UserAvatar
+            src="/img/avatar_03.png"
+            style={{height: "10rem", width: "10rem"}}
+          />
+          <UserData>
+            <Username variant="h1">{userToken.user.name}</Username>
+            <Email variant="h6">{userToken.user.email}</Email>
+          </UserData>
+        </UserDetails>
+      </User>
+      <Favourites />
+    </Main>
+  );
 };
 
 export default Profile;
