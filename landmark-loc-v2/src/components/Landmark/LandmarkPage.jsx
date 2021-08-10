@@ -9,6 +9,16 @@ import RoomIcon from "@material-ui/icons/Room";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
+import {
+  ImageGallery,
+  Images,
+  Content,
+  Name,
+  Rating,
+  Address,
+  AddressDiv,
+} from "./styled.Landmarks.js";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -16,35 +26,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "15vh",
     marginLeft: "10vw",
     marginRight: "5vw",
-  },
-  paper: {
-    padding: theme.spacing(1),
-    margin: "0 0 0 0",
-    textAlign: "center",
-    fontSize: 24,
-    color: "#ba000d",
-    fontWeight: "Bold",
-  },
-  paper1: {
-    padding: theme.spacing(4),
-    margin: "2vh 0 0 0",
-    textAlign: "center",
-    color: "#ba000d",
-    fontSize: 24,
-    fontWeight: "Bold",
-  },
-
-  box1: {
-    height: "55vh",
-    width: "45vw",
-    objectFit: "contain",
-  },
-
-  box2: {
-    height: "55vh",
-  },
-  box4: {
-    height: "50vh",
   },
 }));
 
@@ -69,7 +50,7 @@ const LandmarkPage = (props) => {
   }, []);
 
   const [viewport, setViewport] = React.useState({
-    height: "55vh",
+    height: "60vh",
     width: "30vw",
     zoom: 14,
   });
@@ -88,25 +69,21 @@ const LandmarkPage = (props) => {
 
       <div className={classes.root}>
         <Grid container spacing={7}>
-          <Grid item xs={7}>
-            <img
-              className={[classes.box1]}
-              src={landmarkDetails.pictures}
-              alt={landmarkDetails.name}
-            />
-            <Grid container spacing={3}>
-              <Grid item xs={7}>
-                <Paper className={[classes.paper1, classes.box3]}>
-                  {landmarkDetails.name}
-                </Paper>
+          <ImageGallery item xs={7}>
+            <Images src={landmarkDetails.pictures} alt={landmarkDetails.name} />
+            <Content container spacing={3}>
+              <Grid item xs={9} style={{marginTop: "2vh"}}>
+                <Name>{landmarkDetails.name}</Name>
               </Grid>
-              <Grid item xs={3}>
-                <Paper className={[classes.paper1, classes.box3]}>
-                  Ratings
-                </Paper>
+              <Grid
+                item
+                xs={3}
+                style={{display: "flex", justifyContent: "center"}}
+              >
+                <Rating>4.2</Rating>
               </Grid>
-            </Grid>
-          </Grid>
+            </Content>
+          </ImageGallery>
           <Grid item xs={4}>
             <ReactMapGL
               {...viewport}
@@ -119,12 +96,12 @@ const LandmarkPage = (props) => {
               }}
             ></ReactMapGL>
 
-            <Grid item xs={12}>
-              <Paper className={classes.paper1}>
+            <AddressDiv item xs={12}>
+              <Address>
                 {landmarkDetails.state}, {landmarkDetails.city},{" "}
                 {landmarkDetails.district}{" "}
-              </Paper>
-            </Grid>
+              </Address>
+            </AddressDiv>
           </Grid>
 
           <Grid item xs={11}>
