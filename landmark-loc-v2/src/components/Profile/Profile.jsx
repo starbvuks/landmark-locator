@@ -4,6 +4,7 @@ import {Avatar, Typography} from "@material-ui/core";
 import {Redirect} from "react-router-dom";
 
 import {useSelector} from "react-redux";
+import Favourites from "./Favourites.jsx";
 
 const Profile = () => {
   const auth = useSelector((state) => state.auth.value);
@@ -16,24 +17,29 @@ const Profile = () => {
   }
   return (
     <Main>
-      <UserDetails>
-        <UserAvatar
-          src="/img/avatar_03.png"
-          style={{height: "10rem", width: "10rem"}}
-        />
-        <UserData>
-          <Username variant="h1">{userToken.user.name}</Username>
-          <Email variant="h6">{userToken.user.email}</Email>
-        </UserData>
-      </UserDetails>
+      <User>
+        <UserDetails>
+          <UserAvatar
+            src="/img/avatar_03.png"
+            style={{height: "10rem", width: "10rem"}}
+          />
+          <UserData>
+            <Username variant="h1">{userToken.user.name}</Username>
+            <Email variant="h6">{userToken.user.email}</Email>
+          </UserData>
+        </UserDetails>
+      </User>
+      <Favourites />
     </Main>
   );
 };
 
 export default Profile;
 
-const Main = styled.div`
-  height: 90vh;
+const Main = styled.div``;
+
+const User = styled.div`
+  height: 75vh;
   background-color: var(--main-light1);
   background: linear-gradient(
     180deg,
