@@ -86,8 +86,8 @@ const Navbar = () => {
             >
               <NavLogo>
                 <Icon
-                  src="./img/ll-icon-white.png"
-                  alt="logo"
+                  src="/img/ll-icon-white.png"
+                  alt="Logo"
                   variant="square"
                 />
               </NavLogo>

@@ -7,9 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import {authTrue, authFalse} from "./redux/features/auth/authSlice.js";
-import {useDispatch} from "react-redux";
-import {useSelector} from "react-redux";
-//import styled from "styled-components";
+import {useDispatch, useSelector} from "react-redux";
 
 import Navbar from "./components/Landing/Navbar/Navbar";
 import Landing from "./components/Landing/Landing";

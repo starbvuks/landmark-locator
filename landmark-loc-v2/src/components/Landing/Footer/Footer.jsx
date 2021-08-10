@@ -9,7 +9,6 @@ import {
   FooterItem,
   FooterLogo,
   Img,
-  Span,
 } from "./FooterStyles.js";
 
 // grid based content

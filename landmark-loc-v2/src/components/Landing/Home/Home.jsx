@@ -15,9 +15,6 @@ const Home = () => {
           <MapIcon src="./img/main-map.png" alt="icon" />
         </CenterIcon>
       </Center>
-      {/* <ArrowIconDiv>
-        <ArrowIcon className="bounce" src="./img/drop-arrow.png" alt="icon" />
-      </ArrowIconDiv> */}
       <HomeSecond />
       <HomeThird />
     </Main>
@@ -67,22 +64,4 @@ const CenterIcon = styled.div`
 
 const MapIcon = styled.img`
   max-width: 25vw;
-`;
-
-const ArrowIconDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: -10vh 0 0 0;
-
-  @media all and (max-width: 730px) {
-    margin: 15vh 0 0 0;
-  }
-`;
-
-const ArrowIcon = styled.img`
-  width: 4vw;
-
-  @media all and (max-width: 730px) {
-    width: 10vw;
-  }
 `;
