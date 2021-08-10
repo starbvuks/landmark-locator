@@ -2,6 +2,9 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import axios from "axios";
 
+import {Card, CardContent, CardMedia} from "@material-ui/core";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+
 const Favourites = () => {
   const [favourites, setFavourites] = useState([]);
 
@@ -10,7 +13,6 @@ const Favourites = () => {
       .get(`https://landmarklactor.herokuapp.com/landmark`)
       .then((res) => {
         setFavourites(res.data.data);
-        // console.log(landmarkData[1]);
       })
       .catch((err) => {
         console.log(err);
@@ -24,10 +26,18 @@ const Favourites = () => {
         <FavouritesList>
           {/* {favourites.map((favourite, index) => ( */}
           <FavouriteCard>
-            <ImageDiv>
-              <LandmarkImage src={favourites[0].pictures} />
-            </ImageDiv>
-            <h2>one</h2>
+            <LandmarkImage
+              image="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Taj_Mahal_in_India_-_Kristian_Bertel.jpg/1200px-Taj_Mahal_in_India_-_Kristian_Bertel.jpg"
+              title="state"
+              style={{
+                width: "10vw",
+                height: "20vh",
+              }}
+            />
+            <FavouriteCardContent>
+              <h2>Place Name</h2>
+              <FavoriteIcon style={{fill: "red"}} />
+            </FavouriteCardContent>
           </FavouriteCard>
           {/* ))} */}
         </FavouritesList>
@@ -56,31 +66,39 @@ const Content = styled.div`
 `;
 
 const Header = styled.span`
-  font-size: 5vw;
+  font-size: 4vw;
   font-weight: 700;
   font-family: Poppins;
   color: var(--main-red);
 `;
 
 const FavouritesList = styled.div`
-  margin: 5vh 0 0 0;
-  background-color: var(--main-red);
+  margin: 3vh 0 0 0;
   display: flex;
+  flex-wrap: wrap;
 `;
 
-const FavouriteCard = styled.div`
+const FavouriteCard = styled(Card)`
   display: flex;
-  border-radius: 25px;
-`;
-
-const ImageDiv = styled.div`
-  width: 10vw;
+  margin: 0 3vw 5vh 0;
   height: 20vh;
+  width: 60vw;
+  background-color: var(--main-light1) !important;
+  border-radius: 25px;
+  align-items: center;
+  padding: 0 !important;
 `;
 
-const LandmarkImage = styled.img`
-  border-radius: 25px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+const FavouriteCardContent = styled(CardContent)`
+  display: flex;
+  height: 75%;
+  padding: 0 0 0 10px;
+  flex-direction: column;
+  justify-content: space-between;
 `;
+
+const Name = styled.span`
+  width: 3vw;
+`;
+
+const LandmarkImage = styled(CardMedia)``;
