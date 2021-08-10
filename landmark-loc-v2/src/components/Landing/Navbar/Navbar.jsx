@@ -63,6 +63,10 @@ const Navbar = () => {
     history.push("/india-list");
   };
 
+  const goToPlaces = () => {
+    history.push("/locat-list/Telangana");
+  };
+
   const handleClick = (event) => {
     setAnchorEl(true);
   };
@@ -145,7 +149,7 @@ const Navbar = () => {
                 {
                   text: "Near Me",
                   icon: <ExploreIcon />,
-                  action: goBackHome,
+                  action: goToPlaces,
                 },
               ].map((array, index) => (
                 <ListItem button key={index} onClick={() => array.action()}>

@@ -71,7 +71,6 @@ export default function SignUp({setToken}) {
   return (
     <Container className={classes.main} component="main" maxWidth="xs">
       <CssBaseline />
-      <button onClick={() => console.log(process.env)}>env test</button>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />

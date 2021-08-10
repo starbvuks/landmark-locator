@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useHistory,
   Redirect,
 } from "react-router-dom";
 import {authTrue, authFalse} from "./redux/features/auth/authSlice.js";
@@ -26,7 +25,6 @@ function App() {
   const auth = useSelector((state) => state.auth.value);
   const token = getToken();
   const dispatch = useDispatch();
-  const history = useHistory();
 
   function setToken(userToken) {
     sessionStorage.setItem("token", JSON.stringify(userToken));

@@ -37,9 +37,7 @@ const HomeSecond = () => {
 export default HomeSecond;
 
 const Main = styled.div`
-  margin-top: 10vh;
-  padding: 10vh 0;
-  margin: 10vh 3vw;
+  margin: 25vh 3vw;
   border-radius: 25px;
 `;
 
