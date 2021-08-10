@@ -1,8 +1,15 @@
 import "./App.css";
 import {useEffect} from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+  Redirect,
+} from "react-router-dom";
 import {authTrue, authFalse} from "./redux/features/auth/authSlice.js";
 import {useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 //import styled from "styled-components";
 
 import Navbar from "./components/Landing/Navbar/Navbar";
@@ -16,8 +23,10 @@ import Profile from "./components/Profile/Profile";
 import LandmarkPage from "./components/Landmark/LandmarkPage";
 
 function App() {
+  const auth = useSelector((state) => state.auth.value);
   const token = getToken();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   function setToken(userToken) {
     sessionStorage.setItem("token", JSON.stringify(userToken));
@@ -41,6 +50,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        {auth === false && <Redirect to="/login" />}
         <Switch>
           <Route path="/map">
             <Navbar />

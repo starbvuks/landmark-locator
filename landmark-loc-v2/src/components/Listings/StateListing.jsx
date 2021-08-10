@@ -41,7 +41,7 @@ const Listings = () => {
             to={"/locat-list/" + data.state}
             style={{textDecoration: "none"}}
           >
-            <CardDiv>
+            <CardDiv key={index}>
               <StateCard>
                 <StateCardContent>
                   <StateName>{data.state}</StateName>
