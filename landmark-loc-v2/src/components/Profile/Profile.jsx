@@ -1,16 +1,30 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {Avatar, Typography} from "@material-ui/core";
 import {Redirect} from "react-router-dom";
+import axios from "axios";
 
 import {useSelector} from "react-redux";
 import Favourites from "./Favourites.jsx";
 
 const Profile = () => {
+  const [userData, setUserData] = useState([]);
   const auth = useSelector((state) => state.auth.value);
 
   const tokenString = sessionStorage.getItem("token");
   const userToken = JSON.parse(tokenString);
+
+  useEffect(() => {
+    axios
+      .get(`https://landmarklactor.herokuapp.com/user?${userToken.user.email}`)
+      .then((res) => {
+        setUserData(res.email);
+        console.log(userData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <Main>
