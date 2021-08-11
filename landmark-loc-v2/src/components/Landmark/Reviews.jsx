@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 
 import Alert from "@material-ui/lab/Alert";
+import {Divider} from "@material-ui/core";
 
 const Reviews = ({id}) => {
   const [reviewData, setReviewData] = useState([]);
@@ -42,13 +43,21 @@ const Reviews = ({id}) => {
         <Header>Reviews</Header>
         {reviewData.map((review, index) => (
           <ReviewDiv key={index}>
-            <ReviewUser>User : {review.user}</ReviewUser>
-            <Rating>
-              Rating: <Value>{review.rating}</Value>
-            </Rating>
+            <Top>
+              <ReviewUser>User : {review.user}</ReviewUser>
+              <Rating>
+                Rating: <Value>{review.rating}</Value>
+              </Rating>
+            </Top>
+            <Divider
+              orientation="vertical"
+              flexItem
+              style={{margin: "0 2vw 0 0"}}
+            />
             <Comment>
               <Quote>"</Quote>
               {review.comment}
+              <Quote>"</Quote>
             </Comment>
           </ReviewDiv>
         ))}
@@ -70,12 +79,21 @@ const Header = styled.span`
 `;
 
 const ReviewDiv = styled.div`
-  padding: 2vh;
+  padding: 1vh;
   margin: 5vh 0 0 0;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   background-color: var(--main-light1);
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+`;
+
+const Top = styled.div`
+  display: flex;
+  width: 27vw;
+  flex-direction: column;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ReviewUser = styled.span`
@@ -99,12 +117,18 @@ const Value = styled.span`
 
 const Comment = styled.span`
   display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 500;
   font-size: 2vw;
+  font-family: Red Hat Display;
+  color: var(--main-purple);
 `;
 
 const Quote = styled.span`
-  font-family: Times New Roman;
+  font-family: "Sorts Mill Goudy", serif;
+  padding: 0 1vw;
+  color: var(--main-lav1);
   font-weight: 700;
-  font-size: 3vw;
+  font-size: 5.5vw;
 `;
