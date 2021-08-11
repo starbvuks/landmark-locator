@@ -13,12 +13,13 @@ const Profile = () => {
 
   const tokenString = sessionStorage.getItem("token");
   const userToken = JSON.parse(tokenString);
+  const id = userToken.user.id;
 
   useEffect(() => {
     axios
-      .get(`https://landmarklactor.herokuapp.com/user?${userToken.user.email}`)
+      .get(`https://landmarklactor.herokuapp.com/user?${id}`)
       .then((res) => {
-        setUserData(res.email);
+        setUserData(res);
         console.log(userData);
       })
       .catch((err) => {

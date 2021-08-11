@@ -32,12 +32,20 @@ export const Rating = styled.span`
   font-weight: 700;
 `;
 
+export const Map = styled(Grid)``;
+
 export const AddressDiv = styled(Grid)`
-  margin: 2vh 0 0 0;
+  margin: 2vh 0 0 0 !important;
 `;
 
 export const Address = styled.span`
   font-family: Poppins;
-  font-size: 2vw;
+  font-size: 1.8vw;
   font-weight: 700;
+`;
+
+export const Description = styled.span`
+  font-family: Poppins;
+  font-size: 1.3vw;
+  font-weight: 500;
 `;

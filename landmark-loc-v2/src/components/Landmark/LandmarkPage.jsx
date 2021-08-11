@@ -15,8 +15,10 @@ import {
   Content,
   Name,
   Rating,
+  Map,
   Address,
   AddressDiv,
+  Description,
 } from "./styled.Landmarks.js";
 
 const useStyles = makeStyles((theme) => ({
@@ -84,7 +86,7 @@ const LandmarkPage = (props) => {
               </Grid>
             </Content>
           </ImageGallery>
-          <Grid item xs={4}>
+          <Map item xs={4}>
             <ReactMapGL
               {...viewport}
               longitude={landmarkDetails.longitude}
@@ -102,12 +104,10 @@ const LandmarkPage = (props) => {
                 {landmarkDetails.district}{" "}
               </Address>
             </AddressDiv>
-          </Grid>
+          </Map>
 
-          <Grid item xs={11}>
-            <Paper className={[classes.paper1, classes.box4]}>
-              {landmarkDetails.discription}
-            </Paper>
+          <Grid item xs={11} style={{marginTop: "4vh"}}>
+            <Description>{landmarkDetails.discription}</Description>
           </Grid>
         </Grid>
       </div>
