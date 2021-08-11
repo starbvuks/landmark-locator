@@ -28,7 +28,9 @@ const LandmarkList = (props) => {
       .get(`https://landmarklactor.herokuapp.com/landmark?state=${state}`)
       .then((res) => {
         setLandmarkData(res.data.data);
-        // console.log(landmarkData[1]);
+        // for (var n = 0; n < 30; n++) {
+        //   console.log(landmarkData[n].latitude);
+        // }
       })
       .catch((err) => {
         console.log(err);
