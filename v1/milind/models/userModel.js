@@ -18,6 +18,11 @@ const userSchema = new mongoose.Schema(
     profilePicture: {
       type: String,
     },
+    //add favouriet location to list
+    favouriet: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Landmark"
+    }]
   },
   { timestamps: true }
 );

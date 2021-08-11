@@ -7,9 +7,9 @@ const stateSchema = new mongoose.Schema({
     },
     landmark: [{
         type: mongoose.Schema.Types.ObjectId,
+      //  required: true,
         ref: "Landmark"
     }]
-
 },
 { timestamps: true }
 )

@@ -2,10 +2,12 @@ const Landmark = require("../models/landmarkModel");
 
 module.exports.create = (req, res) => {
   const newLandmark = new Landmark(req.body);
+  state
 
   newLandmark
     .save()
     .then((data) => {
+
       res.status(200).json({
         data,
       });

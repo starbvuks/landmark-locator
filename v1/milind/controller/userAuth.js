@@ -94,6 +94,14 @@ module.exports.get_user = (req, res) => {
       res.status(200).json(user);
     })
     .catch((err) => {
-      res.send(err);
+      res.send(err); 
     });
 };
+
+
+module.exports.get_favourite =async (req, res) => {
+  const user = await User.findOne({_id: req.params.Id}).populate("favouriet");
+  
+      res.status(200).json({ user      
+  })
+}

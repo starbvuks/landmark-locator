@@ -26,9 +26,7 @@ module.exports.get_rating =async (req, res) => {
     
         res.status(200).json({ landmark
            
-    }).catch((err) => {
-        res.status(400).json(err)
-    });
+    })
 }
 
 module.exports.delete_rating = (req, res) => {
