@@ -31,6 +31,7 @@ const Reviews = ({id}) => {
             fontWeight: "500",
             color: "#37A0F3",
             border: "2px solid #37A0F3",
+            width: "25vw",
           }}
         >
           no reviews yet!

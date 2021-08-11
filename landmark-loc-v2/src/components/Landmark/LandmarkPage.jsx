@@ -95,7 +95,7 @@ const LandmarkPage = (props) => {
               }}
             ></ReactMapGL>
 
-            <AddressDiv item xs={12}>
+            <AddressDiv item>
               <Address>
                 {landmarkDetails.state}, {landmarkDetails.city},{" "}
                 {landmarkDetails.district}{" "}

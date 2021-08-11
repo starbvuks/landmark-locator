@@ -36,13 +36,14 @@ export const Rating = styled.span`
 export const Map = styled(Grid)``;
 
 export const AddressDiv = styled(Grid)`
-  margin: 2vh 0 0 0 !important;
+  margin: 2.5vh 0 0 0 !important;
+  width: 30vw;
 `;
 
 export const Address = styled.span`
   font-family: Poppins;
   font-size: 1.8vw;
-  font-weight: 700;
+  font-weight: 600;
 `;
 
 export const Description = styled.span`
