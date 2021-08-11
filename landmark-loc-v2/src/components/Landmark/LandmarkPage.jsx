@@ -3,11 +3,12 @@ import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
 import axios from "axios";
 
 import Navbar from "../Landing/Navbar/Navbar";
-import Paper from "@material-ui/core/Paper";
 import RoomIcon from "@material-ui/icons/Room";
 
+import Reviews from "./Reviews.jsx";
+
 import {makeStyles} from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
+import {Grid, Divider} from "@material-ui/core";
 
 import {
   ImageGallery,
@@ -33,10 +34,6 @@ const useStyles = makeStyles((theme) => ({
 
 const LandmarkPage = (props) => {
   const [landmarkDetails, setLandmarkDetails] = useState([]);
-
-  // longitude={landmarkDetails.longitude}
-  // latitude={landmarkDetails.latitude}
-
   const id = props.match.params.id;
 
   useEffect(() => {
@@ -44,7 +41,7 @@ const LandmarkPage = (props) => {
       .get(`https://landmarklactor.herokuapp.com/landmark/${id}`)
       .then((res) => {
         setLandmarkDetails(res.data);
-        console.log(landmarkDetails.longitude);
+        console.log(landmarkDetails);
       })
       .catch((err) => {
         console.log(err);
@@ -106,9 +103,14 @@ const LandmarkPage = (props) => {
             </AddressDiv>
           </Map>
 
-          <Grid item xs={11} style={{marginTop: "4vh"}}>
+          <Grid item xs={11}>
+            <Divider variant="middle" style={{margin: "0 0 3vh 0"}} />
             <Description>{landmarkDetails.discription}</Description>
+            <Divider variant="middle" style={{margin: "3vh 0 3vh 0"}} />
           </Grid>
+        </Grid>
+        <Grid item xs={11}>
+          <Reviews id={id} />
         </Grid>
       </div>
     </>
