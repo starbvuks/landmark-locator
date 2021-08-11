@@ -42,9 +42,14 @@ const Reviews = ({id}) => {
         <Header>Reviews</Header>
         {reviewData.map((review, index) => (
           <ReviewDiv key={index}>
-            <ReviewUser>{review.user}</ReviewUser>
-            <Rating>Rating: {review.rating}</Rating>
-            <Comment>{review.comment}</Comment>
+            <ReviewUser>User : {review.user}</ReviewUser>
+            <Rating>
+              Rating: <Value>{review.rating}</Value>
+            </Rating>
+            <Comment>
+              <Quote>"</Quote>
+              {review.comment}
+            </Comment>
           </ReviewDiv>
         ))}
       </Main>
@@ -65,13 +70,41 @@ const Header = styled.span`
 `;
 
 const ReviewDiv = styled.div`
-  padding: 2vh 0 0 0;
+  padding: 2vh;
+  margin: 5vh 0 0 0;
   display: flex;
   flex-direction: column;
+  background-color: var(--main-light1);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 `;
 
-const ReviewUser = styled.span``;
+const ReviewUser = styled.span`
+  font-weight: 700;
+  font-size: 1.4vw;
+`;
 
-const Rating = styled.span``;
+const Rating = styled.span`
+  font-size: 1.5vw;
+  font-weight: 600;
+  color: var(--main-purple);
+  width: 8vw;
+`;
 
-const Comment = styled.span``;
+const Value = styled.span`
+  background-color: var(--main-purple);
+  padding: 0 8px;
+  border-radius: 10px;
+  color: var(--main-lav1);
+`;
+
+const Comment = styled.span`
+  display: flex;
+  font-weight: 500;
+  font-size: 2vw;
+`;
+
+const Quote = styled.span`
+  font-family: Times New Roman;
+  font-weight: 700;
+  font-size: 3vw;
+`;
