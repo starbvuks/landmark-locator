@@ -16,18 +16,19 @@ export const Content = styled(Grid)`
 
 export const Name = styled.span`
   font-family: Poppins;
-  font-size: 4vw;
+  font-size: 3vw;
   font-weight: 700;
   padding: 0 10px;
 `;
 
 export const Rating = styled.span`
-  background-color: var(--main-orange);
+  background-color: var(--main-purple);
   color: var(--main-light);
   font-family: Poppins;
-  padding: 14px;
+  padding: 10px;
+  margin: 2vh 0 0 0;
   border-radius: 20px;
-  font-size: 2vw;
+  font-size: 1.5vw;
   letter-spacing: 2px;
   font-weight: 700;
 `;
