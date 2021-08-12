@@ -28,11 +28,7 @@ const Reviews = ({id}) => {
   }, [id]);
 
   const config = {
-    headers: {Authorization: `Bearer ${userToken}`},
-  };
-
-  const bodyParameters = {
-    key: "value",
+    headers: {Authorization: `Bearer ${userToken.token}`},
   };
 
   const handleSubmit = (e) => {
@@ -47,7 +43,6 @@ const Reviews = ({id}) => {
       .post(
         `https://landmarklactor.herokuapp.com/rating/${id}`,
         newReview,
-        bodyParameters,
         config
       )
       .then((data) => {

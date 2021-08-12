@@ -40,7 +40,7 @@ const LandmarkList = (props) => {
         <ReactMapGL
           {...viewport}
           mapStyle="mapbox://styles/mapbox/streets-v11"
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
+          mapboxApiAccessToken="pk.eyJ1Ijoic3RhcmJ2dWtzIiwiYSI6ImNrbTR2NHphaDA4ZmUzMHBtMTRobjN6MHMifQ.tmPNZOallU2bty-vG7qIdw"
           onViewportChange={(nextViewport) => setViewport(nextViewport)}
           style={{
             position: "fixed",
