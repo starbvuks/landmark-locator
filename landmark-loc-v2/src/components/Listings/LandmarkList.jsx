@@ -33,17 +33,6 @@ const LandmarkList = (props) => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://landmarklactor.herokuapp.com/landmark?state=${state}`)
-  //     .then((res) => {
-  //       setLandmarkData(res.data.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
   return (
     <Main>
       <Navbar />

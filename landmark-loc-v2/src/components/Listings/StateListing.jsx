@@ -8,22 +8,6 @@ import {Card, CardMedia, CardContent, Typography} from "@material-ui/core";
 const Listings = () => {
   const [landmarkData, setLandmarkData] = useState([]);
 
-  // const getData = () => {
-  //   axios
-  //     .get("https://landmarklactor.herokuapp.com/landmark")
-  //     .then((res) => {
-  //       setLandmarkData(res.data.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  //     .finally(() => {});
-  // };
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-
   const getData = () => {
     axios
       .get("https://landmarklactor.herokuapp.com/state")
