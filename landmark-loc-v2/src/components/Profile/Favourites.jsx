@@ -1,23 +1,23 @@
-import React, {useState, useEffect} from "react";
+// import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-import axios from "axios";
+// import axios from "axios";
 
 import {Card, CardContent, CardMedia} from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const Favourites = () => {
-  const [favourites, setFavourites] = useState([]);
+  // const [favourites, setFavourites] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`https://landmarklactor.herokuapp.com/landmark`)
-      .then((res) => {
-        setFavourites(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://landmarklactor.herokuapp.com/landmark`)
+  //     .then((res) => {
+  //       setFavourites(res.data.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   return (
     <Main>
@@ -97,8 +97,8 @@ const FavouriteCardContent = styled(CardContent)`
   justify-content: space-between;
 `;
 
-const Name = styled.span`
-  width: 3vw;
-`;
+// const Name = styled.span`
+//   width: 3vw;
+// `;
 
 const LandmarkImage = styled(CardMedia)``;

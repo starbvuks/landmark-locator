@@ -11,7 +11,6 @@ import {useDispatch, useSelector} from "react-redux";
 
 import Navbar from "./components/Landing/Navbar/Navbar";
 import Landing from "./components/Landing/Landing";
-import Map from "./components/Map/Map";
 import Listings from "./components/Listings/StateListing";
 import LandmarkList from "./components/Listings/LandmarkList";
 import Login from "./components/Users/Login";
@@ -35,23 +34,18 @@ function App() {
   }
 
   useEffect(() => {
-    getToken();
     if (token) {
       dispatch(authTrue());
     } else {
       dispatch(authFalse());
     }
-  }, []);
+  }, [dispatch, token]);
 
   return (
     <div className="App">
       <Router>
         {auth === false && <Redirect to="/login" />}
         <Switch>
-          <Route path="/map">
-            <Navbar />
-            <Map />
-          </Route>
           <Route path="/india-list">
             <Navbar />
             <Listings />

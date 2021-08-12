@@ -16,6 +16,8 @@ const Reviews = ({id}) => {
   const userToken = JSON.parse(tokenString);
   const user = userToken.user.name;
 
+  console.log(userToken);
+
   useEffect(() => {
     axios
       .get(`https://landmarklactor.herokuapp.com/rating/${id}`)
@@ -25,7 +27,15 @@ const Reviews = ({id}) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
+
+  const config = {
+    headers: {Authorization: `Bearer ${userToken}`},
+  };
+
+  const bodyParameters = {
+    key: "value",
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +46,12 @@ const Reviews = ({id}) => {
     };
 
     axios
-      .post(`https://landmarklactor.herokuapp.com/rating/${id}`, newReview)
+      .post(
+        `https://landmarklactor.herokuapp.com/rating/${id}`,
+        newReview,
+        bodyParameters,
+        config
+      )
       .then((data) => {
         data.json();
         console.log("success");
@@ -54,10 +69,65 @@ const Reviews = ({id}) => {
     setOpen(false);
   };
 
+  const addReview = (
+    <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        style={{width: "10vw", height: "25vh"}}
+      >
+        <ModalDiv>
+          <Box>
+            <ModalForm noValidate>
+              <ReviewField
+                multiline
+                label="Review"
+                variant="outlined"
+                onChange={(e) => setReview(e.target.value)}
+              />
+              <RatingField
+                label="Rating"
+                variant="outlined"
+                type="number"
+                onChange={(e) => setRating(e.target.value)}
+              />
+            </ModalForm>
+            <ButtonDiv>
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={handleClose}
+                style={{marginRight: "1vw"}}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                variant="outlined"
+                color="primary"
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </ButtonDiv>
+          </Box>
+        </ModalDiv>
+      </Modal>
+      <Button variant="outlined" onClick={handleOpen} style={{height: "5vh"}}>
+        Add Review
+      </Button>
+    </div>
+  );
+
   if (reviewData.length === 0) {
     return (
       <Main>
-        <Header>Reviews</Header>
+        <HeaderDiv>
+          <Header>Reviews</Header>
+          {addReview}
+        </HeaderDiv>
         <Alert
           severity="info"
           style={{
@@ -78,57 +148,7 @@ const Reviews = ({id}) => {
       <Main>
         <HeaderDiv>
           <Header>Reviews</Header>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            style={{width: "10vw", height: "25vh"}}
-          >
-            <ModalDiv>
-              <Box>
-                <ModalForm noValidate>
-                  <ReviewField
-                    multiline
-                    label="Review"
-                    variant="outlined"
-                    onChange={(e) => setReview(e.target.value)}
-                  />
-                  <RatingField
-                    label="Rating"
-                    variant="outlined"
-                    type="number"
-                    onChange={(e) => setRating(e.target.value)}
-                  />
-                </ModalForm>
-                <ButtonDiv>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={handleClose}
-                    style={{marginRight: "1vw"}}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    type="submit"
-                    variant="outlined"
-                    color="primary"
-                    onClick={handleSubmit}
-                  >
-                    Submit
-                  </Button>
-                </ButtonDiv>
-              </Box>
-            </ModalDiv>
-          </Modal>
-          <Button
-            variant="outlined"
-            onClick={handleOpen}
-            style={{height: "5vh"}}
-          >
-            Add Review
-          </Button>
+          {addReview}
         </HeaderDiv>
         {reviewData.map((review, index) => (
           <ReviewDiv key={index}>

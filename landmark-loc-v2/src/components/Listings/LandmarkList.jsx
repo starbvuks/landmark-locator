@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-import ReactMapGL, {StaticMap, Marker, Popup} from "react-map-gl";
+import ReactMapGL, {Marker, Popup} from "react-map-gl";
 import axios from "axios";
 
 import LandmarkCards from "./LandmarkCards.jsx";
@@ -31,7 +31,7 @@ const LandmarkList = (props) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   return (
     <Main>

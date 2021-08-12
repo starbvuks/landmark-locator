@@ -52,7 +52,7 @@ export default function SignUp({setToken}) {
     };
 
     axios
-      .post(`${process.env.REACT_APP_LL_API}/user/signup`, newUser)
+      .post(`https://landmarklactor.herokuapp.com/user/signup`, newUser)
       .then((data) => {
         data.json();
       })

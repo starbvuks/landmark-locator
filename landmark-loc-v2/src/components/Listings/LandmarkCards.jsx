@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 import {Card, CardContent} from "@material-ui/core";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const LandmarkCards = (props) => {
   return (

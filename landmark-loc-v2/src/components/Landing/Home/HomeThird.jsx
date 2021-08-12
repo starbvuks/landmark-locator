@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import {Button} from "@material-ui/core";
 import {Link} from "react-router-dom";
 
 const HomeThird = () => {
@@ -75,13 +74,4 @@ const GitLink = styled.img`
   &:hover {
     transform: scale(0.9);
   }
-`;
-
-const GoToMapBtn = styled(Button)`
-  width: 15vw;
-  height: 6vh;
-  border: 3px solid !important;
-  border-radius: 9px !important;
-  background-color: var(--main-pink) !important;
-  border-color: var(--main-red) !important;
 `;

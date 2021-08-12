@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import ReactMapGL, {StaticMap, Marker} from "react-map-gl";
+import ReactMapGL, {Marker} from "react-map-gl";
 import axios from "axios";
 
 import Navbar from "../Landing/Navbar/Navbar";
@@ -41,11 +41,12 @@ const LandmarkPage = (props) => {
       .get(`https://landmarklactor.herokuapp.com/landmark/${id}`)
       .then((res) => {
         setLandmarkDetails(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   const [viewport, setViewport] = React.useState({
     height: "60vh",
@@ -78,7 +79,7 @@ const LandmarkPage = (props) => {
                 xs={3}
                 style={{display: "flex", justifyContent: "center"}}
               >
-                <Rating>4.2</Rating>
+                <Rating>{landmarkDetails.rating}</Rating>
               </Grid>
             </Content>
           </ImageGallery>
