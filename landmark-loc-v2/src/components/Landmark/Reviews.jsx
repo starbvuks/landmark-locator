@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 
 import Alert from "@material-ui/lab/Alert";
-import {Divider} from "@material-ui/core";
+import {Divider, Button} from "@material-ui/core";
 
 const Reviews = ({id}) => {
   const [reviewData, setReviewData] = useState([]);
@@ -41,7 +41,12 @@ const Reviews = ({id}) => {
   } else {
     return (
       <Main>
-        <Header>Reviews</Header>
+        <HeaderDiv>
+          <Header>Reviews</Header>
+          <Button variant="outlined" style={{height: "5vh"}}>
+            Add Review
+          </Button>
+        </HeaderDiv>
         {reviewData.map((review, index) => (
           <ReviewDiv key={index}>
             <Top>
@@ -72,6 +77,13 @@ export default Reviews;
 const Main = styled.div`
   font-family: Poppins;
   margin: 0 0 10vh 0;
+`;
+
+const HeaderDiv = styled.div`
+  display: flex;
+  width: 20vw;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Header = styled.span`

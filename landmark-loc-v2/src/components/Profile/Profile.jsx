@@ -71,6 +71,7 @@ const UserDetails = styled.div`
   margin: 7rem 0;
   background: var(--main-light);
   border-radius: 25px;
+  box-shadow: var(--main-purple) 0px 20px 30px -10px;
 `;
 
 const UserAvatar = styled(Avatar)`
@@ -86,13 +87,13 @@ const UserData = styled.div`
 
 const Username = styled(Typography)`
   font-family: Poppins !important;
-  color: var(--main-orange);
+  color: var(--main-purple);
   font-weight: 600 !important;
 `;
 
 const Email = styled(Typography)`
   padding: 0 0 0 7px;
   font-family: Poppins !important;
-  color: var(--main-dark);
+  color: var(--main-lav2);
   font-weight: 500 !important;
 `;
