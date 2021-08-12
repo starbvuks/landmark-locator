@@ -16,8 +16,6 @@ const Reviews = ({id}) => {
   const userToken = JSON.parse(tokenString);
   const user = userToken.user.name;
 
-  console.log(userToken);
-
   useEffect(() => {
     axios
       .get(`https://landmarklactor.herokuapp.com/rating/${id}`)
@@ -80,6 +78,7 @@ const Reviews = ({id}) => {
       >
         <ModalDiv>
           <Box>
+            <HeaderModal>Add a Review</HeaderModal>
             <ModalForm noValidate>
               <ReviewField
                 multiline
@@ -91,6 +90,7 @@ const Reviews = ({id}) => {
                 label="Rating"
                 variant="outlined"
                 type="number"
+                InputProps={{inputProps: {min: 0.5, max: 5}}}
                 onChange={(e) => setRating(e.target.value)}
               />
             </ModalForm>
@@ -205,24 +205,29 @@ const ModalDiv = styled.div`
 `;
 
 const Box = styled.div`
-  height: 30vh;
   width: 30vw;
   background-color: var(--main-light);
-  padding: 5rem;
+  padding: 4rem;
   border-radius: 0.5rem;
 `;
 
-const ModalForm = styled.form`
-  display: flex;
+const HeaderModal = styled.span`
+  font-family: Poppins;
+  font-size: 2vw;
+  font-weight: 600;
+  color: var(--main-purple);
 `;
 
+const ModalForm = styled.form``;
+
 const ReviewField = styled(TextField)`
-  width: 20vw;
+  width: 30vw;
+  margin: 2vh 0 0 0 !important;
 `;
 
 const RatingField = styled(TextField)`
-  width: 10vw;
-  margin: 0 0 0 1vw;
+  width: 7vw;
+  margin: 4vh 0 0 0 !important;
 `;
 
 const ButtonDiv = styled.div`

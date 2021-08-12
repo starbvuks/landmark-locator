@@ -45,7 +45,7 @@ const Listings = () => {
                   <StateName>{data.name}</StateName>
                 </StateCardContent>
                 <StateImage
-                  image={data.pictures}
+                  image={data.images}
                   title="state"
                   style={{
                     width: "100%",

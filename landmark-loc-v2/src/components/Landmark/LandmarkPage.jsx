@@ -89,7 +89,7 @@ const LandmarkPage = (props) => {
               longitude={landmarkDetails.longitude}
               latitude={landmarkDetails.latitude}
               mapStyle="mapbox://styles/mapbox/streets-v11"
-              mapboxApiAccessToken="pk.eyJ1Ijoic3RhcmJ2dWtzIiwiYSI6ImNrbTR2NHphaDA4ZmUzMHBtMTRobjN6MHMifQ.tmPNZOallU2bty-vG7qIdw"
+              mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
               onViewportChange={(viewport) => {
                 setViewport(viewport);
               }}
