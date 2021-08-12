@@ -7,9 +7,10 @@ const user = require("../controller/userAuth");
 router.post("/signup", user.signup);
 router.post("/login", user.login);
 router.get("/", user.get_user);
+router.get("/:id", user.getOne);
 router.get('/user/favourite', user.get_favourite)
 
-router.get("/", checkauth, (req, res) => {
+router.get("/abc", checkauth, (req, res) => {
   res.send("you are authorized to post review");
 });
 

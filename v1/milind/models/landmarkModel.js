@@ -66,16 +66,19 @@ const landmarkSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Rating",
     }],
-    // rating:{
-    //     type: Number,
-    //     required:true,
-    //     default:0
-    // },
-    // numReviews: {
-    //     type: Number,
-    //     reuiered: true,
-    //     default:0
-    // }
+    avgRating:{
+        type: Number,
+        required:true,
+        default:4.5,
+        min: 1,
+        max: 5
+
+    },
+    numReviews: {
+        type: Number,
+        reuiered: true,
+        default:0
+    }
   },
   { timestamps: true }
 );

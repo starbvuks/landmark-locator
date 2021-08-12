@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     //add favouriet location to list
-    favouriet: [{
+    favourite: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "Landmark"
     }]

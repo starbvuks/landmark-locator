@@ -5,6 +5,9 @@ const stateSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    images:[{
+        type:String
+    }],
     landmark: [{
         type: mongoose.Schema.Types.ObjectId,
       //  required: true,

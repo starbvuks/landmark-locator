@@ -98,9 +98,26 @@ module.exports.get_user = (req, res) => {
     });
 };
 
+//get user by id
+module.exports.getOne = (req, res) => {
+  User.findById({
+    _id: req.params.id,
+  })
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      return res.status(400).json({
+        message:
+          err.message ||
+          "something went wrong while retriving an user information",
+      });
+    });
+};
+
 
 module.exports.get_favourite =async (req, res) => {
-  const user = await User.findOne({_id: req.params.Id}).populate("favouriet");
+  const user = await User.findOne({_id: req.params.Id}).populate("favourite");
   
       res.status(200).json({ user      
   })
