@@ -6,8 +6,15 @@ import Alert from "@material-ui/lab/Alert";
 import {Divider, Button, Modal, TextField} from "@material-ui/core";
 
 const Reviews = ({id}) => {
+  const [rating, setRating] = useState();
+  const [review, setReview] = useState();
+
   const [reviewData, setReviewData] = useState([]);
   const [open, setOpen] = useState(false);
+
+  const tokenString = sessionStorage.getItem("token");
+  const userToken = JSON.parse(tokenString);
+  const user = userToken.user.name;
 
   useEffect(() => {
     axios
@@ -19,6 +26,28 @@ const Reviews = ({id}) => {
         console.log(err);
       });
   }, []);
+
+  console.log(rating);
+  console.log(review);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newReview = {
+      user,
+      rating,
+      review,
+    };
+
+    axios
+      .post(`https://landmarklactor.herokuapp.com/rating/${id}`, newReview)
+      .then((data) => {
+        data.json();
+        console.log("success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -61,12 +90,18 @@ const Reviews = ({id}) => {
           >
             <ModalDiv>
               <Box>
-                <ModalForm>
-                  <ReviewField multiline label="Review" variant="outlined" />
+                <ModalForm noValidate>
+                  <ReviewField
+                    multiline
+                    label="Review"
+                    variant="outlined"
+                    onChange={(e) => setReview(e.target.value)}
+                  />
                   <RatingField
                     label="Rating"
                     variant="outlined"
                     type="number"
+                    onChange={(e) => setRating(e.target.value)}
                   />
                 </ModalForm>
                 <ButtonDiv>
@@ -78,7 +113,12 @@ const Reviews = ({id}) => {
                   >
                     Cancel
                   </Button>
-                  <Button variant="outlined" color="primary">
+                  <Button
+                    type="submit"
+                    variant="outlined"
+                    color="primary"
+                    onClick={handleSubmit}
+                  >
                     Submit
                   </Button>
                 </ButtonDiv>
