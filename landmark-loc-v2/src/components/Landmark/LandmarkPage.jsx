@@ -41,7 +41,6 @@ const LandmarkPage = (props) => {
       .get(`https://landmarklactor.herokuapp.com/landmark/${id}`)
       .then((res) => {
         setLandmarkDetails(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

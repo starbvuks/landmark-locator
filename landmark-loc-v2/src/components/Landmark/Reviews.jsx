@@ -7,7 +7,7 @@ import {Divider, Button, Modal, TextField} from "@material-ui/core";
 
 const Reviews = ({id}) => {
   const [rating, setRating] = useState();
-  const [review, setReview] = useState();
+  const [comment, setReview] = useState();
 
   const [reviewData, setReviewData] = useState([]);
   const [open, setOpen] = useState(false);
@@ -36,7 +36,7 @@ const Reviews = ({id}) => {
     const newReview = {
       user,
       rating,
-      review,
+      comment,
     };
 
     axios
@@ -46,7 +46,6 @@ const Reviews = ({id}) => {
         config
       )
       .then((data) => {
-        data.json();
         console.log("success");
       })
       .catch((err) => {
@@ -110,7 +109,7 @@ const Reviews = ({id}) => {
           </Box>
         </ModalDiv>
       </Modal>
-      <Button variant="outlined" onClick={handleOpen} style={{height: "5vh"}}>
+      <Button variant="outlined" onClick={handleOpen}>
         Add Review
       </Button>
     </div>
@@ -200,7 +199,7 @@ const ModalDiv = styled.div`
 `;
 
 const Box = styled.div`
-  width: 30vw;
+  width: 45vw;
   background-color: var(--main-light);
   padding: 4rem;
   border-radius: 0.5rem;
@@ -213,7 +212,10 @@ const HeaderModal = styled.span`
   color: var(--main-purple);
 `;
 
-const ModalForm = styled.form``;
+const ModalForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 
 const ReviewField = styled(TextField)`
   width: 30vw;
@@ -246,8 +248,8 @@ const Top = styled.div`
   width: 27vw;
   flex-direction: column;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
+  padding: 0 0 0 1vw;
 `;
 
 const ReviewUser = styled.span`

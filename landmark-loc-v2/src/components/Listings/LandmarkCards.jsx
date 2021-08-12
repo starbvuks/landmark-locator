@@ -2,34 +2,35 @@ import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
-import {Card, CardContent} from "@material-ui/core";
+import {Card, MenuItem} from "@material-ui/core";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const LandmarkCards = (props) => {
   return (
-    <div key={props.key}>
-      <Link to={`/landmark/${props._id}`} style={{textDecoration: "none"}}>
-        <LandmarkCard>
+    <div key={props._id}>
+      <LandmarkCard>
+        <LinkDiv
+          to={`/landmark/${props._id}`}
+          style={{textDecoration: "inherit", color: "inherit"}}
+        >
           <ImageDiv>
             <LandmarkImage src={props.pictures} />
           </ImageDiv>
-          <LandmarkContent>
-            <Details>
-              <HeaderDiv>
-                <LandmarkName>{props.name}</LandmarkName>
-                <City>{props.city}</City>
-              </HeaderDiv>
-            </Details>
-            <Right>
-              <Rating></Rating>
-              <Link to="/profile" style={{textDecoration: "none"}}>
-                <FavoriteBorderIcon style={{fill: "var(--main-red)"}} />
-              </Link>
-            </Right>
-          </LandmarkContent>
-        </LandmarkCard>
-      </Link>
+          <Details>
+            <HeaderDiv>
+              <LandmarkName>{props.name}</LandmarkName>
+              <City>{props.city}</City>
+            </HeaderDiv>
+          </Details>
+        </LinkDiv>
+        <Right>
+          <Rating>4.5</Rating>
+          <MenuItem component={Link} to="/profile">
+            <FavoriteBorderIcon style={{fill: "var(--main-red)"}} />
+          </MenuItem>
+        </Right>
+      </LandmarkCard>
       <DividerStyled />
     </div>
   );
@@ -46,6 +47,12 @@ const LandmarkCard = styled(Card)`
   background-color: var(--main-light) !important;
 `;
 
+const LinkDiv = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 const ImageDiv = styled.div`
   height: 25vh;
   width: 30vw;
@@ -58,18 +65,13 @@ const LandmarkImage = styled.img`
   object-fit: cover;
 `;
 
-const LandmarkContent = styled(CardContent)`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 const Details = styled.div`
+  width: 100%;
   display: flex;
   height: 23vh;
   flex-direction: column;
   justify-content: space-between;
+  padding: 1vw;
 `;
 
 const HeaderDiv = styled.div`
@@ -95,6 +97,15 @@ const City = styled.span`
   font-family: Poppins !important;
 `;
 
+const Right = styled.div`
+  height: 18vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw;
+`;
+
 const Rating = styled.span`
   font-size: 1rem;
   font-weight: 700;
@@ -104,14 +115,6 @@ const Rating = styled.span`
   border-radius: 10px;
   background-color: var(--main-orange);
   font-family: Poppins !important;
-`;
-
-const Right = styled.div`
-  height: 18vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 const DividerStyled = styled.div`

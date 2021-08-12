@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {auth === false && <Redirect to="/login" />}
+        {/* {auth === false && <Redirect to="/login" />} */}
         <Switch>
           <Route path="/india-list">
             <Navbar />

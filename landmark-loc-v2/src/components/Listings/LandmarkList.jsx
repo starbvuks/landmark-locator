@@ -26,7 +26,6 @@ const LandmarkList = (props) => {
       .get(`https://landmarklactor.herokuapp.com/related/${id}`)
       .then((res) => {
         setLandmarkData(res.data.state.landmark);
-        console.log(res.data.state.landmark.name);
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +39,7 @@ const LandmarkList = (props) => {
         <ReactMapGL
           {...viewport}
           mapStyle="mapbox://styles/mapbox/streets-v11"
-          mapboxApiAccessToken="pk.eyJ1Ijoic3RhcmJ2dWtzIiwiYSI6ImNrbTR2NHphaDA4ZmUzMHBtMTRobjN6MHMifQ.tmPNZOallU2bty-vG7qIdw"
+          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
           onViewportChange={(nextViewport) => setViewport(nextViewport)}
           style={{
             position: "fixed",
@@ -49,11 +48,11 @@ const LandmarkList = (props) => {
           }}
         >
           {landmarkData.map((data, index) => (
-            <>
+            <div key={data._id}>
               <Marker
+                key={index}
                 longitude={data.longitude}
                 latitude={data.latitude}
-                key={index}
                 onClick={() => setPopupOpen(true)}
               >
                 <RoomIcon fontSize="small" style={{fill: "red"}} />
@@ -70,7 +69,7 @@ const LandmarkList = (props) => {
                   <p>{data.name}</p>
                 </Popup>
               )}
-            </>
+            </div>
           ))}
         </ReactMapGL>
       </MapDiv>

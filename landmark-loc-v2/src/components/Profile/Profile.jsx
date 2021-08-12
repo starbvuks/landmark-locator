@@ -21,7 +21,7 @@ const Profile = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [id, userData]);
+  }, [id]);
 
   return (
     <Main>
