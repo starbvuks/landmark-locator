@@ -23,7 +23,7 @@ const LandmarkCards = (props) => {
             </Details>
             <Right>
               <Rating>3.4</Rating>
-              <Link to="/" style={{textDecoration: "none"}}>
+              <Link to="/profile" style={{textDecoration: "none"}}>
                 <FavoriteBorderIcon style={{fill: "var(--main-red)"}} />
               </Link>
             </Right>

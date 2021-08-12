@@ -57,7 +57,7 @@ function App() {
             <Listings />
           </Route>
           <Route
-            path="/locat-list/:state"
+            path="/locat-list/:id"
             render={(matchProps) => <LandmarkList {...matchProps} />}
           ></Route>
           <Route

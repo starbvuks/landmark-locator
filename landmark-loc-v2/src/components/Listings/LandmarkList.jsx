@@ -10,10 +10,9 @@ import RoomIcon from "@material-ui/icons/Room";
 const LandmarkList = (props) => {
   const [landmarkData, setLandmarkData] = useState([]);
   const [popupOpen, setPopupOpen] = useState(false);
-  const [selectedMarker, setSelectedMarker] = useState();
 
-  const state = props.match.params.state;
-  // console.log(state);
+  const id = props.match.params.id;
+  console.log(id);
 
   const [viewport, setViewport] = useState({
     width: "40vw",
@@ -25,34 +24,31 @@ const LandmarkList = (props) => {
 
   useEffect(() => {
     axios
-      .get(`https://landmarklactor.herokuapp.com/landmark?state=${state}`)
+      .get(`https://landmarklactor.herokuapp.com/related/${id}`)
       .then((res) => {
-        setLandmarkData(res.data.data);
-        // for (var n = 0; n < 30; n++) {
-        //   console.log(landmarkData[n].latitude);
-        // }
+        setLandmarkData(res.data.state.landmark);
+        console.log(res.data.state);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  const selectedIndex = (index) => {
-    setSelectedMarker(index);
-  };
-
-  const closePopup = () => {
-    setSelectedMarker(null);
-  };
-
-  const openPopup = (index) => {
-    setSelectedMarker(index);
-  };
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://landmarklactor.herokuapp.com/landmark?state=${state}`)
+  //     .then((res) => {
+  //       setLandmarkData(res.data.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   return (
     <Main>
       <Navbar />
-      <MapDiv>
+      {/* <MapDiv>
         <ReactMapGL
           {...viewport}
           mapStyle="mapbox://styles/mapbox/streets-v11"
@@ -89,7 +85,7 @@ const LandmarkList = (props) => {
             </>
           ))}
         </ReactMapGL>
-      </MapDiv>
+      </MapDiv> */}
 
       <CardDiv>
         {landmarkData.map((data, index) => (
