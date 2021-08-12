@@ -3,10 +3,11 @@ import styled from "styled-components";
 import axios from "axios";
 
 import Alert from "@material-ui/lab/Alert";
-import {Divider, Button} from "@material-ui/core";
+import {Divider, Button, Modal, TextField} from "@material-ui/core";
 
 const Reviews = ({id}) => {
   const [reviewData, setReviewData] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -18,6 +19,14 @@ const Reviews = ({id}) => {
         console.log(err);
       });
   }, []);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   if (reviewData.length === 0) {
     return (
@@ -43,7 +52,44 @@ const Reviews = ({id}) => {
       <Main>
         <HeaderDiv>
           <Header>Reviews</Header>
-          <Button variant="outlined" style={{height: "5vh"}}>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            style={{width: "10vw", height: "25vh"}}
+          >
+            <ModalDiv>
+              <Box>
+                <ModalForm>
+                  <ReviewField multiline label="Review" variant="outlined" />
+                  <RatingField
+                    label="Rating"
+                    variant="outlined"
+                    type="number"
+                  />
+                </ModalForm>
+                <ButtonDiv>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={handleClose}
+                    style={{marginRight: "1vw"}}
+                  >
+                    Cancel
+                  </Button>
+                  <Button variant="outlined" color="primary">
+                    Submit
+                  </Button>
+                </ButtonDiv>
+              </Box>
+            </ModalDiv>
+          </Modal>
+          <Button
+            variant="outlined"
+            onClick={handleOpen}
+            style={{height: "5vh"}}
+          >
             Add Review
           </Button>
         </HeaderDiv>
@@ -90,6 +136,44 @@ const Header = styled.span`
   font-weight: 600;
   font-size: 2.5vw;
 `;
+
+// Modal
+
+const ModalDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 90vw;
+`;
+
+const Box = styled.div`
+  height: 30vh;
+  width: 30vw;
+  background-color: var(--main-light);
+  padding: 5rem;
+  border-radius: 0.5rem;
+`;
+
+const ModalForm = styled.form`
+  display: flex;
+`;
+
+const ReviewField = styled(TextField)`
+  width: 20vw;
+`;
+
+const RatingField = styled(TextField)`
+  width: 10vw;
+  margin: 0 0 0 1vw;
+`;
+
+const ButtonDiv = styled.div`
+  width: 30vw;
+  margin: 5vh 0 0 0;
+`;
+
+// Review Cards
 
 const ReviewDiv = styled.div`
   padding: 1vh;
