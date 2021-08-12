@@ -27,9 +27,6 @@ const Reviews = ({id}) => {
       });
   }, []);
 
-  console.log(rating);
-  console.log(review);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newReview = {

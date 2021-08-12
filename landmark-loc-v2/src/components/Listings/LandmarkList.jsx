@@ -12,7 +12,6 @@ const LandmarkList = (props) => {
   const [popupOpen, setPopupOpen] = useState(false);
 
   const id = props.match.params.id;
-  console.log(id);
 
   const [viewport, setViewport] = useState({
     width: "40vw",
@@ -27,7 +26,7 @@ const LandmarkList = (props) => {
       .get(`https://landmarklactor.herokuapp.com/related/${id}`)
       .then((res) => {
         setLandmarkData(res.data.state.landmark);
-        console.log(res.data.state);
+        console.log(res.data.state.landmark.name);
       })
       .catch((err) => {
         console.log(err);
@@ -48,7 +47,7 @@ const LandmarkList = (props) => {
   return (
     <Main>
       <Navbar />
-      {/* <MapDiv>
+      <MapDiv>
         <ReactMapGL
           {...viewport}
           mapStyle="mapbox://styles/mapbox/streets-v11"
@@ -85,7 +84,7 @@ const LandmarkList = (props) => {
             </>
           ))}
         </ReactMapGL>
-      </MapDiv> */}
+      </MapDiv>
 
       <CardDiv>
         {landmarkData.map((data, index) => (

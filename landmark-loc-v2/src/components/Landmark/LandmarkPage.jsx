@@ -41,7 +41,6 @@ const LandmarkPage = (props) => {
       .get(`https://landmarklactor.herokuapp.com/landmark/${id}`)
       .then((res) => {
         setLandmarkDetails(res.data);
-        console.log(landmarkDetails);
       })
       .catch((err) => {
         console.log(err);
@@ -97,8 +96,7 @@ const LandmarkPage = (props) => {
 
             <AddressDiv ite>
               <Address>
-                {landmarkDetails.state}, {landmarkDetails.city},{" "}
-                {landmarkDetails.district}{" "}
+                {landmarkDetails.city}, {landmarkDetails.district}{" "}
               </Address>
             </AddressDiv>
           </Map>
