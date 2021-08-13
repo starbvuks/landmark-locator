@@ -1,12 +1,34 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
-import {Card, MenuItem} from "@material-ui/core";
+import {Card, MenuItem, Button} from "@material-ui/core";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const LandmarkCards = (props) => {
+  const tokenString = sessionStorage.getItem("token");
+  const userToken = JSON.parse(tokenString);
+  const id = userToken.user.id;
+
+  const locId = props._id;
+
+  const favouriteHandle = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(`https://landmarklactor.herokuapp.com/user/${id}`, {
+        favourite: locId,
+      })
+      .then((data) => {
+        console.log("success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div key={props._id}>
       <LandmarkCard>
@@ -26,7 +48,7 @@ const LandmarkCards = (props) => {
         </LinkDiv>
         <Right>
           <Rating>4.5</Rating>
-          <MenuItem component={Link} to="/profile">
+          <MenuItem component={Button} onClick={favouriteHandle}>
             <FavoriteBorderIcon style={{fill: "var(--main-red)"}} />
           </MenuItem>
         </Right>

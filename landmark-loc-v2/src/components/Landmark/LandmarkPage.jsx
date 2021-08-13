@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
+import {Redirect} from "react-router-dom";
 import ReactMapGL, {Marker} from "react-map-gl";
+import {useSelector} from "react-redux";
 import axios from "axios";
 
 import Navbar from "../Landing/Navbar/Navbar";
@@ -33,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LandmarkPage = (props) => {
+  const auth = useSelector((state) => state.auth.value);
   const [landmarkDetails, setLandmarkDetails] = useState([]);
   const id = props.match.params.id;
 
@@ -61,6 +64,10 @@ const LandmarkPage = (props) => {
   </Marker>;
 
   const classes = useStyles();
+
+  if (auth === false) {
+    return <Redirect to="/login" />;
+  }
   return (
     <>
       <Navbar />

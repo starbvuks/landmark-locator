@@ -32,11 +32,11 @@ const Center = styled.div`
   background-color: var(--main-light1);
   align-items: center;
   justify-content: center;
-  padding: 5rem;
-  width: 80vw;
+  padding: 3.5rem;
+  width: 70vw;
   border-radius: 25px;
-  margin: 15vh auto;
-  box-shadow: var(--main-lav) 0px 20px 30px -10px;
+  margin: 20vh auto;
+  box-shadow: var(--main-red) 0px 0 35px -10px;
 
   @media all and (max-width: 730px) {
     display: flex;
