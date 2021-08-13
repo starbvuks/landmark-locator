@@ -65,6 +65,10 @@ export default Features;
 
 const Main = styled.div`
   height: 100vh;
+  background-image: url("/img/featuresbg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-color: var(--main-light1);
 `;
 
 const Content = styled.div`
@@ -76,7 +80,7 @@ const Content = styled.div`
 `;
 
 const FirstLine = styled.div`
-  margin: 12vh 0 0 0;
+  margin: 9vh 0 0 0;
   justify-content: space-between;
   width: 40%;
   display: flex;
