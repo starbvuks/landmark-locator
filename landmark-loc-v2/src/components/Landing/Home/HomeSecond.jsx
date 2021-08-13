@@ -53,7 +53,7 @@ const Right = styled.div`
   width: 40vw;
   margin: 0 0 0 2.5vw;
   border-radius: 25px;
-  background-image: url("https://images.unsplash.com/photo-1541438633571-9578b70ae5bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=345&q=80");
+  background-image: url("https://images.unsplash.com/photo-1496372412473-e8548ffd82bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1175&q=80");
   background-position: center;
   background-size: cover;
   box-shadow: var(--main-purple) 0px 10px 35px 0;

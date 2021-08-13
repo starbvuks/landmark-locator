@@ -4,6 +4,7 @@ import {Divider} from "@material-ui/core";
 
 import HomeSecond from "./HomeSecond";
 import HomeThird from "./HomeThird";
+import Features from "./Features";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
         </Center>
       </Top>
       <HomeSecond />
+      <Features />
       <HomeThird />
     </Main>
   );
@@ -38,7 +40,7 @@ const Center = styled.div`
   align-items: center;
   justify-content: center;
   padding: 3.5rem;
-  width: 80vw;
+  width: 75vw;
   border-radius: 25px;
   margin: 20vh auto;
   box-shadow: var(--main-red) 0px 0 35px -10px;
