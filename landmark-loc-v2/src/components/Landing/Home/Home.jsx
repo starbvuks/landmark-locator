@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {Divider} from "@material-ui/core";
+import {Link} from "react-router-dom";
 
 import HomeSecond from "./HomeSecond";
 import HomeThird from "./HomeThird";
-import Features from "./Features";
 
 const Home = () => {
   return (
@@ -15,7 +14,9 @@ const Home = () => {
             <Shell src="./img/ii-iconfull.png" alt="icon" />
           </CenterText>
           <CenterIcon>
-            <MapIcon src="./img/main-map.png" alt="icon" />
+            <Link to="/india-list">
+              <MapIcon src="./img/main-map.png" alt="icon" />
+            </Link>
           </CenterIcon>
         </Center>
       </Top>
@@ -46,7 +47,7 @@ const Center = styled.div`
   padding: 3.5rem;
   width: 75vw;
   border-radius: 25px;
-  margin: 20vh auto;
+  margin: 18vh auto;
   box-shadow: var(--main-red) 0px 0 35px -10px;
 
   @media all and (max-width: 730px) {

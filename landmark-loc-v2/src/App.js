@@ -13,10 +13,11 @@ import Navbar from "./components/Landing/Navbar/Navbar";
 import Landing from "./components/Landing/Landing";
 import Listings from "./components/Listings/StateListing";
 import LandmarkList from "./components/Listings/LandmarkList";
+import LandmarkPage from "./components/Landmark/LandmarkPage";
 import Login from "./components/Users/Login";
 import SignUp from "./components/Users/SignUp";
 import Profile from "./components/Profile/Profile";
-import LandmarkPage from "./components/Landmark/LandmarkPage";
+import Features from "./components/Info/Features";
 
 function App() {
   const auth = useSelector((state) => state.auth.value);
@@ -64,9 +65,12 @@ function App() {
           <Route path="/login">
             <Login setToken={setToken} />
           </Route>
+          <Route exact path="/features">
+            <Features />
+          </Route>
           <Route exact path="/profile">
             <Navbar />
-            <Profile setToken={setToken} token={token} />
+            <Profile />
           </Route>
           <Route exact path="/">
             <Landing />

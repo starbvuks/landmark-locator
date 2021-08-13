@@ -19,7 +19,6 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
-  Button,
 } from "@material-ui/core";
 
 import {
@@ -29,6 +28,10 @@ import {
   StyledToolbar,
   StyledIconButton,
   StyledIconButtonLogo,
+  RightNav,
+  AboutBtn,
+  FeaturesBtn,
+  NavButtons,
 } from "./styled.Navbar";
 
 const Navbar = () => {
@@ -64,10 +67,6 @@ const Navbar = () => {
     history.push("/india-list");
   };
 
-  const goToPlaces = () => {
-    history.push("/locat-list/Telangana");
-  };
-
   const handleClick = (event) => {
     setAnchorEl(true);
   };
@@ -94,72 +93,80 @@ const Navbar = () => {
               </NavLogo>
             </StyledIconButtonLogo>
           </Link>
-          <StyledIconButton onClick={() => handleClick()} color="inherit">
-            {auth === true ? (
-              <Avatar
-                style={{
-                  border: "3px solid",
-                  borderColor: "var(--main-light)",
-                  width: "32px",
-                  height: "32px",
-                }}
-                src="/img/avatar_03.png"
-              />
-            ) : (
-              <AccountCircleIcon style={{fill: "#F2F2F2"}} fontSize="large" />
-            )}
-          </StyledIconButton>
-          <Drawer anchor="right" open={anchorEl} onClose={handleClose}>
-            <List style={{width: 200}}>
-              {[
-                {
-                  text: "Profile",
-                  icon: <FaceIcon />,
-                  action: userIconClickHandler,
-                },
-                {
-                  text: "Settings",
-                  icon: <SettingsIcon />,
-                  action: userIconClickHandler,
-                },
-                {
-                  text: "Logout",
-                  icon: <ExitToAppIcon />,
-                  action: logoutHandler,
-                },
-              ].map((array, index) => (
-                <ListItem button key={index} onClick={() => array.action()}>
-                  <ListItemIcon>{array.icon}</ListItemIcon>
-                  <ListItemText primary={array.text} />
-                </ListItem>
-              ))}
-            </List>
-            <Divider />
-            <List style={{width: 200}}>
-              {[
-                {
-                  text: "Home",
-                  icon: <HomeIcon />,
-                  action: goBackHome,
-                },
-                {
-                  text: "States",
-                  icon: <MapTwoToneIcon />,
-                  action: goToMap,
-                },
-                {
-                  text: "Near Me",
-                  icon: <ExploreIcon />,
-                  action: goToPlaces,
-                },
-              ].map((array, index) => (
-                <ListItem button key={index} onClick={() => array.action()}>
-                  <ListItemIcon>{array.icon}</ListItemIcon>
-                  <ListItemText primary={array.text} />
-                </ListItem>
-              ))}
-            </List>
-          </Drawer>
+          <RightNav>
+            <NavButtons>
+              <AboutBtn>About Us</AboutBtn>
+              <FeaturesBtn component={Link} to="/features">
+                Features
+              </FeaturesBtn>
+            </NavButtons>
+            <StyledIconButton onClick={() => handleClick()} color="inherit">
+              {auth === true ? (
+                <Avatar
+                  style={{
+                    border: "3px solid",
+                    borderColor: "var(--main-light)",
+                    width: "32px",
+                    height: "32px",
+                  }}
+                  src="/img/avatar_03.png"
+                />
+              ) : (
+                <AccountCircleIcon style={{fill: "#F2F2F2"}} fontSize="large" />
+              )}
+            </StyledIconButton>
+            <Drawer anchor="right" open={anchorEl} onClose={handleClose}>
+              <List style={{width: 200}}>
+                {[
+                  {
+                    text: "Profile",
+                    icon: <FaceIcon />,
+                    action: userIconClickHandler,
+                  },
+                  {
+                    text: "Settings",
+                    icon: <SettingsIcon />,
+                    action: userIconClickHandler,
+                  },
+                  {
+                    text: "Logout",
+                    icon: <ExitToAppIcon />,
+                    action: logoutHandler,
+                  },
+                ].map((array, index) => (
+                  <ListItem button key={index} onClick={() => array.action()}>
+                    <ListItemIcon>{array.icon}</ListItemIcon>
+                    <ListItemText primary={array.text} />
+                  </ListItem>
+                ))}
+              </List>
+              <Divider />
+              <List style={{width: 200}}>
+                {[
+                  {
+                    text: "Home",
+                    icon: <HomeIcon />,
+                    action: goBackHome,
+                  },
+                  {
+                    text: "States",
+                    icon: <MapTwoToneIcon />,
+                    action: goToMap,
+                  },
+                  {
+                    text: "Near Me",
+                    icon: <ExploreIcon />,
+                    action: goToMap,
+                  },
+                ].map((array, index) => (
+                  <ListItem button key={index} onClick={() => array.action()}>
+                    <ListItemIcon>{array.icon}</ListItemIcon>
+                    <ListItemText primary={array.text} />
+                  </ListItem>
+                ))}
+              </List>
+            </Drawer>
+          </RightNav>
         </StyledToolbar>
       </StyledAppBar>
     </div>

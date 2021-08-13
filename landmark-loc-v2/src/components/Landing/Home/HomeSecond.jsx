@@ -38,7 +38,7 @@ const HomeSecond = () => {
 export default HomeSecond;
 
 const Main = styled.div`
-  margin: 25vh 8vw 0 8vw;
+  margin: 30vh 8vw 0 8vw;
   display: flex;
   flex-direction: row;
 `;
