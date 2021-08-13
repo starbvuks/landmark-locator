@@ -96,6 +96,9 @@ const LandmarkPage = (props) => {
 
             <AddressDiv ite>
               <Address>
+                <span style={{fontWeight: 700, paddingRight: "1vw"}}>
+                  Address:
+                </span>
                 {landmarkDetails.city}, {landmarkDetails.district}{" "}
               </Address>
             </AddressDiv>

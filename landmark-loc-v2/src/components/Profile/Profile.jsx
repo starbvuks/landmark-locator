@@ -29,7 +29,7 @@ const Profile = () => {
         <UserDetails>
           <UserAvatar
             src="/img/avatar_03.png"
-            style={{height: "10rem", width: "10rem"}}
+            style={{height: "auto", width: "12vw"}}
           />
           <UserData>
             <Username variant="h1">{userToken.user.name}</Username>
@@ -85,6 +85,7 @@ const Username = styled(Typography)`
   font-family: Poppins !important;
   color: var(--main-purple);
   font-weight: 600 !important;
+  font-size: 8vw;
 `;
 
 const Email = styled(Typography)`
@@ -92,4 +93,5 @@ const Email = styled(Typography)`
   font-family: Poppins !important;
   color: var(--main-lav2);
   font-weight: 500 !important;
+  font-size: 1.5vw;
 `;
