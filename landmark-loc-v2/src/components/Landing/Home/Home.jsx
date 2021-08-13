@@ -20,7 +20,6 @@ const Home = () => {
         </Center>
       </Top>
       <HomeSecond />
-      <Features />
       <HomeThird />
     </Main>
   );
