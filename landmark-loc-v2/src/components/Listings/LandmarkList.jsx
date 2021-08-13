@@ -22,9 +22,9 @@ const LandmarkList = (props) => {
   const [viewport, setViewport] = useState({
     width: "40vw",
     height: "85vh",
-    longitude: 79.9199,
-    latitude: 24.8318,
-    zoom: 5,
+    longitude: 81.9199,
+    latitude: 20.8,
+    zoom: 4,
   });
 
   useEffect(() => {
@@ -98,11 +98,11 @@ const Main = styled.div`
 `;
 
 const MapDiv = styled.div`
-  margin: 5vh 0 0 2vw;
+  margin: 2vh 0 0 2vw;
 `;
 
 const CardDiv = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 5vh 2vw 0 2vw;
+  margin: 2vh 2vw 0 2vw;
 `;

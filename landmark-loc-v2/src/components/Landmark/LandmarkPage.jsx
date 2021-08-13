@@ -48,8 +48,8 @@ const LandmarkPage = (props) => {
   }, [id]);
 
   const [viewport, setViewport] = React.useState({
-    height: 450,
-    width: 450,
+    height: "60vh",
+    width: "30vw",
     zoom: 14,
   });
 

@@ -66,6 +66,7 @@ const LandmarkCard = styled(Card)`
   display: flex;
   border-radius: 10px !important;
   align-items: center;
+  justify-content: space-between;
   background-color: var(--main-light) !important;
 `;
 
@@ -105,7 +106,6 @@ const LandmarkName = styled.span`
   font-size: 2.1vw;
   font-weight: 600;
   line-height: 45px;
-  width: 18vw;
   font-family: Poppins !important;
   color: var(--main-black);
   hyphens: auto;

@@ -47,7 +47,7 @@ const Center = styled.div`
   padding: 3.5rem;
   width: 75vw;
   border-radius: 25px;
-  margin: 18vh auto;
+  margin: 22vh auto;
   box-shadow: var(--main-red) 0px 0 35px -10px;
 
   @media all and (max-width: 730px) {
@@ -60,7 +60,7 @@ const Center = styled.div`
 const CenterText = styled.div``;
 
 const Shell = styled.img`
-  max-width: 45vw;
+  max-width: 42vw;
   margin: 5vh 0 0 0;
 
   @media all and (max-width: 730px) {
@@ -76,5 +76,5 @@ const CenterIcon = styled.div`
 `;
 
 const MapIcon = styled.img`
-  max-width: 25vw;
+  max-width: 22vw;
 `;
