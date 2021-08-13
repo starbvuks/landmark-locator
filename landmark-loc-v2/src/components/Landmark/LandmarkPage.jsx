@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Redirect} from "react-router-dom";
 import ReactMapGL, {Marker} from "react-map-gl";
-import {useSelector} from "react-redux";
 import axios from "axios";
 
 import Navbar from "../Landing/Navbar/Navbar";
@@ -35,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LandmarkPage = (props) => {
-  const auth = useSelector((state) => state.auth.value);
   const [landmarkDetails, setLandmarkDetails] = useState([]);
   const id = props.match.params.id;
 
@@ -65,9 +62,6 @@ const LandmarkPage = (props) => {
 
   const classes = useStyles();
 
-  if (auth === false) {
-    return <Redirect to="/login" />;
-  }
   return (
     <>
       <Navbar />
@@ -85,7 +79,7 @@ const LandmarkPage = (props) => {
                 xs={3}
                 style={{display: "flex", justifyContent: "center"}}
               >
-                <Rating>{landmarkDetails.rating}</Rating>
+                <Rating>{landmarkDetails.avgRating}</Rating>
               </Grid>
             </Content>
           </ImageGallery>
@@ -94,7 +88,6 @@ const LandmarkPage = (props) => {
               {...viewport}
               longitude={landmarkDetails.longitude}
               latitude={landmarkDetails.latitude}
-              mapStyle="mapbox://styles/mapbox/streets-v11"
               mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
               onViewportChange={(viewport) => {
                 setViewport(viewport);

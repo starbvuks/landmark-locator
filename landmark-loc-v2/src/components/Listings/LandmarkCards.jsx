@@ -105,7 +105,6 @@ const LandmarkName = styled.span`
   font-size: 2.5vw;
   font-weight: 600;
   line-height: 45px;
-  padding: 0 4vw 0 0;
   font-family: Poppins !important;
   color: var(--main-black);
   hyphens: auto;
@@ -125,7 +124,7 @@ const Right = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 1vw;
+  margin: 1vw;
 `;
 
 const Rating = styled.span`

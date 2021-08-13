@@ -5,7 +5,6 @@ import {Container, Grid, Box} from "@material-ui/core";
 export const BoxStyled = styled(Box)`
   color: white;
   background-color: var(--main-dark);
-  margin-top: 20vh;
   font-family: "Poppins";
   font-weight: 500;
 `;

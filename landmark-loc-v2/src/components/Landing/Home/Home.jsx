@@ -30,6 +30,11 @@ export default Home;
 
 const Main = styled.div`
   overflow: hidden;
+  background-image: url("/img/background1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 0 20vh 0;
 `;
 
 const Top = styled.div``;

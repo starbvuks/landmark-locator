@@ -14,7 +14,7 @@ const Reviews = ({id}) => {
 
   const tokenString = sessionStorage.getItem("token");
   const userToken = JSON.parse(tokenString);
-  const user = userToken.user.name;
+  const name = userToken.user.name;
 
   useEffect(() => {
     axios
@@ -34,7 +34,7 @@ const Reviews = ({id}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newReview = {
-      user,
+      name,
       rating,
       comment,
     };
@@ -47,6 +47,7 @@ const Reviews = ({id}) => {
       )
       .then((data) => {
         console.log("success");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -73,7 +74,7 @@ const Reviews = ({id}) => {
         <ModalDiv>
           <Box>
             <HeaderModal>Add a Review</HeaderModal>
-            <ModalForm noValidate>
+            <ModalForm onSubmit={handleSubmit} noValidate>
               <ReviewField
                 multiline
                 label="Review"
@@ -87,25 +88,20 @@ const Reviews = ({id}) => {
                 InputProps={{inputProps: {min: 0.5, max: 5}}}
                 onChange={(e) => setRating(e.target.value)}
               />
+              <ButtonDiv>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={handleClose}
+                  style={{marginRight: "1vw"}}
+                >
+                  Cancel
+                </Button>
+                <Button type="submit" variant="outlined" color="primary">
+                  Submit
+                </Button>
+              </ButtonDiv>
             </ModalForm>
-            <ButtonDiv>
-              <Button
-                variant="outlined"
-                color="secondary"
-                onClick={handleClose}
-                style={{marginRight: "1vw"}}
-              >
-                Cancel
-              </Button>
-              <Button
-                type="submit"
-                variant="outlined"
-                color="primary"
-                onClick={handleSubmit}
-              >
-                Submit
-              </Button>
-            </ButtonDiv>
           </Box>
         </ModalDiv>
       </Modal>
@@ -147,7 +143,7 @@ const Reviews = ({id}) => {
         {reviewData.map((review, index) => (
           <ReviewDiv key={index}>
             <Top>
-              <ReviewUser>User : {review.user}</ReviewUser>
+              <ReviewUser>User : {review.name}</ReviewUser>
               <Rating>
                 Rating: <Value>{review.rating}</Value>
               </Rating>
