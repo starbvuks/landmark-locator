@@ -1,10 +1,20 @@
 const mongoose = require('mongoose');
 const Landmark = require('./landmarkModel');
+const { ObjectId } = mongoose.Schema;
 
 const ratingSchema = new mongoose.Schema({
   rating: { type: Number, required: true },
   comment: { type: String },
+  name: {
+    type:String
+  },
+  landmark:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Landmark"
+  }
+
 });
+
 
 ratingSchema.statics.calcAverageRating =async function(landmarkId){
   const stats = await this.aggregate([
@@ -19,12 +29,12 @@ ratingSchema.statics.calcAverageRating =async function(landmarkId){
       }
     }
   ])
-  console.log(stats);
- const rate = await Landmark.findByIdAndUpdate(landmarkId, {
+  //console.log(stats);
+await Landmark.findByIdAndUpdate(landmarkId, {
   numReviews: stats[0].nRating,
   avgRating: stats[0].avgRating
   })
-  console.log(rate)
+
 };
 
 ratingSchema.post('save', function(){
