@@ -25,11 +25,12 @@ const HomeSecond = () => {
           <WorldTextDiv>
             <WorldText variant="h1">Track the places you've been</WorldText>
             <WorldTextBottom variant="h1">
-              And the the places you want to go
+              And where you want to go
             </WorldTextBottom>
           </WorldTextDiv>
         </WorldDiv>
       </CenterCard>
+      <Right></Right>
     </Main>
   );
 };
@@ -37,13 +38,25 @@ const HomeSecond = () => {
 export default HomeSecond;
 
 const Main = styled.div`
-  margin: 25vh 3vw;
-  border-radius: 25px;
+  margin: 25vh 8vw 0 8vw;
+  display: flex;
+  flex-direction: row;
 `;
 
 const CenterCard = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const Right = styled.div`
+  height: 61vh;
+  width: 40vw;
+  margin: 0 0 0 2.5vw;
+  border-radius: 25px;
+  background-image: url("https://images.unsplash.com/photo-1541438633571-9578b70ae5bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=345&q=80");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--main-purple) 0px 10px 35px 0;
 `;
 
 // travel
@@ -54,7 +67,7 @@ const TravelDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0 15vw 0 15vw;
+  width: 55vw;
   height: 28vh;
 
   @media all and (max-width: 730px) {
@@ -73,6 +86,7 @@ const TravelIconDiv = styled.div`
   align-items: center;
   justify-content: center;
   width: 25vw;
+  box-shadow: var(--main-red) 10px 0 35px -12px;
 
   @media all and (max-width: 730px) {
     padding: 0 5vw;
@@ -117,8 +131,8 @@ const WorldDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0 15vw 0 15vw;
-  margin-top: 8vh;
+  margin: 5vh 0;
+  width: 55vw;
   height: 28vh;
 
   @media all and (max-width: 730px) {
@@ -137,6 +151,7 @@ const WorldIconDiv = styled.div`
   align-items: center;
   justify-content: center;
   width: 25vw;
+  box-shadow: var(--main-red) 10px 0 35px -12px;
 
   @media all and (max-width: 730px) {
     padding: 0 5vw;
