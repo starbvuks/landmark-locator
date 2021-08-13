@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {AppBar, Toolbar, IconButton, Avatar} from "@material-ui/core";
+import {AppBar, Toolbar, IconButton, Avatar, Button} from "@material-ui/core";
 
 export const StyledAppBar = styled(AppBar)`
   background-color: #a6566b !important;
@@ -27,6 +27,31 @@ export const NavLogo = styled.div`
     padding: 0 25px 0 25px;
     margin-left: -36px;
   }
+`;
+
+export const RightNav = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const NavButtons = styled.div`
+  font-family: Poppins !important;
+`;
+
+export const AboutBtn = styled(Button)`
+  font-family: Poppins !important;
+  font-weight: 600;
+  color: var(--main-light1);
+  text-transform: none !important;
+  margin: 0 4vw;
+`;
+
+export const FeaturesBtn = styled(Button)`
+  font-family: Poppins !important;
+  font-weight: 600;
+  color: var(--main-light1);
+  text-transform: none !important;
+  margin: 0 4vw;
 `;
 
 export const Icon = styled(Avatar)``;

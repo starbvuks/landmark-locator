@@ -102,9 +102,10 @@ const HeaderDiv = styled.div`
 `;
 
 const LandmarkName = styled.span`
-  font-size: 2.5vw;
+  font-size: 2.1vw;
   font-weight: 600;
   line-height: 45px;
+  width: 18vw;
   font-family: Poppins !important;
   color: var(--main-black);
   hyphens: auto;

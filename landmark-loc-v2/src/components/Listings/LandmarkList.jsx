@@ -2,10 +2,16 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import ReactMapGL, {Marker, Popup} from "react-map-gl";
 import axios from "axios";
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl from "mapbox-gl";
 
 import LandmarkCards from "./LandmarkCards.jsx";
 import Navbar from "../Landing/Navbar/Navbar.jsx";
 import RoomIcon from "@material-ui/icons/Room";
+
+mapboxgl.workerClass =
+  // eslint-disable-next-line import/no-webpack-loader-syntax
+  require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const LandmarkList = (props) => {
   const [landmarkData, setLandmarkData] = useState([]);
