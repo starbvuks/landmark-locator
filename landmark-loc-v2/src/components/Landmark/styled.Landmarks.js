@@ -42,7 +42,7 @@ export const AddressDiv = styled(Grid)`
 
 export const Address = styled.span`
   font-family: Poppins;
-  font-size: 1.8vw;
+  font-size: 1.2vw;
   font-weight: 600;
 `;
 

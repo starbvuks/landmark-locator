@@ -19,6 +19,7 @@ const Features = () => {
     "Database of states in India contains atleast one entry per state",
     "Landmark details, location and reviews are open",
     "Users can leave ratings and reviews for locations in their respective page",
+    "Map location integration (integrated using MapBox)",
   ];
 
   return (
@@ -42,19 +43,6 @@ const Features = () => {
               <ListItemText primary={<ListText>{data}</ListText>} />
             </ListItem>
           ))}
-          <ListHeader style={{marginTop: "4vh"}}>Issues</ListHeader>
-          <ListItem>
-            <ListItemIcon>
-              <FiberManualRecordIconStyled />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <ListText>
-                  Mapbox integration crash (react-map-gl error)
-                </ListText>
-              }
-            />
-          </ListItem>
         </ListStyled>
       </Content>
     </Main>

@@ -41,7 +41,7 @@ const IndiaMapDiv = styled.div`
 `;
 
 const IndiaMap = styled.img`
-  width: 50vw;
+  width: 45vw;
   transition: transform 0.5s ease;
 
   &:hover {
@@ -57,16 +57,16 @@ const GoToMap = styled.div`
   margin: 10vh 0 0 6vw;
 `;
 
-const GoToText = styled.h2`
-  font-size: 4.2vw;
+const GoToText = styled.span`
+  font-size: 3.8vw;
   font-family: Poppins;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--main-red);
-  margin: 0;
+  margin: 0 0 0 2.5vw;
 `;
 
 const GitLink = styled.img`
-  height: 38vh;
+  height: 35vh;
   margin: 30vh 0 0 0;
   cursor: pointer;
   transition: transform 0.5s ease;

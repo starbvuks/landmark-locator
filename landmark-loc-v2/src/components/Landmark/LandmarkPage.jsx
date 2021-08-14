@@ -48,8 +48,8 @@ const LandmarkPage = (props) => {
   }, [id]);
 
   const [viewport, setViewport] = React.useState({
-    height: 450,
-    width: 450,
+    height: "60vh",
+    width: "30vw",
     zoom: 14,
   });
 
@@ -96,6 +96,9 @@ const LandmarkPage = (props) => {
 
             <AddressDiv ite>
               <Address>
+                <span style={{fontWeight: 700, paddingRight: "1vw"}}>
+                  Address:
+                </span>
                 {landmarkDetails.city}, {landmarkDetails.district}{" "}
               </Address>
             </AddressDiv>

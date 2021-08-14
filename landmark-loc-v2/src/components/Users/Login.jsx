@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     backgroundColor: "var(--main-purple)",
+    backgroundImage:
+      "url('https://images.unsplash.com/photo-1520643187271-06df1162815e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=666&q=80')",
     backgroundSize: "cover",
     backgroundPosition: "center",
   },

@@ -27,7 +27,7 @@ const Favourites = () => {
           {/* {favourites.map((favourite, index) => ( */}
           <FavouriteCard>
             <LandmarkImage
-              image="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Taj_Mahal_in_India_-_Kristian_Bertel.jpg/1200px-Taj_Mahal_in_India_-_Kristian_Bertel.jpg"
+              image="/img/travel-explore.png"
               title="state"
               style={{
                 width: "10vw",
@@ -35,7 +35,7 @@ const Favourites = () => {
               }}
             />
             <FavouriteCardContent>
-              <h2>Place Name</h2>
+              <h2>nothing in your favourites yet</h2>
               <FavoriteIcon style={{fill: "red"}} />
             </FavouriteCardContent>
           </FavouriteCard>
