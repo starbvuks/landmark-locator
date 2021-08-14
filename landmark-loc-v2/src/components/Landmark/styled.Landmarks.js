@@ -11,14 +11,15 @@ export const Images = styled.img`
 
 export const Content = styled(Grid)`
   display: flex;
-  align-items: center;
+  align-items: start;
+  padding-top: 2vh;
 `;
 
 export const Name = styled.span`
   font-family: Poppins;
-  font-size: 3vw;
   font-weight: 700;
-  padding: 0 10px;
+  font-size: 3vw;
+  line-height: 8vh;
 `;
 
 export const Rating = styled.span`
@@ -26,7 +27,6 @@ export const Rating = styled.span`
   color: var(--main-light);
   font-family: Poppins;
   padding: 10px;
-  margin: 2vh 0 0 0;
   border-radius: 20px;
   font-size: 1.5vw;
   letter-spacing: 2px;

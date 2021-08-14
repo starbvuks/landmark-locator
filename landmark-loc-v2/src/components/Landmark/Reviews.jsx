@@ -16,6 +16,8 @@ const Reviews = ({id}) => {
   const userToken = JSON.parse(tokenString);
   const name = userToken.user.name;
 
+  const landmark = id;
+
   useEffect(() => {
     axios
       .get(`https://landmarklactor.herokuapp.com/rating/${id}`)
@@ -37,6 +39,7 @@ const Reviews = ({id}) => {
       name,
       rating,
       comment,
+      landmark,
     };
 
     axios

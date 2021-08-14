@@ -13,6 +13,7 @@ const LandmarkCards = (props) => {
   const id = userToken.user.id;
 
   const locId = props._id;
+  console.log(props);
 
   const favouriteHandle = (e) => {
     e.preventDefault();
@@ -47,7 +48,7 @@ const LandmarkCards = (props) => {
           </Details>
         </LinkDiv>
         <Right>
-          <Rating>4.5</Rating>
+          <Rating>{props.avgRating}</Rating>
           <MenuItem component={Button} onClick={favouriteHandle}>
             <FavoriteBorderIcon style={{fill: "var(--main-red)"}} />
           </MenuItem>

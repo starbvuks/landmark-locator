@@ -71,13 +71,16 @@ const LandmarkPage = (props) => {
           <ImageGallery item xs={7}>
             <Images src={landmarkDetails.pictures} alt={landmarkDetails.name} />
             <Content container spacing={3}>
-              <Grid item xs={9} style={{marginTop: "2vh"}}>
+              <Grid item xs={9}>
                 <Name>{landmarkDetails.name}</Name>
               </Grid>
               <Grid
                 item
                 xs={3}
-                style={{display: "flex", justifyContent: "center"}}
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}
               >
                 <Rating>{landmarkDetails.avgRating}</Rating>
               </Grid>
